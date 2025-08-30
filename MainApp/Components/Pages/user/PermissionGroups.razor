@@ -1,0 +1,384 @@
+﻿@page "/user/permissiongroups"
+@inject IPermissionGroupService PermissionGroupService
+@inject NotificationService Notifier
+@inject IJSRuntime JS
+@inject FileLogger Logger
+
+<!-- HEADER -->
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div>
+        <h4>Permission Groups</h4>
+        <small class="text-muted">Manage permission groups and model associations</small>
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-outline-success btn-sm" @onclick="ExportToExcel">
+            <i class="bi bi-file-earmark-excel me-1"></i> Excel
+        </button>
+        <button class="btn btn-outline-danger btn-sm" @onclick="ExportToPdf">
+            <i class="bi bi-file-earmark-pdf me-1"></i> PDF
+        </button>
+        <button class="btn btn-primary" @onclick="ShowAddModal">
+            <i class="bi bi-plus-circle me-1"></i> Add Group
+        </button>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="card">
+    <div class="card-body table-responsive">
+        <!-- Filters -->
+        <div class="d-flex flex-wrap gap-2 mb-3 align-items-center justify-content-between">
+            <div class="input-group" style="max-width: 300px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input class="form-control" @bind="searchTerm" @bind:event="oninput" placeholder="Search groups..." />
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+                @if (groups.Any(g => g.IsSelected))
+                {
+                    <button class="btn btn-danger" @onclick="ConfirmMultiDelete">
+                        <i class="bi bi-trash me-1"></i> Delete Selected
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Table -->
+        @if (PaginatedGroups?.Count > 0)
+        {
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 40px;"><input type="checkbox" @onchange="ToggleAll" /></th>
+                        <th @onclick="() => SortByColumn(nameof(PermissionGroupViewModel.Name))" style="cursor:pointer;">
+                            Name
+                            @if (sortColumn == nameof(PermissionGroupViewModel.Name))
+                            {
+                                <i class="bi bi-chevron-@(sortAsc ? "up" : "down") ms-1"></i>
+                            }
+                        </th>
+                        <th>Code</th>
+                        <th>Model Associated</th>
+                        <th @onclick="() => SortByColumn(nameof(PermissionGroupViewModel.CreatedAt))" style="cursor:pointer;">
+                            Created Date
+                            @if (sortColumn == nameof(PermissionGroupViewModel.CreatedAt))
+                            {
+                                <i class="bi bi-chevron-@(sortAsc ? "up" : "down") ms-1"></i>
+                            }
+                        </th>
+                        <th style="width: 150px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var g in PaginatedGroups)
+                    {
+                        <tr>
+                            <td><input type="checkbox" @bind="g.IsSelected" /></td>
+                            <td>@g.Name</td>
+                            <td>@g.Code</td>
+                            <td>@(g.IsModelAssociated ? "✔️" : "✘")</td>
+                            <td>@g.CreatedAt</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1" @onclick="() => EditGroup(g)"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteGroup(g.Id)"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">No permission groups found.</div>
+        }
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <div>Showing @((currentPage - 1) * pageSize + 1) to @((currentPage - 1) * pageSize + PaginatedGroups.Count) of @FilteredGroups.Count groups</div>
+            <div class="d-flex align-items-center gap-2">
+                <label>Rows per page:</label>
+                <select class="form-select form-select-sm" style="width: 80px;" @bind="pageSize">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                </select>
+                <nav>
+                    <ul class="pagination pagination-sm mb-0">
+                        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                            <button class="page-link" @onclick="PrevPage">Previous</button>
+                        </li>
+                        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                            <button class="page-link" @onclick="NextPage">Next</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Form Modal -->
+@if (showForm)
+{
+    <div class="modal fade show d-block" style="background-color:rgba(0,0,0,0.5)" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <EditForm Model="groupForm" OnValidSubmit="SaveGroup">
+                    <div class="modal-header">
+                        <h5 class="modal-title">@((groupForm.Id == 0) ? "Create Group" : "Edit Group")</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <InputText class="form-control mb-3" @bind-Value="groupForm.Name" placeholder="Name" />
+                        <InputText class="form-control mb-3" @bind-Value="groupForm.Code" placeholder="Code" />
+                        <div class="form-check form-switch mb-2">
+                            <InputCheckbox class="form-check-input" @bind-Value="groupForm.IsModelAssociated" />
+                            <label class="form-check-label">Model Associated</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" @onclick="CloseModal"><i class="bi bi-x me-1"></i>Cancel</button>
+                        <button class="btn btn-primary" type="submit"><i class="bi bi-floppy me-1"></i>Save</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+<ConfirmationModal Show="@showConfirmModal"
+                   Title="Delete Permission Group"
+                   Message="Are you sure you want to delete this permission group?"
+                   OnConfirm="ConfirmDelete"
+                   OnCancel="() => showConfirmModal = false" />
+
+<ConfirmationModal Show="@showBulkDeleteConfirm"
+                   Title="Delete Selected Groups"
+                   Message="Are you sure you want to delete all selected groups?"
+                   OnConfirm="ConfirmBulkDelete"
+                   OnCancel="CancelBulkDelete" />
+
+@code {
+    List<PermissionGroupViewModel> groups = new();
+    PermissionGroupViewModel groupForm = new();
+    bool showForm = false;
+
+    string searchTerm = "";
+    string sortColumn = nameof(PermissionGroupViewModel.CreatedAt);
+    bool sortAsc = false;
+
+    int currentPage = 1;
+    int pageSize = 10;
+
+    long groupIdToDelete = 0;
+    bool showConfirmModal = false;
+    bool showBulkDeleteConfirm = false;
+
+    protected override async Task OnInitializedAsync() => await LoadGroups();
+
+    async Task LoadGroups()
+    {
+        groups = (await PermissionGroupService.GetAllAsync())
+            .Select(PermissionGroupMapping.ToViewModel)
+            .ToList();
+    }
+
+    void ShowAddModal()
+    {
+        groupForm = new();
+        showForm = true;
+    }
+
+    void EditGroup(PermissionGroupViewModel g)
+    {
+        groupForm = new PermissionGroupViewModel
+        {
+            Id = g.Id,
+            Name = g.Name,
+            Code = g.Code,
+            IsModelAssociated = g.IsModelAssociated
+        };
+        showForm = true;
+    }
+
+    void CloseModal()
+    {
+        showForm = false;
+    }
+
+    async Task SaveGroup()
+    {
+        try
+        {
+            var domain = PermissionGroupMapping.ToDomainModel(groupForm);
+            if (groupForm.Id == 0)
+            {
+                await PermissionGroupService.AddAsync(domain);
+                Notifier.Notify("✅ Permission group created successfully", "success");
+            }
+            else
+            {
+                await PermissionGroupService.UpdateAsync(domain);
+                Notifier.Notify("✏️ Permission group updated", "info");
+            }
+
+            showForm = false;
+            await LoadGroups();
+        }
+        catch (ApplicationException ex)
+        {
+            Logger.Log(ex.Message, "SavePermissionGroup - Application Exception");
+            Notifier.Notify($"❌ {ex.Message}", "error");
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "SavePermissionGroup - Unhandled Exception");
+            Notifier.Notify($"❌ Unexpected error: {ex.Message}", "error");
+        }
+    }
+
+    void DeleteGroup(long id)
+    {
+        groupIdToDelete = id;
+        showConfirmModal = true;
+    }
+
+    async Task ConfirmDelete()
+    {
+        try
+        {
+            await PermissionGroupService.DeleteAsync(groupIdToDelete);
+            Notifier.Notify("🗑 Group deleted", "warning");
+            await LoadGroups();
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "DeletePermissionGroup - Unhandled Exception");
+            Notifier.Notify($"❌ Delete failed: {ex.Message}", "error");
+        }
+        finally
+        {
+            groupIdToDelete = 0;
+            showConfirmModal = false;
+        }
+    }
+
+    void ToggleAll(ChangeEventArgs e)
+    {
+        bool value = (bool)e.Value;
+        foreach (var g in groups) g.IsSelected = value;
+    }
+
+    void ConfirmMultiDelete()
+    {
+        showBulkDeleteConfirm = true;
+    }
+
+    void CancelBulkDelete()
+    {
+        showBulkDeleteConfirm = false;
+    }
+
+    async Task ConfirmBulkDelete()
+    {
+        var selectedIds = groups.Where(g => g.IsSelected).Select(g => g.Id).ToList();
+
+        foreach (var id in selectedIds)
+        {
+            try
+            {
+                await PermissionGroupService.DeleteAsync(id);
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.ToString(), "BulkDeletePermissionGroup - Unhandled Exception");
+                Notifier.Notify($"❌ Failed to delete ID {id}: {ex.Message}", "error");
+            }
+        }
+
+        Notifier.Notify("🗑 Selected groups deleted", "warning");
+        await LoadGroups();
+        showBulkDeleteConfirm = false;
+    }
+
+    List<PermissionGroupViewModel> FilteredGroups => groups
+        .Where(r => string.IsNullOrWhiteSpace(searchTerm) || r.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+        .OrderBy(r => GetSortValue(r), sortAsc ? Comparer<object>.Default : Comparer<object>.Create((a, b) => Comparer<object>.Default.Compare(b, a)))
+        .ToList();
+
+    object GetSortValue(PermissionGroupViewModel r) => sortColumn switch
+    {
+        nameof(PermissionGroupViewModel.Name) => r.Name,
+        nameof(PermissionGroupViewModel.CreatedAt) => r.CreatedAt,
+        _ => r.Name
+    };
+
+    void SortByColumn(string column)
+    {
+        if (sortColumn == column)
+            sortAsc = !sortAsc;
+        else
+        {
+            sortColumn = column;
+            sortAsc = true;
+        }
+    }
+
+    int totalPages => (int)Math.Ceiling((double)FilteredGroups.Count / pageSize);
+
+    List<PermissionGroupViewModel> PaginatedGroups => FilteredGroups
+        .Skip((currentPage - 1) * pageSize)
+        .Take(pageSize)
+        .ToList();
+
+    void PrevPage()
+    {
+        if (currentPage > 1) currentPage--;
+    }
+
+    void NextPage()
+    {
+        if (currentPage < totalPages) currentPage++;
+    }
+
+    async Task ExportToExcel()
+    {
+        using var workbook = new XLWorkbook();
+        var worksheet = workbook.Worksheets.Add("PermissionGroups");
+
+        worksheet.Cell(1, 1).Value = "Name";
+        worksheet.Cell(1, 2).Value = "Code";
+        worksheet.Cell(1, 3).Value = "Model Associated";
+
+        for (int i = 0; i < FilteredGroups.Count; i++)
+        {
+            var g = FilteredGroups[i];
+            worksheet.Cell(i + 2, 1).Value = g.Name;
+            worksheet.Cell(i + 2, 2).Value = g.Code;
+            worksheet.Cell(i + 2, 3).Value = g.IsModelAssociated ? "Yes" : "No";
+        }
+
+        worksheet.Columns().AdjustToContents();
+
+        using var stream = new MemoryStream();
+        workbook.SaveAs(stream);
+        stream.Seek(0, SeekOrigin.Begin);
+
+        var fileName = $"PermissionGroups_{DateTime.UtcNow:yyyyMMdd_HHmmss}.xlsx";
+        await TriggerDownload(fileName, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", stream.ToArray());
+    }
+
+    async Task ExportToPdf()
+    {
+        var domainGroups = groups.Select(PermissionGroupMapping.ToDomainModel).ToList();
+        var bytes = PdfExportService.GeneratePermissionGroupsPdf(domainGroups);
+        var fileName = $"PermissionGroups_{DateTime.UtcNow:yyyyMMdd_HHmmss}.pdf";
+
+        await TriggerDownload(fileName, "application/pdf", bytes);
+    }
+
+    async Task TriggerDownload(string fileName, string mime, byte[] data)
+    {
+        using var streamRef = new DotNetStreamReference(new MemoryStream(data));
+        await JS.InvokeVoidAsync("downloadFileFromStream", fileName, mime, streamRef);
+    }
+}

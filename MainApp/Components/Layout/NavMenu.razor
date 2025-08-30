@@ -1,0 +1,180 @@
+﻿@* <div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">MainApp</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                &nbsp; <span class="bi bi-house-door-fill" aria-hidden="true"></span> &nbsp; Home
+            </NavLink>
+        </div>
+        
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/user/permissiongroups">
+                &nbsp; <span class="bi bi-shield-check" aria-hidden="true"></span> &nbsp; Permission Groups
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/user/permissions">
+                &nbsp; <span class="bi bi-shield-exclamation" aria-hidden="true"></span> &nbsp; Permissions
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/user/users">
+                &nbsp; <span class="bi bi-person" aria-hidden="true"></span> &nbsp; Users
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/user/logs">
+                &nbsp; <span class="bi bi-archive" aria-hidden="true"></span> &nbsp; View Logs
+            </NavLink>
+        </div>
+    </nav>
+</div>
+ *@
+@inherits LayoutComponentBase
+
+<nav class="app-nav" role="navigation" aria-label="Primary">
+    <!-- Section: User Management -->
+    <div class="nav-section">
+        <button class="nav-section-header" @onclick="@(() => ToggleSection("user"))"
+                aria-expanded="@(expandedSections.Contains("user"))">
+            <span><i class="bi bi-person-gear me-1"></i> User Management</span>
+            <span class="expand-icon">@((expandedSections.Contains("user") ? "−" : "+"))</span>
+        </button>
+
+        @if (expandedSections.Contains("user"))
+        {
+            <div class="nav-subitems">
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/user/users" @onclick="HandleNavigate">
+                        <i class="bi bi-person me-1"></i> Users
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/user/roles" @onclick="HandleNavigate">
+                        <i class="bi bi-briefcase me-1"></i> Roles
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/user/permissiongroups" @onclick="HandleNavigate">
+                        <i class="bi bi-shield-check me-1"></i> Permission Groups
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/user/permissions" @onclick="HandleNavigate">
+                        <i class="bi bi-shield-exclamation me-1"></i> Permissions
+                    </NavLink>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Section: Menu Management -->
+    <div class="nav-section">
+        <button class="nav-section-header" @onclick="@(() => ToggleSection("menu"))"
+                aria-expanded="@(expandedSections.Contains("menu"))">
+            <span><i class="bi bi-ui-checks-grid me-1"></i> Menu Management</span>
+            <span class="expand-icon">@((expandedSections.Contains("menu") ? "−" : "+"))</span>
+        </button>
+
+        @if (expandedSections.Contains("menu"))
+        {
+            <div class="nav-subitems">
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/menu/preparation-areas" @onclick="HandleNavigate">
+                        <i class="bi bi-bricks me-1"></i> Preparation Area
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/menu/categories" @onclick="HandleNavigate">
+                        <i class="bi bi-tags me-1"></i> Categories
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/menu/items" @onclick="HandleNavigate">
+                        <i class="bi bi-collection me-1"></i> Items
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/menu/pricelists" @onclick="HandleNavigate">
+                        <i class="bi bi-clock-history me-1"></i> Pricelist
+                    </NavLink>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Section: Table Management -->
+    <div class="nav-section">
+        <button class="nav-section-header" @onclick="@(() => ToggleSection("table"))"
+                aria-expanded="@(expandedSections.Contains("table"))">
+            <span><i class="bi bi-grid-3x3-gap me-1"></i> Table Management</span>
+            <span class="expand-icon">@((expandedSections.Contains("table") ? "−" : "+"))</span>
+        </button>
+
+        @if (expandedSections.Contains("table"))
+        {
+            <div class="nav-subitems">
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/table/tables" @onclick="HandleNavigate">
+                        <i class="bi bi-table me-1"></i> Tables
+                    </NavLink>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Section: Customers -->
+    <div class="nav-section">
+        <button class="nav-section-header" @onclick="@(() => ToggleSection("customers"))"
+                aria-expanded="@(expandedSections.Contains("customers"))">
+            <span><i class="bi bi-people me-1"></i> Customers</span>
+            <span class="expand-icon">@((expandedSections.Contains("customers") ? "−" : "+"))</span>
+        </button>
+
+        @if (expandedSections.Contains("customers"))
+        {
+            <div class="nav-subitems">
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/customer/customers" @onclick="HandleNavigate">
+                        <i class="bi bi-person-lines-fill me-1"></i> Customer List
+                    </NavLink>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Logs -->
+    <div class="nav-item px-3 mt-2">
+        <NavLink class="nav-link" href="/user/logs" @onclick="HandleNavigate">
+            <i class="bi bi-archive me-1"></i> View Logs
+        </NavLink>
+    </div>
+</nav>
+
+@code {
+    private HashSet<string> expandedSections = new() { "user", "menu" }; // start opened if you like
+
+    [Parameter] public EventCallback CloseMenu { get; set; }
+
+    private void ToggleSection(string section)
+    {
+        if (!expandedSections.Add(section))
+            expandedSections.Remove(section);
+    }
+
+    private async Task HandleNavigate()
+    {
+        // close drawer after clicking a link
+        if (CloseMenu.HasDelegate)
+            await CloseMenu.InvokeAsync();
+    }
+}
+
+

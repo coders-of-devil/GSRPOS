@@ -1,0 +1,379 @@
+﻿@page "/table/tables"
+@inject IDiningTableService TableService
+@inject IDiningAreaService AreaService
+@inject ISeatService SeatService
+@inject ITablePriceService PriceService
+@inject NotificationService Notifier
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+@inject FileLogger Logger
+
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div>
+        <h4>Tables</h4>
+        <small class="text-muted">Manage restaurant tables</small>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-outline-success btn-sm" @onclick="ExportToExcel">
+            <i class="bi bi-file-earmark-excel me-1"></i> Excel
+        </button>
+        <button class="btn btn-primary" @onclick="NavigateToAdd">
+            <i class="bi bi-plus-circle me-1"></i> Add Table
+        </button>
+    </div>
+</div>
+<hr />
+
+<div class="card">
+    <div class="card-body table-responsive">
+
+        <!-- Search & Filters -->
+        <div class="d-flex flex-wrap gap-2 mb-3 align-items-center justify-content-between">
+            <div class="input-group" style="max-width: 300px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input class="form-control" @bind="searchTerm" @bind:event="oninput" placeholder="Search tables..." />
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap">
+                <select class="form-select" style="width: 160px;" @bind="selectedStatusFilter">
+                    <option value="All">All</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+
+                <select class="form-select" style="width: 160px;" @bind="selectedAreaId">
+                    <option value="0">All Areas</option>
+                    @foreach (var area in Areas)
+                    {
+                        <option value="@area.Id">@area.Name</option>
+                    }
+                </select>
+
+                @if (tables.Any(t => t.IsSelected))
+                {
+                    <button class="btn btn-danger" @onclick="ConfirmMultiDelete">
+                        <i class="bi bi-trash me-1"></i> Delete Selected
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Table -->
+        @if (PaginatedTables?.Count > 0)
+        {
+            <div class="scrollable-table-container">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 40px;"><input type="checkbox" @onchange="ToggleAll" /></th>
+                            <th>Name</th>
+                            <th>Area</th>
+                            <th>Capacity</th>
+                            <th>Reservable</th>
+                            <th>Occupied</th>
+                            <th>Status</th>
+                            <th style="width: 160px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in PaginatedTables)
+                        {
+                            <tr>
+                                <td><input type="checkbox" @bind="t.IsSelected" /></td>
+                                <td>@t.Name</td>
+                                <td>@t.AreaName</td>
+                                <td>@t.Capacity</td>
+                                <td>@(t.IsReservable ? "✔" : "✘")</td>
+                                <td>@(t.IsOccupied ? "✔" : "✘")</td>
+                                <td>
+                                    <span class="badge @(t.IsActive ? "bg-success" : "bg-secondary")">
+                                        @(t.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning me-1" @onclick="() => ShowDetail(t.Id)">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-primary me-1" @onclick="() => NavigateToEdit(t.Id)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteTable(t.Id)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">No tables found.</div>
+        }
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <div>
+                Showing @((currentPage - 1) * pageSize + 1)
+                to @((currentPage - 1) * pageSize + PaginatedTables.Count)
+                of @FilteredTables.Count tables
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label>Rows per page:</label>
+                <select class="form-select form-select-sm" style="width: 80px;" @bind="pageSize">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                </select>
+                <nav>
+                    <ul class="pagination pagination-sm mb-0">
+                        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                            <button class="page-link" @onclick="PrevPage">Previous</button>
+                        </li>
+                        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                            <button class="page-link" @onclick="NextPage">Next</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inline Detail Modal -->
+@if (showDetail && selectedTable != null)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Table Detail - @selectedTable.Name</h5>
+                    <button type="button" class="btn-close" @onclick="CloseDetail"></button>
+                </div>
+                <div class="modal-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Area</dt>
+                        <dd class="col-sm-9">@selectedTable.AreaName</dd>
+                        <dt class="col-sm-3">Capacity</dt>
+                        <dd class="col-sm-9">@selectedTable.Capacity</dd>
+                        <dt class="col-sm-3">Reservable</dt>
+                        <dd class="col-sm-9">@selectedTable.IsReservable</dd>
+                        <dt class="col-sm-3">Occupied</dt>
+                        <dd class="col-sm-9">@selectedTable.IsOccupied</dd>
+                        <dt class="col-sm-3">Status</dt>
+                        <dd class="col-sm-9">@((selectedTable.IsActive ? "Active" : "Inactive"))</dd>
+                    </dl>
+
+                    <h6>Seats</h6>
+                    <ul>
+                        @foreach (var s in selectedTable.Seats)
+                        {
+                            <li>@s.Name (@(s.IsOccupied ? "Occupied" : "Free"))</li>
+                        }
+                    </ul>
+
+                    <h6>Prices</h6>
+                    <table class="table table-sm">
+                        <thead><tr><th>Day</th><th>From</th><th>To</th><th>Price/hr</th></tr></thead>
+                        <tbody>
+                            @foreach (var p in selectedTable.Prices)
+                            {
+                                <tr>
+                                    <td>@p.DayType</td>
+                                    <td>@p.FromTime</td>
+                                    <td>@p.ToTime</td>
+                                    <td>@p.PricePerHour</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseDetail"><i class="bi bi-x"></i> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<ConfirmationModal Show="@showConfirmModal"
+                   Title="Delete Table"
+                   Message="Are you sure you want to delete this table?"
+                   OnConfirm="ConfirmDelete"
+                   OnCancel="CancelDelete" />
+
+<ConfirmationModal Show="@showBulkDeleteConfirm"
+                   Title="Delete Selected Tables"
+                   Message="Are you sure you want to delete all selected tables?"
+                   OnConfirm="ConfirmBulkDelete"
+                   OnCancel="CancelBulkDelete" />
+
+@code {
+    List<TableViewModel> tables = new();
+    List<DiningArea> Areas = new();
+
+    string searchTerm = "";
+    string selectedStatusFilter = "All";
+    long selectedAreaId = 0;
+
+    int currentPage = 1;
+    int pageSize = 10;
+    int totalPages => (int)Math.Ceiling((double)FilteredTables.Count / pageSize);
+
+    bool showConfirmModal = false;
+    bool showBulkDeleteConfirm = false;
+    long deleteTableId = 0;
+
+    // Detail modal state
+    bool showDetail = false;
+    TableViewModel? selectedTable = null;
+
+    protected override async Task OnInitializedAsync() => await LoadData();
+
+    async Task LoadData()
+    {
+        var list = await TableService.GetAllAsync();
+        tables = list.Select(t =>
+        {
+            var vm = t.ToViewModel();
+            vm.AreaName = t.Area?.Name ?? "";
+            return vm;
+        }).ToList();
+
+        Areas = await AreaService.GetAllAsync();
+    }
+
+    List<TableViewModel> FilteredTables => tables
+        .Where(t => (string.IsNullOrWhiteSpace(searchTerm) || t.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
+        .Where(t => selectedAreaId == 0 || t.AreaId == selectedAreaId)
+        .Where(t => selectedStatusFilter == "All" ||
+                    (selectedStatusFilter == "Active" && t.IsActive) ||
+                    (selectedStatusFilter == "Inactive" && !t.IsActive))
+        .ToList();
+
+    List<TableViewModel> PaginatedTables => FilteredTables
+        .Skip((currentPage - 1) * pageSize)
+        .Take(pageSize)
+        .ToList();
+
+    void PrevPage() { if (currentPage > 1) currentPage--; }
+    void NextPage() { if (currentPage < totalPages) currentPage++; }
+
+    void ToggleAll(ChangeEventArgs e)
+    {
+        bool value = (bool)e.Value;
+        foreach (var t in tables)
+            t.IsSelected = value;
+    }
+
+    void NavigateToAdd() => Nav.NavigateTo("/tables/edit");
+    void NavigateToEdit(long id) => Nav.NavigateTo($"/tables/edit/{id}");
+
+    async Task ShowDetail(long id)
+    {
+        var entity = await TableService.GetByIdAsync(id);
+        if (entity != null)
+        {
+            selectedTable = entity.ToViewModel();
+            selectedTable.AreaName = entity.Area?.Name ?? "";
+            selectedTable.Seats = (await SeatService.GetByTableAsync(id)).Select(s => s.ToViewModel()).ToList();
+            selectedTable.Prices = (await PriceService.GetByTableAsync(id)).Select(p => p.ToViewModel()).ToList();
+            showDetail = true;
+        }
+    }
+
+    void CloseDetail()
+    {
+        selectedTable = null;
+        showDetail = false;
+    }
+
+    void DeleteTable(long id)
+    {
+        deleteTableId = id;
+        showConfirmModal = true;
+    }
+
+    async Task ConfirmDelete()
+    {
+        try
+        {
+            await TableService.DeleteAsync(deleteTableId);
+            Notifier.Notify("🗑 Table deleted", "warning");
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "DeleteTable");
+            Notifier.Notify($"❌ Failed to delete: {ex.Message}", "error");
+        }
+        finally
+        {
+            showConfirmModal = false;
+        }
+    }
+
+    void CancelDelete() => showConfirmModal = false;
+
+    void ConfirmMultiDelete() => showBulkDeleteConfirm = true;
+
+    async Task ConfirmBulkDelete()
+    {
+        foreach (var id in tables.Where(t => t.IsSelected).Select(t => t.Id).ToList())
+        {
+            try
+            {
+                await TableService.DeleteAsync(id);
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.ToString(), "BulkDeleteTable");
+                Notifier.Notify($"❌ Failed to delete Table {id}: {ex.Message}", "error");
+            }
+        }
+        Notifier.Notify("🗑 Selected tables deleted", "warning");
+        await LoadData();
+        showBulkDeleteConfirm = false;
+    }
+
+    void CancelBulkDelete() => showBulkDeleteConfirm = false;
+
+    async Task ExportToExcel()
+    {
+        using var workbook = new XLWorkbook();
+        var ws = workbook.Worksheets.Add("Tables");
+
+        // Headers
+        ws.Cell(1, 1).Value = "Name";
+        ws.Cell(1, 2).Value = "Area";
+        ws.Cell(1, 3).Value = "Capacity";
+        ws.Cell(1, 4).Value = "Reservable";
+        ws.Cell(1, 5).Value = "Occupied";
+        ws.Cell(1, 6).Value = "Status";
+
+        // Data
+        for (int i = 0; i < FilteredTables.Count; i++)
+        {
+            var t = FilteredTables[i];
+            ws.Cell(i + 2, 1).Value = t.Name;
+            ws.Cell(i + 2, 2).Value = t.AreaName;
+            ws.Cell(i + 2, 3).Value = t.Capacity;
+            ws.Cell(i + 2, 4).Value = t.IsReservable ? "Yes" : "No";
+            ws.Cell(i + 2, 5).Value = t.IsOccupied ? "Yes" : "No";
+            ws.Cell(i + 2, 6).Value = t.IsActive ? "Active" : "Inactive";
+        }
+
+        ws.Columns().AdjustToContents();
+
+        using var stream = new MemoryStream();
+        workbook.SaveAs(stream);
+        stream.Seek(0, SeekOrigin.Begin);
+
+        var fileName = $"Tables_{DateTime.UtcNow:yyyyMMdd_HHmmss}.xlsx";
+        using var streamRef = new DotNetStreamReference(new MemoryStream(stream.ToArray()));
+        await JS.InvokeVoidAsync("downloadFileFromStream", fileName,
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", streamRef);
+    }
+}

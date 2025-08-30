@@ -1,0 +1,65 @@
+﻿@page "/user/logs"
+@inject FileLogger Logger
+@inject NavigationManager Nav
+@inject NotificationService Notifier
+@inject FileLogger Logger
+
+<h3>📋 System Log Viewer</h3>
+
+<div class="d-flex mb-3 gap-2">
+    <button class="btn btn-primary btn-sm" @onclick="LoadLogs">🔄 Refresh</button>
+    <button class="btn btn-danger btn-sm" @onclick="ClearLogs">🧹 Clear</button>
+</div>
+
+@if (string.IsNullOrWhiteSpace(logContent))
+{
+    <p class="text-muted">No logs found.</p>
+}
+else
+{
+    <div class="log-scroll-container">
+        <pre>@logContent</pre>
+    </div>
+}
+
+@code {
+    string logContent = "";
+
+    protected override void OnInitialized() => LoadLogs();
+
+    void LoadLogs()
+    {
+        try
+        {
+            var path = Logger.GetLogPath();
+            if (File.Exists(path))
+                logContent = File.ReadAllText(path);
+            else
+                logContent = "";
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.Message, "LoadLogs - Unhandled Exception");
+            Notifier.Notify($"❌ Failed to read logs: {ex.Message}", "error");
+        }
+    }
+
+    void ClearLogs()
+    {
+        try
+        {
+            var path = Logger.GetLogPath();
+            if (File.Exists(path))
+            {
+                File.WriteAllText(path, "");
+                LoadLogs();
+                Notifier.Notify("🧹 Logs cleared", "info");
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.Message, "ClearLogs - Unhandled Exception");
+            Notifier.Notify($"❌ Failed to clear logs: {ex.Message}", "error");
+        }
+    }
+}

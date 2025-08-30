@@ -1,0 +1,368 @@
+﻿@page "/menu/items"
+@using System.IO
+@using Microsoft.Maui.Storage
+@inject IMenuItemService MenuItemService
+@inject IMenuCategoryService MenuCategoryService
+@inject IPreparationAreaService PreparationAreaService
+@inject IPricelistService PricelistService
+@inject IMenuItemPricingService PricingService
+@inject NotificationService Notifier
+@inject IJSRuntime JS
+@inject FileLogger Logger
+@inject NavigationManager Nav
+
+<!-- Header -->
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+  <div>
+    <h4>Menu Items</h4>
+    <small class="text-muted">Manage menu items and their pricing</small>
+  </div>
+  <div class="d-flex gap-2">
+    <button class="btn btn-outline-success btn-sm" @onclick="ExportToExcel">
+      <i class="bi bi-file-earmark-excel me-1"></i> Excel
+    </button>
+    <button class="btn btn-primary" @onclick="NewItem">
+      <i class="bi bi-plus-circle me-1"></i> New Item
+    </button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body table-responsive">
+
+    <!-- Filters -->
+    <div class="d-flex flex-wrap gap-2 mb-3 align-items-center justify-content-between">
+      <div class="input-group" style="max-width: 320px;">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input class="form-control" @bind="searchTerm" @bind:event="oninput" placeholder="Search name, barcode..." />
+      </div>
+
+      <div class="d-flex gap-2 flex-wrap">
+        <select class="form-select" style="width: 200px;" @bind="selectedCategoryId">
+          <option value="0">All Categories</option>
+          @foreach (var c in Categories)
+          {
+            <option value="@c.Id">@c.Name</option>
+          }
+        </select>
+
+        <select class="form-select" style="width: 200px;" @bind="selectedPrepAreaId">
+          <option value="0">All Prep Areas</option>
+          @foreach (var p in PrepAreas)
+          {
+            <option value="@p.Id">@p.Name</option>
+          }
+        </select>
+
+        <select class="form-select" style="width: 160px;" @bind="selectedActive">
+          <option value="">Any Active</option>
+          <option value="true">Active</option>
+          <option value="false">Inactive</option>
+        </select>
+
+        @if (items.Any(i => i.IsSelected))
+        {
+          <button class="btn btn-danger" @onclick="ConfirmBulkDelete">
+            <i class="bi bi-trash me-1"></i> Delete Selected
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Table -->
+    @if (Paged.Any())
+    {
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th style="width:40px;"><input type="checkbox" @onchange="ToggleAll" /></th>
+            <th @onclick="() => SortBy(nameof(MenuItemViewModel.Name))" style="cursor:pointer;">
+              Name @SortIcon(nameof(MenuItemViewModel.Name))
+            </th>
+            <th>Category</th>
+            <th class="text-end" @onclick="@(() => SortBy(PriceColumn))" style="cursor:pointer;">
+                Price <small class="text-muted">(@DefaultPricelistName)</small> @SortIcon(PriceColumn)
+            </th>
+            <th class="text-end">Tax %</th>
+            <th>SKU</th>
+            <th @onclick="() => SortBy(nameof(MenuItemViewModel.DisplayOrder))" style="cursor:pointer;">
+              Order @SortIcon(nameof(MenuItemViewModel.DisplayOrder))
+            </th>
+            <th>Prep Area</th>
+            <th>Active</th>
+            <th>Today</th>
+            <th>Img</th>
+            <th style="width:170px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var i in Paged)
+          {
+            var price = GetDefaultPrice(i.Id); 
+            var img = GetItemImageDataUrl(i);
+
+            <tr>
+              <td><input type="checkbox" @bind="i.IsSelected" /></td>
+              <td>@i.Name</td>
+              <td>@i.CategoryName</td>
+              <td class="text-end">@((price.HasValue) ? price.Value.ToString("0.00") : "-")</td>
+              <td class="text-end">@i.TaxRate</td>
+              <td>@i.StockKeepingUnit</td>
+              <td>@i.DisplayOrder</td>
+              <td>@i.PreparationAreaName</td>
+              <td><span class="badge bg-@(i.IsActive ? "success" : "secondary")">@(i.IsActive ? "Yes" : "No")</span></td>
+              <td><span class="badge bg-@(i.IsAvailableToday ? "info" : "warning")">@(i.IsAvailableToday ? "Yes" : "No")</span></td>
+              <td>
+                @if (!string.IsNullOrEmpty(img))
+                {
+                  <img src="@img" style="width:28px;height:28px;object-fit:cover;border-radius:.2rem;" />
+                }
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline-secondary me-1" @onclick="@(() => OpenItem(i.Id))">
+                  <i class="bi bi-box-arrow-in-right"></i> Open
+                </button>
+                <button class="btn btn-sm btn-outline-danger" @onclick="@(() => ConfirmSingleDelete(i.Id))">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+    else
+    {
+      <div class="alert alert-info">No items found.</div>
+    }
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+      <div>
+        Showing @((currentPage - 1) * pageSize + 1) to
+        @((currentPage - 1) * pageSize + Paged.Count) of @Filtered.Count items
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <label>Rows per page:</label>
+        <select class="form-select form-select-sm" style="width: 90px;" @bind="pageSize">
+          <option>5</option><option>10</option><option>25</option>
+        </select>
+        <button class="btn btn-outline-secondary btn-sm" @onclick="Prev">Previous</button>
+        <button class="btn btn-outline-secondary btn-sm" @onclick="Next">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmations -->
+<ConfirmationModal Show="@showBulkDeleteConfirm"
+                   Title="Delete Selected Items"
+                   Message="Are you sure you want to delete the selected items?"
+                   OnConfirm="BulkDelete"
+                   OnCancel="() => showBulkDeleteConfirm = false" />
+
+<ConfirmationModal Show="@showSingleDeleteConfirm"
+                   Title="Delete Item"
+                   Message="Are you sure you want to delete this item?"
+                   OnConfirm="ConfirmSingleDelete"
+                   OnCancel="() => showSingleDeleteConfirm = false" />
+
+@code {
+    // ------- Constants / default pricelist -------
+    const long DefaultPricelistId = 1;
+    string DefaultPricelistName = "Default";
+    const string PriceColumn = "Price";
+
+    // ------- Data -------
+    List<MenuItemViewModel> items = new();
+    List<MenuCategory> Categories = new();
+    List<PreparationArea> PrepAreas = new();
+
+    // itemId -> price (from default pricelist)
+    Dictionary<long, decimal> defaultPrices = new();
+
+    // ------- Filters -------
+    string searchTerm = "";
+    long selectedCategoryId = 0;
+    long selectedPrepAreaId = 0;
+    string selectedActive = "";
+    string selectedToday = "";
+
+  // ------- Paging / Sorting -------
+  int currentPage = 1;
+  int pageSize = 10;
+  string sortColumn = nameof(MenuItemViewModel.DisplayOrder);
+  bool sortAsc = true;
+
+  // ------- UI State -------
+  bool showBulkDeleteConfirm = false;
+  bool showSingleDeleteConfirm = false;
+  long selectedItemId = 0;
+
+  // ------- Lifecycle -------
+  protected override async Task OnInitializedAsync()
+  {
+    Categories = await MenuCategoryService.GetAllAsync();
+    PrepAreas = await PreparationAreaService.GetAllPreparationAreaAsync();
+    // optional: read pricelist name for display
+    try
+    {
+        var pls = await PricelistService.GetAllPricelistsAsync();
+        DefaultPricelistName = pls.FirstOrDefault(p => p.Id == DefaultPricelistId)?.Name ?? "Default";
+    }
+    catch{}
+
+    await LoadItems();
+  }
+
+  async Task LoadItems()
+  {
+    var all = await MenuItemService.GetAllAsync();
+    items = all.Select(MenuItemMapping.ToViewModel).ToList();
+
+    // Load all default-pricelist entries in ONE call, then map to dictionary
+    var defaultEntries = await PricingService.GetByPriceListAsync(DefaultPricelistId);
+    defaultPrices = defaultEntries
+        .GroupBy(e => e.MenuItemId)
+        .ToDictionary(g => g.Key, g => g.First().Price);
+  }
+
+  // ------- Navigation -------
+  void NewItem() => Nav.NavigateTo("/menu/items/new");
+  void OpenItem(long id) => Nav.NavigateTo($"/menu/items/{id}");
+
+  // ------- Image helper (MAUI-safe) -------
+  string? GetItemImageDataUrl(MenuItemViewModel m)
+  {
+    try
+    {
+      if (string.IsNullOrWhiteSpace(m.ImagePath)) return null;
+      var abs = Path.Combine(FileSystem.AppDataDirectory, m.ImagePath);
+      if (!File.Exists(abs)) return null;
+
+      var bytes = File.ReadAllBytes(abs);
+      var ext = Path.GetExtension(abs).ToLowerInvariant();
+      var mime = ext switch
+      {
+        ".png" => "image/png",
+        ".jpg" or ".jpeg" => "image/jpeg",
+        ".webp" => "image/webp",
+        ".gif" => "image/gif",
+        _ => "application/octet-stream"
+      };
+      return $"data:{mime};base64,{Convert.ToBase64String(bytes)}";
+    }
+    catch { return null; }
+  }
+
+    decimal? GetDefaultPrice(long itemId)
+        => defaultPrices.TryGetValue(itemId, out var p) ? p : (decimal?)null;
+
+  // ------- Delete actions -------
+  void ConfirmSingleDelete(long id) { selectedItemId = id; showSingleDeleteConfirm = true; }
+
+  async Task ConfirmSingleDelete()
+  {
+    try
+    {
+      await MenuItemService.DeleteAsync(selectedItemId);
+      Notifier.Notify("🗑 Deleted", "warning");
+      await LoadItems();
+    }
+    catch (Exception ex)
+    {
+      Logger.Log(ex.ToString(), "DeleteMenuItem");
+      Notifier.Notify($"❌ Delete failed: {ex.Message}", "error");
+    }
+    finally
+    {
+      selectedItemId = 0;
+      showSingleDeleteConfirm = false;
+    }
+  }
+
+  async Task BulkDelete()
+  {
+    var ids = items.Where(i => i.IsSelected).Select(i => i.Id).ToList();
+    foreach (var id in ids)
+    {
+      try { await MenuItemService.DeleteAsync(id); }
+      catch (Exception ex)
+      {
+        Logger.Log(ex.ToString(), "BulkDeleteMenuItem");
+        Notifier.Notify($"❌ Failed to delete ID {id}", "error");
+      }
+    }
+    Notifier.Notify("🗑 Selected items deleted", "warning");
+    await LoadItems();
+    showBulkDeleteConfirm = false;
+  }
+
+  void ConfirmBulkDelete() => showBulkDeleteConfirm = true;
+
+  void ToggleAll(ChangeEventArgs e)
+  {
+    var val = (bool)e.Value;
+    foreach (var i in items) i.IsSelected = val;
+  }
+
+  // ------- Filtering / Sorting / Paging -------
+  List<MenuItemViewModel> Filtered => items
+    .Where(i =>
+      (string.IsNullOrWhiteSpace(searchTerm)
+        || i.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+        || i.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+        || i.StockKeepingUnit.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+        || i.Barcode.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+      && (selectedCategoryId == 0 || i.CategoryId == selectedCategoryId)
+      && (selectedPrepAreaId == 0 || i.PreparationAreaId == selectedPrepAreaId)
+      && (string.IsNullOrEmpty(selectedActive) || i.IsActive == bool.Parse(selectedActive))
+      && (string.IsNullOrEmpty(selectedToday) || i.IsAvailableToday == bool.Parse(selectedToday)))
+    .OrderBy(i => GetSortValue(i), sortAsc
+      ? Comparer<object>.Default
+      : Comparer<object>.Create((a, b) => Comparer<object>.Default.Compare(b, a)))
+    .ToList();
+
+  object GetSortValue(MenuItemViewModel i) => sortColumn switch
+  {
+    nameof(MenuItemViewModel.Name) => i.Name,
+    nameof(MenuItemViewModel.DisplayOrder) => i.DisplayOrder,
+    PriceColumn => GetDefaultPrice(i.Id) ?? decimal.MaxValue,
+    _ => i.DisplayOrder
+  };
+
+  void SortBy(string column)
+  {
+    if (sortColumn == column) sortAsc = !sortAsc;
+    else { sortColumn = column; sortAsc = true; }
+  }
+
+  RenderFragment SortIcon(string column) => __builder =>
+  {
+    if (sortColumn == column)
+      __builder.AddMarkupContent(0, $"<i class=\"bi bi-chevron-{(sortAsc ? "up" : "down")}\"></i>");
+  };
+
+  List<MenuItemViewModel> Paged => Filtered
+    .Skip((currentPage - 1) * pageSize)
+    .Take(pageSize)
+    .ToList();
+
+  void Prev() { if (currentPage > 1) currentPage--; }
+  void Next()
+  {
+    var totalPages = Math.Ceiling((double)Filtered.Count / pageSize);
+    if (currentPage < totalPages) currentPage++;
+  }
+
+  // ------- Export stubs (wire to your existing utilities) -------
+  async Task ExportToExcel()
+  {
+    // Build from Filtered; e.g., ClosedXML + TriggerDownload if you have a JS helper
+  }
+
+  async Task ExportToPdf()
+  {
+    // Build from Filtered; e.g., PdfExportService.Generate... + TriggerDownload
+  }
+}

@@ -1,0 +1,514 @@
+﻿@page "/menu/pricelists"
+@using System.ComponentModel.DataAnnotations
+@inject IPricelistService PricelistService
+@inject NotificationService Notifier
+@inject FileLogger Logger
+@inject NavigationManager Nav
+
+<!-- Header -->
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div>
+        <h4>Pricelists</h4>
+        <small class="text-muted">Create and manage pricelists</small>
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-outline-success btn-sm" @onclick="ExportExcel">
+            <i class="bi bi-file-earmark-excel me-1"></i> Excel
+        </button>
+        <button class="btn btn-primary" @onclick="ShowAddPricelist">
+            <i class="bi bi-plus-circle me-1"></i> New Pricelist
+        </button>
+    </div>
+</div>
+
+<!-- Card -->
+<div class="card">
+    <div class="card-body table-responsive">
+
+        <!-- Filters -->
+        <div class="d-flex flex-wrap gap-2 mb-3 align-items-center justify-content-between">
+            <div class="input-group" style="max-width: 320px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input class="form-control" @bind="search" @bind:event="oninput" placeholder="Search by name or type..." />
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap">
+                <select class="form-select" style="width: 220px;" @bind="selectedTypeId">
+                    <option value="0">All Types</option>
+                    @foreach (var t in Types)
+                    {
+                        <option value="@t.Id">@t.Name</option>
+                    }
+                </select>
+
+                <select class="form-select" style="width: 180px;" @bind="activeFilter">
+                    <option value="">Any Status</option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+
+                @if (pricelists.Any(x => x.IsSelected))
+                {
+                    <button class="btn btn-danger" @onclick="ConfirmBulkDelete">
+                        <i class="bi bi-trash me-1"></i> Delete Selected
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Table -->
+        @if (Paged.Any())
+        {
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width:40px;"><input type="checkbox" @onchange="ToggleAll" /></th>
+                        <th @onclick="() => SortBy(nameof(PricelistViewModel.Name))" style="cursor:pointer;">
+                            Name @SortIcon(nameof(PricelistViewModel.Name))
+                        </th>
+                        <th @onclick="() => SortBy(nameof(PricelistViewModel.TypeName))" style="cursor:pointer;">
+                            Type @SortIcon(nameof(PricelistViewModel.TypeName))
+                        </th>
+                        <th @onclick="() => SortBy(nameof(PricelistViewModel.EffectiveFrom))" style="cursor:pointer;">
+                            From @SortIcon(nameof(PricelistViewModel.EffectiveFrom))
+                        </th>
+                        <th @onclick="() => SortBy(nameof(PricelistViewModel.EffectiveTo))" style="cursor:pointer;">
+                            To @SortIcon(nameof(PricelistViewModel.EffectiveTo))
+                        </th>
+                        <th>Temporary</th>
+                        <th>Active</th>
+                        <th style="width:150px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Paged)
+                    {
+                        <tr>
+                            <td><input type="checkbox" @bind="p.IsSelected" /></td>
+                            <td>@p.Name</td>
+                            <td>@p.TypeName</td>
+                            <td>@(p.EffectiveFrom == DateTime.MinValue ? "-" : p.EffectiveFrom.ToString("yyyy-MM-dd"))</td>
+                            <td>@(p.EffectiveTo == DateTime.MinValue ? "-" : p.EffectiveTo.ToString("yyyy-MM-dd"))</td>
+                            <td>
+                                <span class="badge bg-@(p.IsTemporary ? "warning" : "secondary")">
+                                    @(p.IsTemporary ? "Yes" : "No")
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge bg-@(p.IsActive ? "success" : "secondary")">
+                                    @(p.IsActive ? "Yes" : "No")
+                                </span>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1" @onclick="@(() => EditPricelist(p))">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" @onclick="@(() => ConfirmDelete(p.Id))">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">No pricelists found.</div>
+        }
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <div>
+                Showing @((page - 1) * pageSize + 1) to
+                @((page - 1) * pageSize + Paged.Count) of @Filtered.Count pricelists
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label>Rows per page:</label>
+                <select class="form-select form-select-sm" style="width: 90px;" @bind="pageSize">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>25</option>
+                </select>
+                <button class="btn btn-outline-secondary btn-sm" @onclick="Prev">Previous</button>
+                <button class="btn btn-outline-secondary btn-sm" @onclick="Next">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ---------------- Add/Edit Pricelist Modal ---------------- *@
+@if (showPricelistModal)
+{
+    <EditForm Model="plForm" OnValidSubmit="SavePricelist">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="modal fade show d-block" style="background: rgba(0,0,0,0.5);">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">@((plForm.Id == 0) ? "Add Pricelist" : "Edit Pricelist")</h5>
+                        <button type="button" class="btn-close" @onclick="ClosePricelistModal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Type</label>
+                                <div class="input-group">
+                                    <select class="form-select" @bind="plForm.TypeId">
+                                        <option value="0">-- Select Type --</option>
+                                        @foreach (var t in Types)
+                                        {
+                                            <option value="@t.Id">@t.Name</option>
+                                        }
+                                    </select>
+                                    <button type="button" class="btn btn-outline-primary" title="Add Type" @onclick="ShowTypeModal">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Manage Types" @onclick="GoTypes">
+                                        ↗
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Name</label>
+                                <InputText class="form-control" @bind-Value="plForm.Name" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Effective Period</label>
+                                <div class="d-flex gap-2">
+                                    <InputDate class="form-control" @bind-Value="plForm.EffectiveFrom" />
+                                    <InputDate class="form-control" @bind-Value="plForm.EffectiveTo" />
+                                </div>
+                                <small class="text-muted">End date must be on/after start date.</small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Notes</label>
+                                <InputText class="form-control" @bind-Value="plForm.Notes" />
+                            </div>
+
+                            <div class="col-md-6 d-flex align-items-end gap-3">
+                                <div class="form-check">
+                                    <InputCheckbox class="form-check-input" @bind-Value="plForm.IsActive" id="plActive" />
+                                    <label class="form-check-label" for="plActive">Active</label>
+                                </div>
+                                <div class="form-check">
+                                    <InputCheckbox class="form-check-input" @bind-Value="plForm.IsTemporary" id="plTemp" />
+                                    <label class="form-check-label" for="plTemp">Temporary</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" @onclick="ClosePricelistModal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </EditForm>
+}
+
+@* ---------------- Inline Add Type Modal ---------------- *@
+@if (showTypeModal)
+{
+    <EditForm Model="typeForm" OnValidSubmit="SaveTypeInline">
+        <DataAnnotationsValidator />
+        <div class="modal fade show d-block" style="background: rgba(0,0,0,0.5);">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Pricelist Type</h5>
+                        <button type="button" class="btn-close" @onclick="CloseTypeModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <InputText class="form-control" @bind-Value="typeForm.Name" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <InputText class="form-control" @bind-Value="typeForm.Description" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" @onclick="CloseTypeModal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+}
+
+<!-- Confirmations -->
+<ConfirmationModal Show="@showConfirmDelete"
+                   Title="Delete Pricelist"
+                   Message="Are you sure you want to delete this pricelist?"
+                   OnConfirm="ConfirmDelete"
+                   OnCancel="() => showConfirmDelete = false" />
+
+<ConfirmationModal Show="@showBulkDelete"
+                   Title="Delete Selected Pricelists"
+                   Message="Are you sure you want to delete the selected pricelists?"
+                   OnConfirm="ConfirmBulkDelete"
+                   OnCancel="() => showBulkDelete = false" />
+
+@code {
+    // ------------ Page state ------------
+    List<PricelistViewModel> pricelists = new();
+    List<PricelistTypes> Types = new();
+
+    string search = "";
+    long selectedTypeId = 0;
+    string activeFilter = "";
+
+    int page = 1;
+    int pageSize = 10;
+    string sortColumn = nameof(PricelistViewModel.EffectiveFrom);
+    bool sortAsc = true;
+
+    bool showPricelistModal = false;
+    bool showTypeModal = false;
+    bool showConfirmDelete = false;
+    bool showBulkDelete = false;
+    long selectedId = 0;
+
+    // Forms
+    PricelistViewModel plForm = new();
+    PricelistTypeViewModel typeForm = new();
+
+    // ------------ Lifecycle ------------
+    protected override async Task OnInitializedAsync()
+    {
+        Types = await PricelistService.GetAllPricelistTypesAsync();
+        await LoadPricelists();
+    }
+
+    async Task LoadPricelists()
+    {
+        var all = await PricelistService.GetAllPricelistsAsync();
+        pricelists = all.Select(PricelistMapping.ToListVm).ToList();
+    }
+
+    // ------------ Filtering / Sorting / Paging ------------
+    List<PricelistViewModel> Filtered => pricelists
+      .Where(l =>
+        (string.IsNullOrWhiteSpace(search)
+          || l.Name.Contains(search, StringComparison.OrdinalIgnoreCase)
+          || l.TypeName.Contains(search, StringComparison.OrdinalIgnoreCase))
+        && (selectedTypeId == 0 || l.TypeId == selectedTypeId)
+        && (string.IsNullOrEmpty(activeFilter) || l.IsActive == bool.Parse(activeFilter)))
+      .OrderBy(l => GetSortValue(l), sortAsc
+        ? Comparer<object>.Default
+        : Comparer<object>.Create((a, b) => Comparer<object>.Default.Compare(b, a)))
+      .ToList();
+
+    object GetSortValue(PricelistViewModel l) => sortColumn switch
+    {
+        nameof(PricelistViewModel.Name) => l.Name,
+        nameof(PricelistViewModel.TypeName) => l.TypeName,
+        nameof(PricelistViewModel.EffectiveFrom) => l.EffectiveFrom,
+        nameof(PricelistViewModel.EffectiveTo) => l.EffectiveTo,
+        _ => l.EffectiveFrom
+    };
+
+    void SortBy(string column)
+    {
+        if (sortColumn == column) sortAsc = !sortAsc;
+        else { sortColumn = column; sortAsc = true; }
+    }
+
+    RenderFragment SortIcon(string column) => __builder =>
+    {
+        if (sortColumn == column)
+            __builder.AddMarkupContent(0, $"<i class=\"bi bi-chevron-{(sortAsc ? "up" : "down")}\"></i>");
+    };
+
+    List<PricelistViewModel> Paged => Filtered
+      .Skip((page - 1) * pageSize)
+      .Take(pageSize)
+      .ToList();
+
+    void Prev() { if (page > 1) page--; }
+    void Next() { if (page < Math.Ceiling((double)Filtered.Count / pageSize)) page++; }
+
+    void ToggleAll(ChangeEventArgs e)
+    {
+        var val = (bool)e.Value;
+        foreach (var x in pricelists) x.IsSelected = val;
+    }
+
+    // ------------ List actions ------------
+    void ShowAddPricelist()
+    {
+        plForm = new PricelistViewModel
+        {
+            IsActive = true,
+            EffectiveFrom = DateTime.Today,
+            EffectiveTo = DateTime.Today.AddDays(30)
+        };
+        showPricelistModal = true;
+    }
+
+    void EditPricelist(PricelistViewModel src)
+    {
+        plForm = new PricelistViewModel
+        {
+            Id = src.Id,
+            Name = src.Name,
+            TypeId = src.TypeId,
+            TypeName = src.TypeName,
+            IsActive = src.IsActive,
+            IsTemporary = src.IsTemporary,
+            EffectiveFrom = src.EffectiveFrom == DateTime.MinValue ? DateTime.Today : src.EffectiveFrom,
+            EffectiveTo = src.EffectiveTo == DateTime.MinValue ? DateTime.Today.AddDays(30) : src.EffectiveTo,
+            Notes = src.Notes
+        };
+        showPricelistModal = true;
+    }
+
+    void ClosePricelistModal() => showPricelistModal = false;
+
+    void ConfirmDelete(long id) { selectedId = id; showConfirmDelete = true; }
+
+    async Task ConfirmDelete()
+    {
+        try
+        {
+            await PricelistService.DeletePricelistAsync(selectedId);
+            Notifier.Notify("🗑 Deleted", "warning");
+            await LoadPricelists();
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "DeletePricelist");
+            Notifier.Notify($"❌ {ex.Message}", "error");
+        }
+        finally
+        {
+            selectedId = 0;
+            showConfirmDelete = false;
+        }
+    }
+
+    async Task ConfirmBulkDelete()
+    {
+        var ids = pricelists.Where(x => x.IsSelected).Select(x => x.Id).ToList();
+        foreach (var id in ids)
+        {
+            try { await PricelistService.DeletePricelistAsync(id); }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.ToString(), "BulkDeletePricelist");
+                Notifier.Notify($"❌ Failed to delete ID {id}", "error");
+            }
+        }
+        Notifier.Notify("🗑 Selected pricelists deleted", "warning");
+        await LoadPricelists();
+        showBulkDelete = false;
+    }
+
+    // ------------ Save Pricelist ------------
+    async Task SavePricelist()
+    {
+        try
+        {
+            if (plForm.TypeId <= 0)
+            {
+                Notifier.Notify("Select a type.", "error"); return;
+            }
+            if (plForm.EffectiveTo < plForm.EffectiveFrom)
+            {
+                Notifier.Notify("End date must be on/after start date.", "error"); return;
+            }
+
+            // Validate on create (extend for update if your service supports excluding current Id)
+            if (plForm.Id == 0)
+            {
+                if (await PricelistService.ExistsPricelistNameAsync(plForm.Name, plForm.TypeId))
+                { Notifier.Notify("A pricelist with this name already exists for the selected type.", "error"); return; }
+
+                if (await PricelistService.HasOverlappingPeriodAsync(plForm.TypeId, plForm.EffectiveFrom, plForm.EffectiveTo))
+                { Notifier.Notify("Overlapping period exists for the selected type.", "error"); return; }
+            }
+
+            var entity = PricelistMapping.ToListEntity(plForm);
+
+            if (plForm.Id == 0)
+            {
+                await PricelistService.AddPricelistAsync(entity);
+                Notifier.Notify("✅ Pricelist created", "success");
+            }
+            else
+            {
+                await PricelistService.UpdatePricelistAsync(entity);
+                Notifier.Notify("✏️ Pricelist updated", "info");
+            }
+
+            await LoadPricelists();
+            showPricelistModal = false;
+        }
+        catch (ApplicationException ex)
+        {
+            Logger.Log(ex.Message, "SavePricelist");
+            Notifier.Notify($"❌ {ex.Message}", "error");
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "SavePricelist");
+            Notifier.Notify($"❌ Unexpected error: {ex.Message}", "error");
+        }
+    }
+
+    // ------------ Inline Add Type ------------
+    void ShowTypeModal() { typeForm = new(); showTypeModal = true; }
+    void CloseTypeModal() => showTypeModal = false;
+    void GoTypes() => Nav.NavigateTo("/menu/pricelisttypes");
+
+    async Task SaveTypeInline()
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(typeForm.Name))
+            { Notifier.Notify("Type name is required.", "error"); return; }
+
+            if (await PricelistService.ExistsTypeByNameAsync(typeForm.Name))
+            { Notifier.Notify("Type name already exists.", "error"); return; }
+
+            await PricelistService.AddPricelistTypeAsync(PricelistMapping.ToTypeEntity(typeForm));
+            Types = await PricelistService.GetAllPricelistTypesAsync();
+
+            // Select the newly created type
+            var created = Types.OrderByDescending(t => t.Id).FirstOrDefault(t => t.Name == typeForm.Name);
+            if (created != null) plForm.TypeId = created.Id;
+
+            Notifier.Notify("✅ Type added", "success");
+            showTypeModal = false;
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "SaveTypeInline");
+            Notifier.Notify($"❌ {ex.Message}", "error");
+        }
+    }
+
+    // ------------ Export stubs (wire your Pdf/Excel utilities) ------------
+    async Task ExportExcel()
+    {
+        // Use Filtered to export currently filtered view
+        // Example: build a DataTable and feed ClosedXML; omitted for brevity
+    }
+
+    async Task ExportPdf()
+    {
+        // Use Filtered; pass to your PdfExportService.GenerateGenericPdf(...)
+    }
+}

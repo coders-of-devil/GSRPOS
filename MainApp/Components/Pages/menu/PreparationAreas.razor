@@ -1,0 +1,345 @@
+﻿@page "/menu/preparation-areas"
+@inject IPreparationAreaService PreparationAreaService
+@inject NotificationService Notifier
+@inject IJSRuntime JS
+@inject FileLogger Logger
+
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div>
+        <h4>Preparation Areas</h4>
+        <small class="text-muted">Manage food preparation sections</small>
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-outline-success btn-sm" @onclick="ExportToExcel">
+            <i class="bi bi-file-earmark-excel me-1"></i> Excel
+        </button>
+        @* <button class="btn btn-outline-danger btn-sm" @onclick="ExportToPdf">
+            <i class="bi bi-file-earmark-pdf me-1"></i> PDF
+        </button> *@
+        <button class="btn btn-primary btn-sm" @onclick="ShowAddModal">
+            <i class="bi bi-plus-circle me-1"></i> Add Area
+        </button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body table-responsive">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <div class="input-group" style="max-width: 300px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input class="form-control" @bind="searchTerm" @bind:event="oninput" placeholder="Search by name..." />
+            </div>
+
+            @if (all.Any(r => r.IsSelected))
+            {
+                <button class="btn btn-danger" @onclick="ConfirmMultiDelete">
+                    <i class="bi bi-trash me-1"></i> Delete Selected
+                </button>
+            }
+        </div>
+
+        @if (PaginatedList?.Count > 0)
+        {
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 40px;"><input type="checkbox" @onchange="ToggleAll" /></th>
+                        <th @onclick="() => SortBy(nameof(PreparationAreaViewModel.Name))" style="cursor:pointer;">
+                            Name
+                            @if (sortColumn == nameof(PreparationAreaViewModel.Name))
+                            {
+                                <i class="bi bi-chevron-@(sortAsc ? "up" : "down") ms-1"></i>
+                            }
+                        </th>
+                        <th>Remarks</th>
+                        <th @onclick="() => SortBy(nameof(PreparationAreaViewModel.CreatedAt))" style="cursor:pointer;">
+                            Created
+                            @if (sortColumn == nameof(PreparationAreaViewModel.CreatedAt))
+                            {
+                                <i class="bi bi-chevron-@(sortAsc ? "up" : "down") ms-1"></i>
+                            }
+                        </th>
+                        <th style="width:150px">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var a in PaginatedList)
+                    {
+                        <tr>
+                            <td><input type="checkbox" @bind="a.IsSelected" /></td>
+                            <td>@a.Name</td>
+                            <td>@a.Remarks</td>
+                            <td>@a.CreatedAt.ToString("g")</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1" @onclick="() => Edit(a)"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-outline-danger" @onclick="() => PromptDelete(a.Id)"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div>Showing @((page - 1) * pageSize + 1) to @((page - 1) * pageSize + PaginatedList.Count) of @FilteredList.Count</div>
+                <div class="d-flex align-items-center gap-2">
+                    <label>Rows per page:</label>
+                    <select class="form-select form-select-sm" style="width:80px" @bind="pageSize">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                    </select>
+                    <nav>
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item @(page == 1 ? "disabled" : "")"><button class="page-link" @onclick="Prev">Previous</button></li>
+                            <li class="page-item @(page == TotalPages ? "disabled" : "")"><button class="page-link" @onclick="Next">Next</button></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">No preparation areas found.</div>
+        }
+    </div>
+</div>
+
+@if (showModal)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <EditForm Model="areaForm" OnValidSubmit="Save">
+                    <div class="modal-header">
+                        <h5 class="modal-title">@((areaForm.Id == 0) ? "Add Area" : "Edit Area")</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <InputText class="form-control" @bind-Value="areaForm.Name" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Remarks</label>
+                            <InputText class="form-control" @bind-Value="areaForm.Remarks" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+<ConfirmationModal Show="@showConfirmDelete" Title="Delete Preparation Area"
+                   Message="Are you sure you want to delete this area?"
+                   OnConfirm="ConfirmDelete" OnCancel="() => showConfirmDelete = false" />
+
+<ConfirmationModal Show="@showBulkDeleteConfirm"
+                   Title="Delete Selected Areas"
+                   Message="Are you sure you want to delete all selected preparation areas?"
+                   OnConfirm="ConfirmBulkDelete"
+                   OnCancel="CancelBulkDelete" />
+
+@code {
+    List<PreparationAreaViewModel> all = new();
+    PreparationAreaViewModel areaForm = new();
+    bool showModal = false;
+    bool showConfirmDelete = false;
+    string searchTerm = "";
+    string sortColumn = nameof(PreparationAreaViewModel.CreatedAt);
+    bool sortAsc = false;
+
+    bool showBulkDeleteConfirm = false;
+
+    void ConfirmMultiDelete() => showBulkDeleteConfirm = true;
+    void CancelBulkDelete() => showBulkDeleteConfirm = false;
+
+    int page = 1;
+    int pageSize = 10;
+    long deleteId = 0;
+
+    protected override async Task OnInitializedAsync() => await Load();
+
+    async Task Load()
+    {
+        try
+        {
+            all = (await PreparationAreaService.GetAllPreparationAreaAsync()).Select(x => new PreparationAreaViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Remarks = x.Remarks,
+                CreatedAt = x.CreatedAt
+            }).ToList();
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "Load Preparation Areas");
+            Notifier.Notify($"❌ Failed to load data: {ex.Message}", "error");
+        }
+    }
+
+    void ShowAddModal()
+    {
+        areaForm = new();
+        showModal = true;
+    }
+
+    void Edit(PreparationAreaViewModel model)
+    {
+        areaForm = new()
+        {
+            Id = model.Id,
+            Name = model.Name,
+            Remarks = model.Remarks,
+            CreatedAt = model.CreatedAt
+        };
+        showModal = true;
+    }
+
+    void CloseModal() => showModal = false;
+
+    async Task Save()
+    {
+        try
+        {
+            if (all.Any(x => x.Name == areaForm.Name && x.Id != areaForm.Id))
+                throw new ApplicationException("Name must be unique");
+
+            var domainEntity = PreparationAreaMapping.ToDomainModel(areaForm);
+
+            if (areaForm.Id == 0)
+                await PreparationAreaService.CreatePreparationAreaAsync(domainEntity);
+            else
+                await PreparationAreaService.UpdatePreparationAreaAsync(domainEntity);
+
+            Notifier.Notify("✅ Saved successfully", "success");
+            showModal = false;
+            await Load();
+        }
+        catch (ApplicationException ex)
+        {
+            Notifier.Notify($"❌ {ex.Message}", "error");
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "Save Preparation Area");
+            Notifier.Notify($"❌ Failed to save: {ex.Message}", "error");
+        }
+    }
+
+    void PromptDelete(long id)
+    {
+        deleteId = id;
+        showConfirmDelete = true;
+    }
+
+    async Task ConfirmDelete()
+    {
+        try
+        {
+            await PreparationAreaService.DeletePreparationAreaAsync(deleteId);
+            Notifier.Notify("🗑 Area deleted", "warning");
+            await Load();
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "Delete Preparation Area");
+            Notifier.Notify($"❌ Failed to delete: {ex.Message}", "error");
+        }
+        finally
+        {
+            showConfirmDelete = false;
+        }
+    }
+
+    async Task ConfirmBulkDelete()
+    {
+        var selectedIds = all.Where(r => r.IsSelected).Select(r => r.Id).ToList();
+
+        foreach (var id in selectedIds)
+        {
+            try
+            {
+                await PreparationAreaService.DeletePreparationAreaAsync(id);
+            }
+            catch (Exception ex)
+            {
+                Notifier.Notify($"❌ Failed to delete ID {id}: {ex.Message}", "error");
+            }
+        }
+
+        Notifier.Notify("🗑 Selected preparation areas deleted", "warning");
+        await Load();
+        if ((page - 1) * pageSize >= FilteredList.Count)
+            page = Math.Max(1, TotalPages);
+        showBulkDeleteConfirm = false;
+    }
+
+    void ToggleAll(ChangeEventArgs e)
+    {
+        bool value = (bool)e.Value;
+        foreach (var r in all)
+        {
+            r.IsSelected = value;
+        }
+    }
+
+    List<PreparationAreaViewModel> FilteredList => all
+        .Where(x => string.IsNullOrWhiteSpace(searchTerm) || x.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+        .OrderBy(x => sortAsc ? GetSort(x) : null).ThenByDescending(x => !sortAsc ? GetSort(x) : null)
+        .ToList();
+
+    object GetSort(PreparationAreaViewModel x) => sortColumn switch
+    {
+        nameof(PreparationAreaViewModel.Name) => x.Name,
+        nameof(PreparationAreaViewModel.CreatedAt) => x.CreatedAt,
+        _ => x.CreatedAt
+    };
+
+    void SortBy(string column)
+    {
+        if (sortColumn == column) sortAsc = !sortAsc;
+        else { sortColumn = column; sortAsc = true; }
+    }
+
+    List<PreparationAreaViewModel> PaginatedList => FilteredList
+        .Skip((page - 1) * pageSize)
+        .Take(pageSize)
+        .ToList();
+
+    int TotalPages => (int)Math.Ceiling((double)FilteredList.Count / pageSize);
+    void Prev() { if (page > 1) page--; }
+    void Next() { if (page < TotalPages) page++; }
+
+    async Task ExportToExcel()
+    {
+        using var wb = new ClosedXML.Excel.XLWorkbook();
+        var ws = wb.Worksheets.Add("Preparation Areas");
+        ws.Cell(1, 1).Value = "Name";
+        ws.Cell(1, 2).Value = "Remarks";
+        ws.Cell(1, 3).Value = "CreatedAt";
+
+        for (int i = 0; i < FilteredList.Count; i++)
+        {
+            ws.Cell(i + 2, 1).Value = FilteredList[i].Name;
+            ws.Cell(i + 2, 2).Value = FilteredList[i].Remarks;
+            ws.Cell(i + 2, 3).Value = FilteredList[i].CreatedAt.ToString("g");
+        }
+
+        using var stream = new MemoryStream();
+        wb.SaveAs(stream);
+        stream.Seek(0, SeekOrigin.Begin);
+        await JS.InvokeVoidAsync("downloadFileFromStream", $"PreparationAreas_{DateTime.UtcNow:yyyyMMdd_HHmmss}.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", new DotNetStreamReference(stream));
+    }
+
+    async Task ExportToPdf()
+    {
+        var bytes = PdfExportService.GeneratePreparationAreasPdf(FilteredList);
+        await JS.InvokeVoidAsync("downloadFileFromStream", $"PreparationAreas_{DateTime.UtcNow:yyyyMMdd_HHmmss}.pdf", "application/pdf", new DotNetStreamReference(new MemoryStream(bytes)));
+    }
+}

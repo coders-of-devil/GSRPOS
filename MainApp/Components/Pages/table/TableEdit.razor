@@ -1,0 +1,264 @@
+﻿@page "/tables/edit/{Id:long?}"
+@inject IDiningTableService TableService
+@inject IDiningAreaService AreaService
+@inject ISeatService SeatService
+@inject ITablePriceService PriceService
+@inject NotificationService Notifier
+@inject NavigationManager Nav
+@inject FileLogger Logger
+
+<PageTitle>Table Editor</PageTitle>
+
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div>
+        <h4>@(Id == null ? "Add Table" : "Edit Table")</h4>
+        <small class="text-muted">Configure table details, seats and prices</small>
+    </div>
+    <div>
+        <button class="btn btn-secondary me-2" @onclick="GoBack"><i class="bi bi-arrow-left"></i> Back</button>
+    </div>
+</div>
+<hr />
+
+<div class="card">
+    <div class="card-body">
+        <EditForm Model="@tableForm" OnValidSubmit="SaveTable">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <!-- Table fields -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>Name</label>
+                    <InputText class="form-control" @bind-Value="tableForm.Name" />
+                </div>
+                <div class="col-md-6">
+                    <label>Description</label>
+                    <InputText class="form-control" @bind-Value="tableForm.Description" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>Area</label>
+                    <div class="input-group">
+                        <select class="form-select" @bind="tableForm.AreaId">
+                            <option value="0">-- Select Area --</option>
+                            @foreach (var a in Areas)
+                            {
+                                <option value="@a.Id">@a.Name</option>
+                            }
+                        </select>
+                        <button type="button" class="btn btn-outline-primary" @onclick="ShowAreaModal"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-secondary" @onclick="NavigateToAreas"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label>Capacity</label>
+                    <InputNumber class="form-control" @bind-Value="tableForm.Capacity" />
+                </div>
+                <div class="col-md-3 d-flex align-items-center">
+                    <div class="form-check me-3">
+                        <InputCheckbox class="form-check-input" @bind-Value="tableForm.IsActive" />
+                        <label class="form-check-label">Active</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <InputCheckbox class="form-check-input" @bind-Value="tableForm.IsReservable" />
+                        <label class="form-check-label">Reservable</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seats -->
+            <h5 class="mt-4">Seats</h5>
+            <button type="button" class="btn btn-sm btn-outline-primary mb-2" @onclick="GenerateSeatsByCapacity">
+                <i class="bi bi-plus-circle"></i> Generate Seats from Capacity
+            </button>
+            <table class="table table-sm table-bordered">
+                <thead><tr><th>Name</th><th>Occupied</th><th>Actions</th></tr></thead>
+                <tbody>
+                    @if (tableForm.Seats.Count == 0)
+                    {
+                        <tr><td colspan="3" class="text-center">No seats added.</td></tr>
+                    }
+                    else
+                    {
+                        @foreach (var s in tableForm.Seats)
+                        {
+                            <tr>
+                                <td><InputText class="form-control" @bind-Value="s.Name" /></td>
+                                <td><InputCheckbox @bind-Value="s.IsOccupied" /></td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" @onclick="@(() => RemoveSeat(s))"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <!-- Prices -->
+            <h5 class="mt-4">Base Prices</h5>
+            <button type="button" class="btn btn-sm btn-outline-primary mb-2" @onclick="AddPrice">
+                <i class="bi bi-plus-circle"></i> Add Price
+            </button>
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr><th>Day Type</th><th>From</th><th>To</th><th>Price/hr</th><th>Active</th><th>Actions</th></tr>
+                </thead>
+                <tbody>
+                    @if (tableForm.Prices.Count == 0)
+                    {
+                        <tr><td colspan="6" class="text-center">No price entries.</td></tr>
+                    }
+                    else
+                    {
+                        @foreach (var p in tableForm.Prices)
+                        {
+                            <tr>
+                                <td><InputText class="form-control" @bind-Value="p.DayType" /></td>
+                                <td><InputDate class="form-control" @bind-Value="p.FromTime" /></td>
+                                <td><InputDate class="form-control" @bind-Value="p.ToTime" /></td>
+                                <td><InputNumber class="form-control" @bind-Value="p.PricePerHour" /></td>
+                                <td><InputCheckbox @bind-Value="p.IsActive" /></td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" @onclick="@(() => RemovePrice(p))"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <!-- Save -->
+            <div class="mt-4 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-floppy"></i> Save</button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+<!-- Area Add Modal -->
+@if (showAreaModal)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <EditForm Model="newAreaForm" OnValidSubmit="SaveArea">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Area</h5>
+                        <button type="button" class="btn-close" @onclick="CloseAreaModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <InputText class="form-control" @bind-Value="newAreaForm.Name" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Description</label>
+                            <InputText class="form-control" @bind-Value="newAreaForm.Description" />
+                        </div>
+                        <div class="form-check">
+                            <InputCheckbox class="form-check-input" @bind-Value="newAreaForm.IsReservable" />
+                            <label class="form-check-label">Reservable</label>
+                        </div>
+                        <div class="form-check">
+                            <InputCheckbox class="form-check-input" @bind-Value="newAreaForm.IsActive" />
+                            <label class="form-check-label">Active</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseAreaModal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public long? Id { get; set; }
+
+    TableViewModel tableForm = new();
+    List<DiningArea> Areas = new();
+
+    bool showAreaModal = false;
+    DiningArea newAreaForm = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Areas = await AreaService.GetAllAsync();
+
+        if (Id != null)
+        {
+            var entity = await TableService.GetByIdAsync(Id.Value);
+            if (entity != null)
+            {
+                tableForm = entity.ToViewModel();
+                tableForm.Seats = (await SeatService.GetByTableAsync(entity.Id)).Select(x => x.ToViewModel()).ToList();
+                tableForm.Prices = (await PriceService.GetByTableAsync(entity.Id)).Select(x => x.ToViewModel()).ToList();
+            }
+        }
+    }
+
+    async Task SaveTable()
+    {
+        try
+        {
+            if (Id == null || Id == 0)
+            {
+                var newId = await TableService.AddAsync(tableForm.ToEntity());
+                foreach (var s in tableForm.Seats) { s.TableId = newId; await SeatService.AddAsync(s.ToEntity()); }
+                foreach (var p in tableForm.Prices) { p.TableId = newId; await PriceService.AddAsync(p.ToEntity()); }
+                Notifier.Notify("✅ Table created successfully", "success");
+            }
+            else
+            {
+                await TableService.UpdateAsync(tableForm.ToEntity());
+                foreach (var s in tableForm.Seats) { await SeatService.UpdateAsync(s.ToEntity()); }
+                foreach (var p in tableForm.Prices) { await PriceService.UpdateAsync(p.ToEntity()); }
+                Notifier.Notify("✏️ Table updated successfully", "info");
+            }
+
+            Nav.NavigateTo("/tables");
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "SaveTable");
+            Notifier.Notify($"❌ Error saving table: {ex.Message}", "error");
+        }
+    }
+
+    void GoBack() => Nav.NavigateTo("/tables");
+
+    void ShowAreaModal() => showAreaModal = true;
+    void CloseAreaModal() => showAreaModal = false;
+
+    async Task SaveArea()
+    {
+        var id = await AreaService.AddAsync(newAreaForm);
+        Areas = await AreaService.GetAllAsync();
+        tableForm.AreaId = id;
+        newAreaForm = new();
+        showAreaModal = false;
+        Notifier.Notify("✅ Area added successfully", "success");
+    }
+
+    void NavigateToAreas() => Nav.NavigateTo("/tables/areas");
+
+    // Seats
+    void GenerateSeatsByCapacity()
+    {
+        tableForm.Seats.Clear();
+        for (int i = 1; i <= tableForm.Capacity; i++)
+        {
+            tableForm.Seats.Add(new SeatViewModel { Name = $"Seat {i}" });
+        }
+    }
+    void RemoveSeat(SeatViewModel s) => tableForm.Seats.Remove(s);
+
+    // Prices
+    void AddPrice() => tableForm.Prices.Add(new TablePriceViewModel { DayType = "Weekday", IsActive = true });
+    void RemovePrice(TablePriceViewModel p) => tableForm.Prices.Remove(p);
+}

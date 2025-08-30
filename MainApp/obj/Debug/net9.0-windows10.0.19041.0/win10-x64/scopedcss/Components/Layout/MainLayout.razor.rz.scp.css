@@ -1,0 +1,201 @@
+/* ====== Frame ====== */
+.shell[b-q2b5a3ys98] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #ffffff;
+}
+
+/* ====== Topbar ====== */
+.topbar[b-q2b5a3ys98] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .5rem .75rem;
+    background: linear-gradient(90deg, #0e927d, #004e92);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: 3.5rem;
+}
+
+.topbar-left[b-q2b5a3ys98] {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    min-width: 0;
+}
+
+.brand[b-q2b5a3ys98] {
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+    .brand.small[b-q2b5a3ys98] {
+        font-weight: 700;
+        opacity: .9;
+    }
+
+.search-box[b-q2b5a3ys98] {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-left: .5rem;
+    padding: .25rem .5rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(2px);
+}
+
+    .search-box input[b-q2b5a3ys98] {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #fff;
+        width: clamp(120px, 25vw, 320px);
+    }
+
+        .search-box input[b-q2b5a3ys98]::placeholder {
+            color: rgba(255,255,255,.85);
+        }
+
+/* Right cluster */
+.topbar-right[b-q2b5a3ys98] {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.icon-btn[b-q2b5a3ys98] {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.14);
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+    .icon-btn:hover[b-q2b5a3ys98] {
+        background: rgba(255,255,255,.24);
+    }
+
+.pill-btn[b-q2b5a3ys98] {
+    border: none;
+    color: #fff;
+    border-radius: 999px;
+    padding: .4rem .75rem;
+    cursor: pointer;
+}
+
+    .pill-btn.success[b-q2b5a3ys98] {
+        background: #00b894;
+    }
+
+    .pill-btn.dark[b-q2b5a3ys98] {
+        background: #0a2c4d;
+    }
+
+    .pill-btn:hover[b-q2b5a3ys98] {
+        filter: brightness(1.06);
+    }
+
+.avatar[b-q2b5a3ys98] {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.14);
+}
+
+.divider[b-q2b5a3ys98] {
+    width: 1px;
+    height: 26px;
+    background: rgba(255,255,255,.5);
+    margin: 0 .35rem;
+}
+
+/* Hide button labels on smaller widths */
+@media (max-width: 860px) {
+    .hide-sm[b-q2b5a3ys98] {
+        display: none;
+    }
+
+    .search-box input[b-q2b5a3ys98] {
+        width: 140px;
+    }
+}
+
+/* ====== Drawer ====== */
+.drawer[b-q2b5a3ys98] {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    opacity: 0;
+}
+
+    .drawer.open[b-q2b5a3ys98] {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+.drawer-overlay[b-q2b5a3ys98] {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.28);
+}
+
+.drawer-panel[b-q2b5a3ys98] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: min(86vw, 320px);
+    height: 100%;
+    background: linear-gradient(180deg, #0e927d, #004e92);
+    color: #fff;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 30px rgba(0,0,0,.25);
+}
+
+.drawer.open .drawer-panel[b-q2b5a3ys98] {
+    transform: translateX(0);
+}
+
+.drawer-header[b-q2b5a3ys98] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem .75rem;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.drawer-body[b-q2b5a3ys98] {
+    padding: .25rem 0 .75rem .25rem;
+    overflow-y: auto;
+}
+
+/* ====== Content Area ====== */
+.content-area[b-q2b5a3ys98] {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 1rem;
+    background: #fff;
+}
+
+/* Tweak focus styles for keyboard users */
+:focus-visible[b-q2b5a3ys98] {
+    outline: 2px solid #00b894 !important;
+    outline-offset: 2px;
+}

@@ -1,0 +1,59 @@
+.app-nav[b-4k4326cdnk] {
+    padding: .5rem 0;
+    color: rgba(255,255,255,.95);
+}
+
+.nav-item[b-4k4326cdnk] {
+    font-size: 0.95rem;
+}
+
+    .nav-item[b-4k4326cdnk]  a {
+        color: #ffffff;
+        border-radius: 6px;
+        height: 2.25rem;
+        display: flex;
+        align-items: center;
+    }
+
+        .nav-item[b-4k4326cdnk]  a.active,
+        .nav-item[b-4k4326cdnk]  a:hover {
+            background-color: #ffffff;
+            color: #0c8a7b;
+        }
+
+.nav-section[b-4k4326cdnk] {
+    margin: .25rem 0;
+    padding: 0 .5rem;
+}
+
+.nav-section-header[b-4k4326cdnk] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #e6f7f5;
+    text-align: left;
+    font-size: .98rem;
+    font-weight: 600;
+    padding: .55rem .25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    transition: background-color .25s ease;
+    cursor: pointer;
+}
+
+    .nav-section-header:hover[b-4k4326cdnk] {
+        background-color: rgba(255,255,255,.12);
+    }
+
+.nav-subitems[b-4k4326cdnk] {
+    padding-left: .75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.expand-icon[b-4k4326cdnk] {
+    padding-right: .5rem;
+}

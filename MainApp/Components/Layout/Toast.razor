@@ -1,0 +1,32 @@
+﻿@inject NotificationService Notifier
+@using Infrastructure.ServiceClass
+
+@if (!string.IsNullOrEmpty(Message))
+{
+    <div class="toast-container">
+        <div class="toast-message @Type">@Message</div>
+    </div>
+}
+
+@code {
+    private string? Message;
+    private string Type = "info";
+
+    protected override void OnInitialized()
+    {
+        Notifier.OnNotify += ShowToast;
+    }
+
+    void ShowToast(string message, string type)
+    {
+        Message = message;
+        Type = type;
+        StateHasChanged();
+
+        Task.Delay(2000).ContinueWith(_ =>
+        {
+            Message = null;
+            InvokeAsync(StateHasChanged);
+        });
+    }
+}

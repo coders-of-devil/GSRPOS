@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\Gamliot\\GSuite\\GSRPOS\\MainApp\\obj\\Debug\\net9.0-ios\\iossimulator-x64\\scopedcss\\bundle\\MainApp.styles.css",
+      "PackagePath": "staticwebassets\\MainApp.styles.css"
+    },
+    {
+      "Id": "E:\\Gamliot\\GSuite\\GSRPOS\\MainApp\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "E:\\Gamliot\\GSuite\\GSRPOS\\MainApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\Gamliot\\GSuite\\GSRPOS\\MainApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "E:\\Gamliot\\GSuite\\GSRPOS\\MainApp\\wwwroot\\images\\user-avatar.png",
+      "PackagePath": "staticwebassets\\images\\user-avatar.png"
+    },
+    {
+      "Id": "E:\\Gamliot\\GSuite\\GSRPOS\\MainApp\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.MainApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.MainApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.build.MainApp.props",
+      "PackagePath": "build\\MainApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.buildMultiTargeting.MainApp.props",
+      "PackagePath": "buildMultiTargeting\\MainApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.buildTransitive.MainApp.props",
+      "PackagePath": "buildTransitive\\MainApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,148 @@
+﻿@page "/user/assign-roles-permissions/{RoleId:long}"
+@inject IRoleService RoleService
+@inject IRolePermissionService RolePermissionService
+@inject NotificationService Notifier
+@inject NavigationManager Nav
+@inject FileLogger Logger
+
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div>
+        <h4>Assign Permissions to <span class="text-primary">@roleName</span></h4>
+        <small class="text-muted">Toggle permissions grouped by module</small>
+    </div>
+</div>
+
+<input class="form-control mb-4 w-100 w-md-50" placeholder="🔍 Search permissions..." @bind="searchTerm" />
+
+@if (groupedPermissions.Any())
+{
+    @foreach (var group in groupedPermissions)
+    {
+        <div class="mb-3">
+            <h6 class="text-primary d-flex justify-content-between align-items-center">
+                @group.Key
+                <span class="badge bg-info text-dark">@group.Value.Count(p => p.IsSelected) selected</span>
+            </h6>
+
+            <div class="mb-2">
+                <button class="btn btn-sm btn-outline-secondary me-2" @onclick="() => ToggleGroup(group.Key, true)">
+                    <i class="bi bi-check2-all"></i> Select All
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="() => ToggleGroup(group.Key, false)">
+                    <i class="bi bi-x-circle"></i> Deselect All
+                </button>
+            </div>
+
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-2">
+                @foreach (var perm in group.Value)
+                {
+                    <div class="form-check form-check-inline" style="min-width: 100px;">
+                        <input type="checkbox" class="form-check-input" @bind="perm.IsSelected" id="perm_@perm.PermissionId" />
+                        <label class="form-check-label" for="perm_@perm.PermissionId">@perm.Action</label>
+                    </div>
+                }
+            </div>
+            <hr />
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-info">No permissions found.</div>
+}
+
+<div class="d-flex justify-content-end gap-2 mt-4">
+    <button class="btn btn-secondary" @onclick="Cancel">
+        <i class="bi bi-arrow-left me-1"></i>Back
+    </button>
+
+    <button class="btn btn-primary" @onclick="SavePermissions" disabled="@(!hasChanges || isSaving)">
+        @if (isSaving)
+        {
+            <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+            <text>Saving...</text>
+        }
+        else
+        {
+            <i class="bi bi-check-circle me-1"></i>
+            <text>Save Changes</text>
+        }
+    </button>
+</div>
+
+@code {
+    [Parameter] public long RoleId { get; set; }
+
+    string roleName = "";
+    string searchTerm = "";
+    bool isSaving = false;
+
+    List<RolePermissionAssignmentDTO> permissionAssignments = new();
+
+    Dictionary<string, List<RolePermissionAssignmentDTO>> groupedPermissions =>
+        permissionAssignments
+            .Where(p => string.IsNullOrWhiteSpace(searchTerm) || p.Action.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .GroupBy(p => p.GroupName)
+            .ToDictionary(g => g.Key, g => g.ToList());
+
+    bool hasChanges => permissionAssignments.Any(p => p.IsSelected != p.InitiallySelected);
+
+    protected override async Task OnInitializedAsync()
+    {
+        var role = await RoleService.GetByIdAsync(RoleId);
+        if (role is null)
+        {
+            Notifier.Notify("❌ Role not found.", "error");
+            Nav.NavigateTo("/roles");
+            return;
+        }
+
+        roleName = role.Name;
+        permissionAssignments = await RolePermissionService.GetAssignablePermissionsAsync(RoleId);
+
+        foreach (var p in permissionAssignments)
+        {
+            p.InitiallySelected = p.IsSelected;
+        }
+    }
+
+    async Task SavePermissions()
+    {
+        isSaving = true;
+        try
+        {
+            var selectedIds = permissionAssignments
+                .Where(p => p.IsSelected)
+                .Select(p => p.PermissionId)
+                .ToList();
+
+            await RolePermissionService.RemoveAllPermissionsFromRoleAsync(RoleId);
+            await RolePermissionService.AssignPermissionsToRoleAsync(RoleId, selectedIds);
+
+            Notifier.Notify("✅ Permissions updated", "success");
+            Nav.NavigateTo("/roles");
+        }
+        catch(Exception ex)
+        {
+            Logger.Log(ex.ToString(), "SaveAssignRolePermission - Unhandled Exception");
+            Notifier.Notify($"❌ Failed to add permissions : {ex.Message}", "error");
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
+
+    void Cancel()
+    {
+        Nav.NavigateTo("/user/roles");
+    }
+
+    void ToggleGroup(string groupName, bool select)
+    {
+        foreach (var perm in groupedPermissions[groupName])
+        {
+            perm.IsSelected = select;
+        }
+    }
+}

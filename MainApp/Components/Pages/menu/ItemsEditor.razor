@@ -1,0 +1,743 @@
+﻿@page "/menu/items/new"
+@page "/menu/items/{id:long}"
+
+@using System.ComponentModel.DataAnnotations
+@inject IMenuItemService MenuItemService
+@inject IMenuItemTypeService ItemTypeService
+@inject IMenuItemPricingService PricingService
+@inject IMenuCategoryService CategoryService
+@inject IPreparationAreaService PrepAreaService
+@inject IPricelistService PricelistService
+@inject ISettingsService SettingsService
+@inject NotificationService Notifier
+@inject FileLogger Logger
+@inject NavigationManager Nav
+
+<h4 class="mb-1">@Title</h4>
+<small class="text-muted">@Subtitle</small>
+<hr />
+
+<EditForm Model="Model" OnValidSubmit="SaveAsync">
+  <DataAnnotationsValidator />
+  <ValidationSummary />
+
+  <!-- Item core (no base/cost price anymore) -->
+
+    @* Tabs header *@
+    <ul class="nav nav-tabs mb-3" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(ActiveTab == Tab.Details ? "active" : "")"
+                    type="button" role="tab"
+                    aria-selected="@(ActiveTab == Tab.Details)"
+                    @onclick="@(() => SetTab(Tab.Details))">
+                Details
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(ActiveTab == Tab.Types ? "active" : "")"
+                    type="button" role="tab"
+                    aria-selected="@(ActiveTab == Tab.Types)"
+                    @onclick="@(() => SetTab(Tab.Types))">
+                Types
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(ActiveTab == Tab.Pricing ? "active" : "")"
+                    type="button" role="tab"
+                    aria-selected="@(ActiveTab == Tab.Pricing)"
+                    @onclick="@(() => SetTab(Tab.Pricing))">
+                Pricing
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(ActiveTab == Tab.Delivery ? "active" : "")"
+                    type="button" role="tab"
+                    aria-selected="@(ActiveTab == Tab.Delivery)"
+                    @onclick="@(() => SetTab(Tab.Delivery))">
+                Delivery (soon)
+            </button>
+        </li>
+    </ul>
+
+    @* Tab content *@
+    <div class="tab-content">
+
+        @* -------- Details Tab -------- *@
+        <div class="tab-pane fade @(ActiveTab == Tab.Details ? "show active" : "")" role="tabpanel">
+            <!-- Item core (same as before, no base/cost price) -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Name</label>
+                            <InputText class="form-control" @bind-Value="Model.Name" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" @bind="Model.CategoryId">
+                                <option value="0">-- Select --</option>
+                                @foreach (var c in Categories)
+                                {
+                                    <option value="@c.Id">@c.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Description</label>
+                            <InputText class="form-control" @bind-Value="Model.Description" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Barcode</label>
+                            <InputText class="form-control" @bind-Value="Model.Barcode" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Display Order</label>
+                            <InputNumber class="form-control" @bind-Value="Model.DisplayOrder" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Tax Rate (%)</label>
+                            <InputNumber class="form-control" @bind-Value="Model.TaxRate" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Preparation Area</label>
+                            <select class="form-select" @bind="Model.PreparationAreaId">
+                                <option value="0">-- Select --</option>
+                                @foreach (var p in PrepAreas)
+                                {
+                                    <option value="@p.Id">@p.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Expected Prep Time (min)</label>
+                            <InputNumber class="form-control" @bind-Value="Model.ExpectedPreparationTime" />
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end gap-3">
+                            <div class="form-check">
+                                <InputCheckbox class="form-check-input" id="isActive" @bind-Value="Model.IsActive" />
+                                <label class="form-check-label" for="isActive">Active</label>
+                            </div>
+                            <div class="form-check">
+                                <InputCheckbox class="form-check-input" id="isToday" @bind-Value="Model.IsAvailableToday" />
+                                <label class="form-check-label" for="isToday">Available Today</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* -------- Types Tab -------- *@
+        <div class="tab-pane fade @(ActiveTab == Tab.Types ? "show active" : "")" role="tabpanel">
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Item Types</h6>
+                    <button class="btn btn-outline-primary btn-sm" type="button" @onclick="AddType">
+                        <i class="bi bi-plus-circle me-1"></i> Add Type
+                    </button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-sm table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                @if (Settings?.IsMultiplePriceForItem == true)
+                                {
+                                    <th style="width:26%">Pricelist</th>
+                                    <th style="width:26%">Type Name</th>
+                                }
+                                else
+                                {
+                                    <th style="width:26%">Type Name</th>
+                                }
+                                <th style="width:18%" class="text-end">Price</th>
+                                <th>Description</th>
+                                <th style="width:80px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var t in Model.Types)
+                            {
+                                <tr>
+                                    @if (Settings?.IsMultiplePriceForItem == true)
+                                    {
+                                        <td>
+                                            <select class="form-select form-select-sm"
+                                                    @bind="t.PricelistId"
+                                                    @oninput="@(_ => OnTypePricelistChanged(t))">
+                                                <option value="0">-- Select --</option>
+                                                @foreach (var pl in Pricelists)
+                                                {
+                                                    <option value="@pl.Id">@pl.Name</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <InputText class="form-control form-control-sm" @bind-Value="t.TypeName" />
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <InputText class="form-control form-control-sm" @bind-Value="t.TypeName" />
+                                                <span class="badge bg-secondary">@DefaultPricelistName</span>
+                                            </div>
+                                        </td>
+                                    }
+
+                                    <td><InputNumber class="form-control form-control-sm text-end" @bind-Value="t.Price" /></td>
+                                    <td><InputText class="form-control form-control-sm" @bind-Value="t.Description" /></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-danger" type="button" @onclick="@(() => RemoveType(t))">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <small class="text-muted">Each (Pricelist, Type Name) must be unique for this item.</small>
+                </div>
+            </div>
+        </div>
+
+        @* -------- Pricing Tab -------- *@
+        <div class="tab-pane fade @(ActiveTab == Tab.Pricing ? "show active" : "")" role="tabpanel">
+            @if (Settings?.IsMultiplePriceForItem == true)
+            {
+                <div class="card mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">Pricelist Prices</h6>
+                        <button class="btn btn-outline-primary btn-sm" type="button" @onclick="AddPriceRow">
+                            <i class="bi bi-plus-circle me-1"></i> Add Pricelist Price
+                        </button>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-sm table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width:30%">Pricelist</th>
+                                    <th style="width:20%" class="text-end">Price</th>
+                                    <th>Notes</th>
+                                    <th style="width:80px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var r in Model.PricelistRows)
+                                {
+                                    <tr>
+                                        <td>
+                                            <select class="form-select form-select-sm"
+                                                    @bind="r.PriceListId"
+                                                    @oninput="@(_ => OnPriceListChanged(r))">
+                                                <option value="0">-- Select --</option>
+                                                @foreach (var pl in Pricelists)
+                                                {
+                                                    <option value="@pl.Id">@pl.Name</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td><InputNumber class="form-control form-control-sm text-end" @bind-Value="r.Price" /></td>
+                                        <td><InputText class="form-control form-control-sm" @bind-Value="r.Notes" /></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger" type="button" @onclick="@(() => RemovePriceRow(r))">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <small class="text-muted">Each pricelist can appear at most once per item.</small>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label class="form-label">Price (Default Pricelist)</label>
+                        <div class="input-group" style="max-width: 340px;">
+                            <span class="input-group-text">@DefaultPricelistName</span>
+                            <InputNumber class="form-control text-end" @bind-Value="DefaultPriceEdit" />
+                        </div>
+                        <small class="text-muted">Stored in default pricelist (ID = @DefaultPricelistId).</small>
+                    </div>
+                </div>
+            }
+        </div>
+
+        @* -------- Delivery Tab (placeholder) -------- *@
+        <div class="tab-pane fade @(ActiveTab == Tab.Delivery ? "show active" : "")" role="tabpanel">
+            <div class="alert alert-secondary">
+                Delivery/platform pricing can live here later (e.g., per platform: Talabat, Deliveroo…).
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-secondary" type="button" @onclick="BackToList">Cancel</button>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+
+</EditForm>
+
+@code {
+    enum Tab { Details, Types, Pricing, Delivery }
+    Tab ActiveTab = Tab.Details;
+
+    void SetTab(Tab t) => ActiveTab = t;
+
+    [Parameter] public long? id { get; set; }
+    bool IsNew => id is null;
+    string Title => IsNew ? "New Menu Item" : $"Edit Menu Item #{id}";
+    string Subtitle => IsNew ? "Create a new item" : "Update item details";
+
+    // Default pricelist
+    const long DefaultPricelistId = 1;
+    string DefaultPricelistName = "Default";
+
+    // ===== Edit Model (no base/cost price) =====
+    public class MenuItemEditModel
+    {
+        public long Id { get; set; }
+
+        [Required, MinLength(2)]
+        public string Name { get; set; } = "";
+
+        [Range(1, long.MaxValue, ErrorMessage = "Select a category")]
+        public long CategoryId { get; set; }
+
+        public string Description { get; set; } = "";
+        public string StockKeepingUnit { get; set; } = "";
+        public string Barcode { get; set; } = "";
+
+        [Range(0, 100)]
+        public decimal TaxRate { get; set; } = 5;
+
+        public int DisplayOrder { get; set; }
+        public int ExpectedPreparationTime { get; set; }
+
+        [Range(1, long.MaxValue, ErrorMessage = "Select a preparation area")]
+        public long PreparationAreaId { get; set; }
+
+        public bool IsActive { get; set; } = true;
+        public bool IsAvailableToday { get; set; } = true;
+
+        public List<ItemTypeRow> Types { get; set; } = new();
+        public List<MenuItemPricelistViewModel> PricelistRows { get; set; } = new(); // used only when multiple enabled
+    }
+
+    public class ItemTypeRow
+    {
+        public long Id { get; set; }
+        public string TypeName { get; set; } = "";
+
+        // NEW: pricelist per type
+        public long PricelistId { get; set; }   // defaulted below depending on settings
+        public string PricelistName { get; set; } = "";
+
+        public decimal Price { get; set; }
+        public string Description { get; set; } = "";
+    }
+
+    MenuItemEditModel Model = new();
+
+    // Lookups
+    List<MenuCategory> Categories = new();
+    List<PreparationArea> PrepAreas = new();
+    List<PriceList> Pricelists = new();
+
+    // Settings
+    Setting? Settings;
+
+    // Default price editor (single mode)
+    decimal DefaultPriceEdit = 0m;
+
+    // ===== Lifecycle =====
+    protected override async Task OnInitializedAsync()
+    {
+        Categories = await CategoryService.GetAllAsync();
+        PrepAreas  = await PrepAreaService.GetAllPreparationAreaAsync();
+        Pricelists = await PricelistService.GetAllPricelistsAsync();
+        Settings   = await SettingsService.GetSettingAsync(1); // your settings row
+
+        // capture default pricelist name if present
+        DefaultPricelistName = Pricelists.FirstOrDefault(p => p.Id == DefaultPricelistId)?.Name ?? "Default";
+
+        if (!IsNew)
+        {
+            var item = await MenuItemService.GetByIdAsync(id!.Value);
+            if (item is null)
+            {
+                Notifier.Notify("Item not found.", "error");
+                BackToList();
+                return;
+            }
+
+            // Map core
+            Model = new MenuItemEditModel
+            {
+                Id = item.Id,
+                Name = item.Name,
+                CategoryId = item.CategoryId,
+                Description = item.Description ?? "",
+                StockKeepingUnit = item.StockKeepingUnit ?? "",
+                Barcode = item.Barcode ?? "",
+                TaxRate = item.TaxRate,
+                DisplayOrder = item.DisplayOrder,
+                ExpectedPreparationTime = item.ExpectedPreparationTime,
+                PreparationAreaId = item.PreparationAreaId,
+                IsActive = item.IsActive,
+                IsAvailableToday = item.IsAvailableToday
+            };
+
+            // Types
+            var types = await ItemTypeService.GetByItemAsync(item.Id);
+            Model.Types = types.Select(t => new ItemTypeRow
+            {
+                Id = t.Id,
+                TypeName = t.TypeName,
+                PricelistId = t.PricelistId,
+                PricelistName = Pricelists.FirstOrDefault(x => x.Id == t.PricelistId)?.Name ?? "",
+                Price = t.Price,
+                Description = t.Description ?? ""
+            }).ToList();
+
+            // If multi-pricelist is OFF, normalize all rows to default pricelist
+            if (Settings?.IsMultiplePriceForItem != true)
+            {
+                foreach (var t in Model.Types)
+                {
+                    t.PricelistId = DefaultPricelistId;
+                    t.PricelistName = Pricelists.FirstOrDefault(x => x.Id == DefaultPricelistId)?.Name ?? "Default";
+                }
+            }
+
+            // Pricing
+            var priceRows = await PricingService.GetByItemAsync(item.Id);
+            if (Settings?.IsMultiplePriceForItem == true)
+            {
+                Model.PricelistRows = priceRows.Select(e => new MenuItemPricelistViewModel
+                {
+                    Id = e.Id,
+                    PriceListId = e.PriceListId,
+                    MenuItemId = e.MenuItemId,
+                    Price = e.Price,
+                    Notes = e.Notes ?? "",
+                    PriceListName = Pricelists.FirstOrDefault(x => x.Id == e.PriceListId)?.Name ?? "",
+                    MenuItemName = item.Name
+                }).ToList();
+            }
+            else
+            {
+                // single default price
+                var defaultRow = priceRows.FirstOrDefault(x => x.PriceListId == DefaultPricelistId);
+                DefaultPriceEdit = defaultRow?.Price ?? 0m;
+            }
+        }
+        else
+        {
+            Model = new MenuItemEditModel
+            {
+                IsActive = true,
+                IsAvailableToday = true,
+                TaxRate = 5
+            };
+        }
+    }
+
+    // ===== UI helpers =====
+    void BackToList() => Nav.NavigateTo("/menu/items");
+    void AddType() => Model.Types.Add(new ItemTypeRow());
+    void RemoveType(ItemTypeRow t) => Model.Types.Remove(t);
+
+    void AddPriceRow() => Model.PricelistRows.Add(new MenuItemPricelistViewModel());
+    void RemovePriceRow(MenuItemPricelistViewModel r) => Model.PricelistRows.Remove(r);
+
+    void OnPriceListChanged(MenuItemPricelistViewModel r)
+    {
+        if (r.PriceListId == 0) return;
+
+        var dup = Model.PricelistRows.Where(x => !ReferenceEquals(x, r))
+                                    .Any(x => x.PriceListId == r.PriceListId);
+        if (dup)
+        {
+            r.PriceListId = 0;
+            r.PriceListName = "";
+            Notifier.Notify("This pricelist is already added for this item.", "warning");
+            return;
+        }
+
+        r.PriceListName = Pricelists.FirstOrDefault(x => x.Id == r.PriceListId)?.Name ?? "";
+    }
+
+    void OnTypePricelistChanged(ItemTypeRow row)
+    {
+        if (row.PricelistId == 0) return;
+
+        // Simple duplicate check: same pricelist + same TypeName (case-insensitive)
+        var dup = Model.Types
+            .Where(x => !ReferenceEquals(x, row))
+            .Any(x => x.PricelistId == row.PricelistId &&
+                      string.Equals(x.TypeName?.Trim(), row.TypeName?.Trim(), StringComparison.OrdinalIgnoreCase));
+
+        if (dup)
+        {
+            row.PricelistId = 0;
+            row.PricelistName = "";
+            Notifier.Notify("Duplicate type for the same pricelist.", "warning");
+            return;
+        }
+
+        row.PricelistName = Pricelists.FirstOrDefault(p => p.Id == row.PricelistId)?.Name ?? "";
+    }
+
+
+    // ===== Save =====
+    async Task SaveAsync()
+    {
+        try
+        {
+            // Basic validations
+            if (Model.CategoryId <= 0) { Notifier.Notify("Select a category.", "error"); return; }
+            if (Model.PreparationAreaId <= 0) { Notifier.Notify("Select a preparation area.", "error"); return; }
+
+            // Unique name in category
+            var nameExists = await MenuItemService.ExistByNameAsync(Model.Name, Model.CategoryId, IsNew ? null : Model.Id);
+            if (nameExists) { Notifier.Notify("An item with the same name already exists in this category.", "error"); return; }
+
+            // Unique display order in category (if enforced)
+            if (Model.DisplayOrder > 0)
+            {
+                var orderExists = await MenuItemService.ExistByOrderNoAsync(Model.DisplayOrder, Model.CategoryId, IsNew ? null : Model.Id);
+                if (orderExists) { Notifier.Notify("Display order already in use for this category.", "error"); return; }
+            }
+
+            // Map item
+            var entity = new MenuItem
+            {
+                Id = Model.Id,
+                Name = Model.Name,
+                Description = Model.Description,
+                CategoryId = Model.CategoryId,
+                StockKeepingUnit = Model.StockKeepingUnit,
+                Barcode = Model.Barcode,
+                TaxRate = Model.TaxRate,
+                ImagePath = "", // keep if you have image flow
+                DisplayOrder = Model.DisplayOrder,
+                ExpectedPreparationTime = Model.ExpectedPreparationTime,
+                PreparationAreaId = Model.PreparationAreaId,
+                IsActive = Model.IsActive,
+                IsAvailableToday = Model.IsAvailableToday
+            };
+
+            long itemId;
+            if (IsNew)
+            {
+                itemId = await MenuItemService.AddAsync(entity);
+                Notifier.Notify("✅ Item created", "success");
+            }
+            else
+            {
+                await MenuItemService.UpdateAsync(entity);
+                itemId = Model.Id;
+                Notifier.Notify("✏️ Item updated", "info");
+            }
+
+            // --- Types (upsert + delete removed) ---
+            var existingTypes = await ItemTypeService.GetByItemAsync(itemId);
+            var keepTypeIds = new HashSet<long>();
+
+            if (Settings?.IsMultiplePriceForItem == true)
+            {
+                foreach (var t in Model.Types.Where(x => !string.IsNullOrWhiteSpace(x.TypeName)))
+                {
+                    if (t.PricelistId <= 0)
+                    {
+                        Notifier.Notify("Select a pricelist for each type (or remove the row).", "error");
+                        continue;
+                    }
+
+                    var exists = await ItemTypeService.ExistsAsync(itemId, t.PricelistId, t.TypeName.Trim(), t.Id == 0 ? null : t.Id);
+                    if (exists)
+                    {
+                        Notifier.Notify($"Type '{t.TypeName}' already exists in pricelist '{t.PricelistName}'.", "error");
+                        continue;
+                    }
+
+                    if (t.Id == 0)
+                    {
+                        var newId = await ItemTypeService.AddAsync(new MenuItemType
+                        {
+                            ItemId = itemId,
+                            PricelistId = t.PricelistId,
+                            TypeName = t.TypeName,
+                            Price = t.Price,
+                            Description = t.Description
+                        });
+                        keepTypeIds.Add(newId);
+                    }
+                    else
+                    {
+                        await ItemTypeService.UpdateAsync(new MenuItemType
+                        {
+                            Id = t.Id,
+                            ItemId = itemId,
+                            PricelistId = t.PricelistId,
+                            TypeName = t.TypeName,
+                            Price = t.Price,
+                            Description = t.Description
+                        });
+                        keepTypeIds.Add(t.Id);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var t in Model.Types.Where(x => !string.IsNullOrWhiteSpace(x.TypeName)))
+                {
+                    t.PricelistId = DefaultPricelistId;
+                    t.PricelistName = DefaultPricelistName;
+
+                    var exists = await ItemTypeService.ExistsAsync(itemId, t.PricelistId, t.TypeName.Trim(), t.Id == 0 ? null : t.Id);
+                    if (exists)
+                    {
+                        Notifier.Notify($"Type '{t.TypeName}' already exists in the default pricelist.", "error");
+                        continue;
+                    }
+
+                    if (t.Id == 0)
+                    {
+                        var newId = await ItemTypeService.AddAsync(new MenuItemType
+                        {
+                            ItemId = itemId,
+                            PricelistId = DefaultPricelistId,
+                            TypeName = t.TypeName.Trim(),
+                            Price = t.Price,
+                            Description = t.Description
+                        });
+                        keepTypeIds.Add(newId);
+                    }
+                    else
+                    {
+                        await ItemTypeService.UpdateAsync(new MenuItemType
+                        {
+                            Id = t.Id,
+                            ItemId = itemId,
+                            PricelistId = DefaultPricelistId,
+                            TypeName = t.TypeName.Trim(),
+                            Price = t.Price,
+                            Description = t.Description
+                        });
+                        keepTypeIds.Add(t.Id);
+                    }
+                }
+
+                // Optional cleanup: remove any types saved to non-default pricelists previously
+                foreach (var old in existingTypes.Where(x => x.PricelistId != DefaultPricelistId))
+                    await ItemTypeService.DeleteAsync(old.Id);
+            }
+            
+            foreach (var old in existingTypes)
+                if (!keepTypeIds.Contains(old.Id))
+                    await ItemTypeService.DeleteAsync(old.Id);
+
+            // --- Pricing ---
+            if (Settings?.IsMultiplePriceForItem == true)
+            {
+                // Multi mode: respect all rows, prevent duplicates server-side too
+                var existingRows = await PricingService.GetByItemAsync(itemId);
+                var keepPriceIds = new HashSet<long>();
+
+                foreach (var r in Model.PricelistRows.Where(x => x.PriceListId > 0))
+                {
+                    var dup = await PricingService.ExistsAsync(r.PriceListId, itemId, r.Id == 0 ? null : r.Id);
+                    if (dup)
+                    {
+                        Notifier.Notify($"Duplicate entry for pricelist '{(r.PriceListName ?? "selected")}'.", "error");
+                        continue;
+                    }
+
+                    if (r.Id == 0)
+                    {
+                        var newId = await PricingService.AddAsync(new MenuItemPriceListEntry
+                        {
+                            MenuItemId = itemId,
+                            PriceListId = r.PriceListId,
+                            Price = r.Price,
+                            Notes = r.Notes
+                        });
+                        keepPriceIds.Add(newId);
+                    }
+                    else
+                    {
+                        await PricingService.UpdateAsync(new MenuItemPriceListEntry
+                        {
+                            Id = r.Id,
+                            MenuItemId = itemId,
+                            PriceListId = r.PriceListId,
+                            Price = r.Price,
+                            Notes = r.Notes
+                        });
+                        keepPriceIds.Add(r.Id);
+                    }
+                }
+
+                // delete removed
+                foreach (var old in existingRows)
+                    if (!keepPriceIds.Contains(old.Id))
+                        await PricingService.DeleteAsync(old.Id);
+            }
+            else
+            {
+                // Single mode: only default pricelist (ID=1)
+                var existing = await PricingService.GetByItemAsync(itemId);
+                var defaultRow = existing.FirstOrDefault(x => x.PriceListId == DefaultPricelistId);
+
+                if (defaultRow == null)
+                {
+                    // Create if price provided (allow 0 if you want free)
+                    await PricingService.AddAsync(new MenuItemPriceListEntry
+                    {
+                        MenuItemId = itemId,
+                        PriceListId = DefaultPricelistId,
+                        Price = DefaultPriceEdit,
+                        Notes = ""
+                    });
+                }
+                else
+                {
+                    // Update
+                    defaultRow.Price = DefaultPriceEdit;
+                    await PricingService.UpdateAsync(defaultRow);
+
+                    // Optional: remove any non-default rows if they exist
+                    foreach (var other in existing.Where(x => x.PriceListId != DefaultPricelistId))
+                    await PricingService.DeleteAsync(other.Id);
+                }
+            }
+
+            BackToList();
+        }
+        catch (ApplicationException ex)
+        {
+            Logger.Log(ex.Message, "SaveMenuItem");
+            Notifier.Notify($"❌ {ex.Message}", "error");
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "SaveMenuItem");
+            Notifier.Notify($"❌ Unexpected error: {ex.Message}", "error");
+        }
+    }
+}

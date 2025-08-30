@@ -1,0 +1,232 @@
+﻿@page "/settings"
+@using System.ComponentModel.DataAnnotations
+@inject ISettingsService SettingsService
+@inject NotificationService Notifier
+@inject FileLogger Logger
+
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div>
+        <h4>System Settings</h4>
+        <small class="text-muted">Configure tax behavior and pricing defaults</small>
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-primary" @onclick="Save" disabled="@isSaving">
+            <i class="bi bi-save me-1"></i> @(isSaving ? "Saving..." : "Save")
+        </button>
+    </div>
+</div>
+
+<EditForm Model="Model" OnValidSubmit="Save">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-4">
+                <!-- Taxable toggle -->
+                <div class="col-12">
+                    <div class="form-check form-switch">
+                        <InputCheckbox class="form-check-input" id="taxable" @bind-Value="Model.IsTaxable" @onchange="OnTaxableChanged" />
+                        <label class="form-check-label fw-semibold" for="taxable">Apply Tax</label>
+                        <div class="form-text">Turn off to ignore tax on all calculations.</div>
+                    </div>
+                </div>
+
+                <!-- Inclusive / Exclusive (mutually exclusive) -->
+                <div class="col-md-6">
+                    <fieldset class="border rounded p-3">
+                        <legend class="float-none w-auto px-2 fs-6 text-muted mb-0">Tax Mode</legend>
+
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="inclusive"
+                                       name="taxMode"
+                                       checked="@Model.IsTaxInclusive"
+                                       disabled="@(!Model.IsTaxable)"
+                                       @onchange="() => SetTaxMode(inclusive: true)" />
+                                <label class="form-check-label" for="inclusive">
+                                    Tax Inclusive
+                                </label>
+                                <div class="form-text">Prices you enter include tax; system backs out tax from totals.</div>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="exclusive"
+                                       name="taxMode"
+                                       checked="@Model.IsTaxExclusive"
+                                       disabled="@(!Model.IsTaxable)"
+                                       @onchange="() => SetTaxMode(inclusive: false)" />
+                                <label class="form-check-label" for="exclusive">
+                                    Tax Exclusive
+                                </label>
+                                <div class="form-text">Tax is added on top of the entered prices.</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Tax Rate -->
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Tax Rate (%)</label>
+                    <InputNumber class="form-control" @bind-Value="Model.TaxRate" disabled="@(!Model.IsTaxable)" />
+                    <div class="form-text">Allowed range: 0–100</div>
+                </div>
+
+                <!-- Multiple price toggle -->
+                <div class="col-12">
+                    <div class="form-check form-switch">
+                        <InputCheckbox class="form-check-input" id="multiPrice" @bind-Value="Model.IsMultiplePriceForItem" />
+                        <label class="form-check-label fw-semibold" for="multiPrice">Allow Multiple Prices per Item</label>
+                        <div class="form-text">Enable to support variants (e.g., sizes) with their own prices.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    // If your app uses a fixed row (e.g., Id=1), set it here.
+    // Otherwise, make this a route param or resolve dynamically.
+    private const int SettingsId = 1;
+
+    public class SettingEditModel
+    {
+        public int Id { get; set; }
+
+        public bool IsTaxable { get; set; }
+
+        // Radio-like behavior in UI
+        public bool IsTaxInclusive { get; set; }
+        public bool IsTaxExclusive { get; set; }
+
+        [Range(0, 100, ErrorMessage = "Tax rate must be between 0 and 100.")]
+        public int TaxRate { get; set; } = 5;
+
+        public bool IsMultiplePriceForItem { get; set; }
+    }
+
+    SettingEditModel Model = new();
+    bool isSaving = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var s = await SettingsService.GetSettingAsync(SettingsId);
+            if (s is null)
+            {
+                // If not found, initialize defaults
+                Model = new SettingEditModel { Id = SettingsId, IsTaxable = false, TaxRate = 5, IsTaxInclusive = false, IsTaxExclusive = true };
+                return;
+            }
+            Model = new SettingEditModel
+            {
+                Id = s.Id,
+                IsTaxable = s.IsTaxable,
+                IsTaxInclusive = s.IsTaxInclusive,
+                IsTaxExclusive = s.IsTaxExclusive,
+                TaxRate = s.TaxRate,
+                IsMultiplePriceForItem = s.IsMultiplePriceForItem
+            };
+
+            // Normalize flags just in case both are true/false from data:
+            NormalizeTaxMode();
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "LoadSettings");
+            Notifier.Notify($"❌ Failed to load settings: {ex.Message}", "error");
+        }
+    }
+
+    void OnTaxableChanged(ChangeEventArgs _)
+    {
+        if (!Model.IsTaxable)
+        {
+            // When tax is off, keep a consistent default mode and rate
+            Model.IsTaxInclusive = false;
+            Model.IsTaxExclusive = false;
+            // (Optionally keep last rate; we leave it as-is but UI disables it)
+        }
+        else
+        {
+            // When enabling tax, default to Exclusive if neither is chosen
+            if (!Model.IsTaxInclusive && !Model.IsTaxExclusive)
+            {
+                Model.IsTaxExclusive = true;
+            }
+        }
+    }
+
+    void SetTaxMode(bool inclusive)
+    {
+        if (!Model.IsTaxable) return;
+        Model.IsTaxInclusive = inclusive;
+        Model.IsTaxExclusive = !inclusive;
+    }
+
+    void NormalizeTaxMode()
+    {
+        if (!Model.IsTaxable)
+        {
+            Model.IsTaxInclusive = false;
+            Model.IsTaxExclusive = false;
+            return;
+        }
+
+        // If both true or both false, default to Exclusive
+        if (Model.IsTaxInclusive == Model.IsTaxExclusive)
+        {
+            Model.IsTaxInclusive = false;
+            Model.IsTaxExclusive = true;
+        }
+    }
+
+    async Task Save()
+    {
+        // Extra guard: keep the form submit accessible and the header Save button consistent
+        await SaveInternal();
+    }
+
+    async Task SaveInternal()
+    {
+        try
+        {
+            isSaving = true;
+
+            // Validation: if taxable, must pick a mode
+            if (Model.IsTaxable && !(Model.IsTaxInclusive ^ Model.IsTaxExclusive))
+            {
+                Notifier.Notify("Choose either Tax Inclusive or Tax Exclusive.", "error");
+                return;
+            }
+
+            // Clamp rate
+            if (Model.TaxRate < 0) Model.TaxRate = 0;
+            if (Model.TaxRate > 100) Model.TaxRate = 100;
+
+            var entity = new Setting
+            {
+                Id = Model.Id,
+                IsTaxable = Model.IsTaxable,
+                IsTaxInclusive = Model.IsTaxInclusive,
+                IsTaxExclusive = Model.IsTaxExclusive,
+                TaxRate = Model.TaxRate,
+                IsMultiplePriceForItem = Model.IsMultiplePriceForItem
+            };
+
+            await SettingsService.UpdateSettingAsync(entity);
+            Notifier.Notify("✅ Settings saved", "success");
+        }
+        catch (Exception ex)
+        {
+            Logger.Log(ex.ToString(), "SaveSettings");
+            Notifier.Notify($"❌ Save failed: {ex.Message}", "error");
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
+}
