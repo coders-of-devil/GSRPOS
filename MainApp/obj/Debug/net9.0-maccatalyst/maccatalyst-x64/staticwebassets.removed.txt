@@ -1,4 +1,0 @@
-E:\Gamliot\GSuite\GSRPOS\MainApp\wwwroot\index.html
-E:\Gamliot\GSuite\GSRPOS\MainApp\wwwroot\css\bootstrap\bootstrap.min.css.map
-E:\Gamliot\GSuite\GSRPOS\MainApp\wwwroot\css\bootstrap\bootstrap.min.css
-E:\Gamliot\GSuite\GSRPOS\MainApp\wwwroot\css\app.css

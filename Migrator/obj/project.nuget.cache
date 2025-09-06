@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gfb8iDjs70Y=",
+  "dgSpecHash": "xPn6tHr9LPA=",
   "success": true,
-  "projectFilePath": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Migrator\\Migrator.csproj",
+  "projectFilePath": "E:\\Gamliot\\GGit\\gsrpos\\Migrator\\Migrator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\suhai\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\suhai\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",

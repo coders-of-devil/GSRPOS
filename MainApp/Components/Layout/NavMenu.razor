@@ -40,11 +40,18 @@
 @inherits LayoutComponentBase
 
 <nav class="app-nav" role="navigation" aria-label="Primary">
+    <!-- Logs -->
+    <div class="nav-item px-3 mt-2">
+        <NavLink class="nav-link" href="/" @onclick="HandleNavigate">
+            &nbsp;<i class="bi bi-house me-1"></i> Dashboard
+        </NavLink>
+    </div>
+
     <!-- Section: User Management -->
     <div class="nav-section">
         <button class="nav-section-header" @onclick="@(() => ToggleSection("user"))"
                 aria-expanded="@(expandedSections.Contains("user"))">
-            <span><i class="bi bi-person-gear me-1"></i> User Management</span>
+            <span>&nbsp;<i class="bi bi-person-gear me-1"></i> User Management</span>
             <span class="expand-icon">@((expandedSections.Contains("user") ? "−" : "+"))</span>
         </button>
 
@@ -53,22 +60,22 @@
             <div class="nav-subitems">
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/user/users" @onclick="HandleNavigate">
-                        <i class="bi bi-person me-1"></i> Users
+                        &nbsp;<i class="bi bi-person me-1"></i> Users
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/user/roles" @onclick="HandleNavigate">
-                        <i class="bi bi-briefcase me-1"></i> Roles
+                        &nbsp;<i class="bi bi-briefcase me-1"></i> Roles
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/user/permissiongroups" @onclick="HandleNavigate">
-                        <i class="bi bi-shield-check me-1"></i> Permission Groups
+                        &nbsp;<i class="bi bi-shield-check me-1"></i> Permission Groups
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/user/permissions" @onclick="HandleNavigate">
-                        <i class="bi bi-shield-exclamation me-1"></i> Permissions
+                        &nbsp;<i class="bi bi-shield-exclamation me-1"></i> Permissions
                     </NavLink>
                 </div>
             </div>
@@ -79,7 +86,7 @@
     <div class="nav-section">
         <button class="nav-section-header" @onclick="@(() => ToggleSection("menu"))"
                 aria-expanded="@(expandedSections.Contains("menu"))">
-            <span><i class="bi bi-ui-checks-grid me-1"></i> Menu Management</span>
+            <span>&nbsp;<i class="bi bi-ui-checks-grid me-1"></i> Menu Management</span>
             <span class="expand-icon">@((expandedSections.Contains("menu") ? "−" : "+"))</span>
         </button>
 
@@ -88,22 +95,22 @@
             <div class="nav-subitems">
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/menu/preparation-areas" @onclick="HandleNavigate">
-                        <i class="bi bi-bricks me-1"></i> Preparation Area
+                        &nbsp;<i class="bi bi-bricks me-1"></i> Preparation Area
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/menu/categories" @onclick="HandleNavigate">
-                        <i class="bi bi-tags me-1"></i> Categories
+                        &nbsp;<i class="bi bi-tags me-1"></i> Categories
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/menu/items" @onclick="HandleNavigate">
-                        <i class="bi bi-collection me-1"></i> Items
+                        &nbsp;<i class="bi bi-collection me-1"></i> Items
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/menu/pricelists" @onclick="HandleNavigate">
-                        <i class="bi bi-clock-history me-1"></i> Pricelist
+                        &nbsp;<i class="bi bi-clock-history me-1"></i> Pricelist
                     </NavLink>
                 </div>
             </div>
@@ -114,7 +121,7 @@
     <div class="nav-section">
         <button class="nav-section-header" @onclick="@(() => ToggleSection("table"))"
                 aria-expanded="@(expandedSections.Contains("table"))">
-            <span><i class="bi bi-grid-3x3-gap me-1"></i> Table Management</span>
+            <span>&nbsp;<i class="bi bi-grid-3x3-gap me-1"></i> Table Management</span>
             <span class="expand-icon">@((expandedSections.Contains("table") ? "−" : "+"))</span>
         </button>
 
@@ -123,7 +130,7 @@
             <div class="nav-subitems">
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/table/tables" @onclick="HandleNavigate">
-                        <i class="bi bi-table me-1"></i> Tables
+                        &nbsp;<i class="bi bi-table me-1"></i> Tables
                     </NavLink>
                 </div>
             </div>
@@ -134,7 +141,7 @@
     <div class="nav-section">
         <button class="nav-section-header" @onclick="@(() => ToggleSection("customers"))"
                 aria-expanded="@(expandedSections.Contains("customers"))">
-            <span><i class="bi bi-people me-1"></i> Customers</span>
+            <span>&nbsp;<i class="bi bi-people me-1"></i> Customers</span>
             <span class="expand-icon">@((expandedSections.Contains("customers") ? "−" : "+"))</span>
         </button>
 
@@ -143,7 +150,7 @@
             <div class="nav-subitems">
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/customer/customers" @onclick="HandleNavigate">
-                        <i class="bi bi-person-lines-fill me-1"></i> Customer List
+                        &nbsp;<i class="bi bi-person-lines-fill me-1"></i> Customer List
                     </NavLink>
                 </div>
             </div>
@@ -153,13 +160,13 @@
     <!-- Logs -->
     <div class="nav-item px-3 mt-2">
         <NavLink class="nav-link" href="/user/logs" @onclick="HandleNavigate">
-            <i class="bi bi-archive me-1"></i> View Logs
+            &nbsp;<i class="bi bi-archive me-1"></i> View Logs
         </NavLink>
     </div>
 </nav>
 
 @code {
-    private HashSet<string> expandedSections = new() { "user", "menu" }; // start opened if you like
+    private HashSet<string> expandedSections = new() { }; // start opened if you like
 
     [Parameter] public EventCallback CloseMenu { get; set; }
 

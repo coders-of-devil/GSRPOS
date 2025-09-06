@@ -221,7 +221,7 @@
                 Notifier.Notify("✏️ Table updated successfully", "info");
             }
 
-            Nav.NavigateTo("/tables");
+            Nav.NavigateTo("/table/tables");
         }
         catch (Exception ex)
         {
@@ -230,7 +230,7 @@
         }
     }
 
-    void GoBack() => Nav.NavigateTo("/tables");
+    void GoBack() => Nav.NavigateTo("/table/tables");
 
     void ShowAreaModal() => showAreaModal = true;
     void CloseAreaModal() => showAreaModal = false;
@@ -253,7 +253,7 @@
         tableForm.Seats.Clear();
         for (int i = 1; i <= tableForm.Capacity; i++)
         {
-            tableForm.Seats.Add(new SeatViewModel { Name = $"Seat {i}" });
+            tableForm.Seats.Add(new SeatViewModel { Name = $"{tableForm.Name}-{i}" });
         }
     }
     void RemoveSeat(SeatViewModel s) => tableForm.Seats.Remove(s);

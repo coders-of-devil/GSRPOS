@@ -3,6 +3,7 @@
 @inject NotificationService Notifier
 @inject IJSRuntime JS
 @inject FileLogger Logger
+@inject NavigationManager Nav
 
 <div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
     <div>
@@ -11,8 +12,8 @@
     </div>
 
     <div class="d-flex gap-2">
-        <button class="btn btn-outline-success btn-sm" @onclick="ExportToExcel">
-            <i class="bi bi-file-earmark-excel me-1"></i> Excel
+        <button class="btn btn-secondary btn-sm" @onclick="GoLists">
+            <i class="bi bi-plus-arrow me-1"></i> Tables
         </button>
         <button class="btn btn-primary" @onclick="ShowAddModal">
             <i class="bi bi-plus-circle me-1"></i> Add Area
@@ -285,6 +286,7 @@
 
     void PrevPage() { if (currentPage > 1) currentPage--; }
     void NextPage() { if (currentPage < Math.Ceiling((double)FilteredAreas.Count / pageSize)) currentPage++; }
+    void GoLists() => Nav.NavigateTo("/table/tables");
 
     async Task ExportToExcel()
     {
