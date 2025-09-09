@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Common;
+using Domain.Entities.CustomerMod;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,5 +20,8 @@ namespace Domain.Entities.MenuMod
         public DateTime EffectiveFrom { get; set; } = DateTime.MinValue;
         public DateTime EffectiveTo { get; set;} = DateTime.MinValue;
         public string Notes { get; set; } = string.Empty;
+        //public bool IsCustomerRelated { get; set; }
+        //public long CustomerId { get; set; }
+        //public Customer? Customer { get; set; }
     }
 }

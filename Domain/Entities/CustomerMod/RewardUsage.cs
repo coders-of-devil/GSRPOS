@@ -21,5 +21,6 @@ namespace Domain.Entities.CustomerMod
         public decimal DiscountValue { get; set; } = 0m;
         public string Reason { get; set; } = string.Empty;
         public DateTime? UsedAt { get; set; }
+        public string CouponCode { get; set; }
     }
 }

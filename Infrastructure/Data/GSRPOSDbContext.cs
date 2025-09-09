@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Common;
 using Domain.Entities.CustomerMod;
 using Domain.Entities.MenuMod;
+using Domain.Entities.OrderMod;
 using Domain.Entities.TableMod;
 using Domain.Entities.UserMod;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,17 @@ namespace Infrastructure.Data
         public DbSet<RewardEarning> RewardEarnings { get; set; }
         public DbSet<RewardTransaction> RewardTransactions { get; set; }
         public DbSet<RewardUsage> RewardUsages { get; set; }
+        public DbSet<KitchenDevice> KitchenDevices { get; set; }
+        public DbSet<KitchenOrderRouting> KitchenOrderRoutings { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ComboOrderItem> ComboOrderItems { get; set; }
+        public DbSet<OrderItemModifier> OrderItemModifiers { get; set; }
+        public DbSet<OrderPrepStatus> OrderPrepStatus { get; set; }
+        public DbSet<DeliveryOrderTrack> DeliveryOrderTrack { get; set; }
+        public DbSet<KOTLog> kOTLogs { get; set; }
+        public DbSet<VoidOrderItemLog> VoidOrderItemLogs { get; set; }
+        public DbSet<DiscountsLog> DiscountsLogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
