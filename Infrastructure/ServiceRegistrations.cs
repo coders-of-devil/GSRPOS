@@ -40,6 +40,8 @@ namespace Infrastructure
             services.AddScoped<IAreaWaiterService, AreaWaiterService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerAddressService, CustomerAddressService>();
+            services.AddScoped<IKitchenDeviceService, KitchenDeviceService>();
+            services.AddScoped<IKitchenOrderRoutingService, KitchenOrderRoutingService>();
 
             return services;
         }
