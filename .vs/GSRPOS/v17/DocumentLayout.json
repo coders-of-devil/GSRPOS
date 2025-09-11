@@ -3,8 +3,56 @@
   "WorkspaceRootPath": "E:\\Gamliot\\GGit\\GSRPOS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\mappings\\menumap\\kitchenorderroutingmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\mappings\\menumap\\kitchenorderroutingmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|e:\\gamliot\\ggit\\gsrpos\\application\\interfaces\\menuinterfaces\\imenuitemmodifiergroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|solutionrelative:application\\interfaces\\menuinterfaces\\imenuitemmodifiergroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\implementations\\menuimplementations\\kitchenorderroutingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\menuimplementations\\kitchenorderroutingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\implementations\\menuimplementations\\menucategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\menuimplementations\\menucategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\implementations\\menuimplementations\\kitchendeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\menuimplementations\\kitchendeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|e:\\gamliot\\ggit\\gsrpos\\application\\interfaces\\menuinterfaces\\imodifierservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|solutionrelative:application\\interfaces\\menuinterfaces\\imodifierservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|e:\\gamliot\\ggit\\gsrpos\\application\\interfaces\\menuinterfaces\\imodifiergroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|solutionrelative:application\\interfaces\\menuinterfaces\\imodifiergroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\menuitemmodifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\menumod\\menuitemmodifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\modifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\menumod\\modifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\modifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\menumod\\modifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\pages\\menu\\kitchendevices.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\kitchendevices.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\pages\\menu\\menuitems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\menuitems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\mappings\\menumap\\kitchenmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,6 +65,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\viewmodels\\menumodule\\kitchendeviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\viewmodels\\menumodule\\kitchendeviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\mappings\\menumap\\kitchenorderroutingmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\mappings\\menumap\\kitchenorderroutingmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|e:\\gamliot\\ggit\\gsrpos\\application\\interfaces\\menuinterfaces\\ikitchenorderroutingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,14 +93,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\serviceregistrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\serviceregistrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\implementations\\menuimplementations\\kitchenorderroutingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\menuimplementations\\kitchenorderroutingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\implementations\\menuimplementations\\kitchendeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\menuimplementations\\kitchendeviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\data\\gsrposdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -101,10 +145,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\menuitemnutrition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\menumod\\menuitemnutrition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\menuitemmodifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\menumod\\menuitemmodifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\menuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -229,10 +269,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\viewmodels\\tablemodule\\tableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\viewmodels\\tablemodule\\tableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\pages\\table\\diningareas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -391,14 +427,6 @@
       "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\viewmodels\\tablemodule\\areawaiterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\pages\\menu\\menuitems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\menuitems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\components\\pages\\menu\\pricelists.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\pricelists.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -491,10 +519,6 @@
       "RelativeMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|solutionrelative:application\\interfaces\\menuinterfaces\\imenucategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|e:\\gamliot\\ggit\\gsrpos\\application\\interfaces\\menuinterfaces\\ipreparationareaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|solutionrelative:application\\interfaces\\menuinterfaces\\ipreparationareaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|e:\\gamliot\\ggit\\gsrpos\\application\\interfaces\\menuinterfaces\\imenuitemtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|solutionrelative:application\\interfaces\\menuinterfaces\\imenuitemtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -513,10 +537,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\implementations\\menuimplementations\\preparationareaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\menuimplementations\\preparationareaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|e:\\gamliot\\ggit\\gsrpos\\infrastructure\\implementations\\menuimplementations\\menucategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\menuimplementations\\menucategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|e:\\gamliot\\ggit\\gsrpos\\mainapp\\mappings\\menumap\\menuitemmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -694,16 +714,8 @@
       "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\userimplementations\\rolepermissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\modifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\menumod\\modifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\usermod\\userpass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\usermod\\userpass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\modifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\menumod\\modifiergroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|e:\\gamliot\\ggit\\gsrpos\\domain\\entities\\menumod\\comboitemdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -842,19 +854,175 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "KitchenOrderRoutingMapping.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
-              "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
-              "RelativeToolTip": "MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
-              "ViewState": "AgIAAAIAAAAAMzMzMzMLwAoAAAARAAAAAAAAAA==",
+              "Title": "IMenuItemModifierGroupService.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuItemModifierGroupService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IMenuItemModifierGroupService.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuItemModifierGroupService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\MenuInterfaces\\IMenuItemModifierGroupService.cs",
+              "ViewState": "AgIAAAUAAADQzMzMzMwgwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-10T02:52:13.215Z",
+              "WhenOpened": "2025-09-11T03:13:00.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IModifierService.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IModifierService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IModifierService.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IModifierService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\MenuInterfaces\\IModifierService.cs",
+              "ViewState": "AgIAAAoAAACAmZmZmZkBwBYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T03:11:59.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "KitchenDeviceService.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
+              "RelativeToolTip": "Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
+              "ViewState": "AgIAABAAAAAAIDMzMzPjvxcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T13:41:46.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MenuCategoryService.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
+              "RelativeToolTip": "Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
+              "ViewState": "AgIAAA0AAAAANDMzMzMLwHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-05T18:06:18.174Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "KitchenOrderRoutingService.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
+              "RelativeToolTip": "Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T02:20:27.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IModifierGroupService.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IModifierGroupService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IModifierGroupService.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IModifierGroupService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\MenuInterfaces\\IModifierGroupService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAiwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T03:11:02.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "KitchenDevices.razor",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\KitchenDevices.razor",
+              "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\KitchenDevices.razor",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\KitchenDevices.razor",
+              "RelativeToolTip": "MainApp\\Components\\Pages\\menu\\KitchenDevices.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T18:43:38.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MenuItems.razor",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\MenuItems.razor",
+              "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\MenuItems.razor",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\MenuItems.razor",
+              "RelativeToolTip": "MainApp\\Components\\Pages\\menu\\MenuItems.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-10T20:58:13.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "MainApp\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAFkAAAAAMjMzMzMbwGYAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-20T16:46:38.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ModifierGroup.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\ModifierGroup.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\ModifierGroup.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\ModifierGroup.cs",
+              "RelativeToolTip": "Domain\\Entities\\MenuMod\\ModifierGroup.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T11:13:10.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Modifier.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\Modifier.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\Modifier.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\Modifier.cs",
+              "RelativeToolTip": "Domain\\Entities\\MenuMod\\Modifier.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T11:15:10.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MenuItemModifierGroup.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
+              "RelativeToolTip": "Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T11:17:53.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "KitchenDeviceViewModel.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
+              "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
+              "RelativeToolTip": "MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T02:49:47.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "KitchenMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\KitchenMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\KitchenMapping.cs",
@@ -867,7 +1035,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
+              "Title": "ItemsEditor.razor",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
+              "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
+              "RelativeToolTip": "MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
+              "ViewState": "AgIAAEcCAAAAMjMzMzMrwE0CAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-11T19:45:40.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "KitchenOrderRoutingViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\KitchenOrderRoutingViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\KitchenOrderRoutingViewModel.cs",
@@ -880,20 +1061,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "KitchenDeviceViewModel.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
-              "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
-              "RelativeToolTip": "MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
-              "ViewState": "AgIAABAAAAAAMzMzMzMDwBQAAAAzAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "KitchenOrderRoutingMapping.cs",
+              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
+              "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
+              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
+              "RelativeToolTip": "MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
+              "ViewState": "AgIAAAIAAAAAMzMzMzMLwAoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-10T02:49:47.999Z",
+              "WhenOpened": "2025-09-10T02:52:13.215Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 19,
               "Title": "KitchenOrderRouting.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\KitchenOrderRouting.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\KitchenOrderRouting.cs",
@@ -901,12 +1082,11 @@
               "RelativeToolTip": "Domain\\Entities\\MenuMod\\KitchenOrderRouting.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAwAoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T07:00:36.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T07:00:36.787Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 21,
               "Title": "MenuItemViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\MenuItemViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\MenuItemViewModel.cs",
@@ -914,12 +1094,11 @@
               "RelativeToolTip": "MainApp\\ViewModels\\MenuModule\\MenuItemViewModel.cs",
               "ViewState": "AgIAABMAAAAgMzMzMzMwwAgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T20:48:03.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-10T20:48:03.596Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 20,
               "Title": "KitchenDevice.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\KitchenDevice.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\KitchenDevice.cs",
@@ -927,12 +1106,11 @@
               "RelativeToolTip": "Domain\\Entities\\MenuMod\\KitchenDevice.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAqwBYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T06:58:52.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T06:58:52.432Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "IKitchenOrderRoutingService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IKitchenOrderRoutingService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IKitchenOrderRoutingService.cs",
@@ -940,12 +1118,11 @@
               "RelativeToolTip": "Application\\Interfaces\\MenuInterfaces\\IKitchenOrderRoutingService.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-10T02:18:43.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-10T02:18:43.154Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 18,
               "Title": "IKitchenDeviceService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IKitchenDeviceService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IKitchenDeviceService.cs",
@@ -953,12 +1130,11 @@
               "RelativeToolTip": "Application\\Interfaces\\MenuInterfaces\\IKitchenDeviceService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T13:40:02.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T13:40:02.423Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 22,
               "Title": "ServiceRegistrations.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\ServiceRegistrations.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceRegistrations.cs",
@@ -966,25 +1142,11 @@
               "RelativeToolTip": "Infrastructure\\ServiceRegistrations.cs",
               "ViewState": "AgIAABkAAABAMzMzMzMjwCsAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T13:31:12.261Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T13:31:12.261Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "KitchenOrderRoutingService.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
-              "RelativeToolTip": "Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
-              "ViewState": "AgIAADQAAAAAzMzMzMwcwEEAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-10T02:20:27.221Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 34,
               "Title": "MenuItemPriceListEntry.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemPriceListEntry.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemPriceListEntry.cs",
@@ -996,19 +1158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "KitchenDeviceService.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
-              "RelativeToolTip": "Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
-              "ViewState": "AgIAAIwAAABAZmZmZmY9wJsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T13:41:46.934Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 23,
               "Title": "GSRPOSDbContext.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Data\\GSRPOSDbContext.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\GSRPOSDbContext.cs",
@@ -1020,7 +1170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 25,
               "Title": "MenuItemService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuItemService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuItemService.cs",
@@ -1032,7 +1182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 26,
               "Title": "IMenuItemService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuItemService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IMenuItemService.cs",
@@ -1044,7 +1194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 35,
               "Title": "MenuItemNutrition.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemNutrition.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemNutrition.cs",
@@ -1056,7 +1206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 24,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\MauiProgram.cs",
               "RelativeDocumentMoniker": "MainApp\\MauiProgram.cs",
@@ -1068,7 +1218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 27,
               "Title": "ICustomerService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\CustomerInterfaces\\ICustomerService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\CustomerInterfaces\\ICustomerService.cs",
@@ -1080,7 +1230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 32,
               "Title": "Order.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\Order.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\Order.cs",
@@ -1092,7 +1242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 206,
+              "DocumentIndex": 209,
               "Title": "20250907105428_CustomerandOrder.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250907105428_CustomerandOrder.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250907105428_CustomerandOrder.cs",
@@ -1104,7 +1254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 30,
               "Title": "20250907085512_OrderSet.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250907085512_OrderSet.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250907085512_OrderSet.cs",
@@ -1116,7 +1266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 29,
               "Title": "CustomerService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\CustomerImplementations\\CustomerService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\CustomerImplementations\\CustomerService.cs",
@@ -1128,7 +1278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 28,
               "Title": "PriceList.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\PriceList.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\PriceList.cs",
@@ -1140,7 +1290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 31,
               "Title": "20250907075336_CustomerandOrder.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250907075336_CustomerandOrder.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250907075336_CustomerandOrder.cs",
@@ -1152,19 +1302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "MenuItemModifierGroup.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
-              "RelativeToolTip": "Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T11:17:53.969Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 36,
               "Title": "MenuItem.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItem.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItem.cs",
@@ -1176,7 +1314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 33,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\OrderItem.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\OrderItem.cs",
@@ -1188,7 +1326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 37,
               "Title": "MenuDeliveryPrice.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuDeliveryPrice.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuDeliveryPrice.cs",
@@ -1200,7 +1338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 38,
               "Title": "MenuCategory.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuCategory.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuCategory.cs",
@@ -1212,7 +1350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 39,
               "Title": "RewardUsage.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\CustomerMod\\RewardUsage.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\RewardUsage.cs",
@@ -1224,7 +1362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 40,
               "Title": "DiscountsLog.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\DiscountsLog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\DiscountsLog.cs",
@@ -1236,7 +1374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 42,
               "Title": "DeliveryOrderTrack.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\DeliveryOrderTrack.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\DeliveryOrderTrack.cs",
@@ -1248,7 +1386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 43,
               "Title": "ComboOrderItem.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\ComboOrderItem.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\ComboOrderItem.cs",
@@ -1260,7 +1398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 44,
               "Title": "VoidOrderItemLog.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\VoidOrderItemLog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\VoidOrderItemLog.cs",
@@ -1272,7 +1410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 45,
               "Title": "OrderPrepStatus.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\OrderPrepStatus.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\OrderPrepStatus.cs",
@@ -1284,7 +1422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 46,
               "Title": "OrderItemModifier.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\OrderItemModifier.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\OrderItemModifier.cs",
@@ -1296,7 +1434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 41,
               "Title": "KOTLog.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\OrderMod\\KOTLog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\KOTLog.cs",
@@ -1308,7 +1446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 47,
               "Title": "KOTStatusEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\KOTStatusEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\KOTStatusEnum.cs",
@@ -1320,7 +1458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 49,
               "Title": "OrderStatusEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\OrderStatusEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\OrderStatusEnum.cs",
@@ -1332,7 +1470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 48,
               "Title": "OrderSourceEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\OrderSourceEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\OrderSourceEnum.cs",
@@ -1344,7 +1482,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 50,
               "Title": "MenuItemType.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemType.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemType.cs",
@@ -1356,7 +1494,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 53,
               "Title": "PaymentTypeEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\PaymentTypeEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\PaymentTypeEnum.cs",
@@ -1368,7 +1506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 54,
               "Title": "PaymentStatusEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\PaymentStatusEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\PaymentStatusEnum.cs",
@@ -1380,7 +1518,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 51,
               "Title": "ComboItem.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\ComboItem.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\ComboItem.cs",
@@ -1392,7 +1530,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 52,
               "Title": "ItemStatusEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\ItemStatusEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\ItemStatusEnum.cs",
@@ -1404,7 +1542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 55,
               "Title": "OrderTypeEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\OrderTypeEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\OrderTypeEnum.cs",
@@ -1416,7 +1554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 56,
               "Title": "PermissionActionEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\PermissionActionEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\PermissionActionEnum.cs",
@@ -1428,7 +1566,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 61,
               "Title": "PermissionGroup.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\PermissionGroup.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\PermissionGroup.cs",
@@ -1440,7 +1578,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 60,
               "Title": "Permission.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\Permission.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\Permission.cs",
@@ -1452,7 +1590,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 57,
               "Title": "Permissions.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\user\\Permissions.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\user\\Permissions.razor",
@@ -1464,7 +1602,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 59,
               "Title": "Roles.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\user\\Roles.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\user\\Roles.razor",
@@ -1476,7 +1614,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 58,
               "Title": "AssignRolePermissions.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\user\\AssignRolePermissions.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\user\\AssignRolePermissions.razor",
@@ -1488,7 +1626,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 62,
               "Title": "LoginMethodsEnum.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Enums\\LoginMethodsEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\LoginMethodsEnum.cs",
@@ -1500,7 +1638,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 63,
               "Title": "Customers.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\customer\\Customers.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\customer\\Customers.razor",
@@ -1512,7 +1650,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 68,
               "Title": "PricelistType.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\PricelistType.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\PricelistType.razor",
@@ -1524,7 +1662,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 66,
               "Title": "TableViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\TableModule\\TableViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\TableModule\\TableViewModel.cs",
@@ -1536,7 +1674,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 64,
               "Title": "TableEdit.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\table\\TableEdit.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\table\\TableEdit.razor",
@@ -1548,19 +1686,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "MainApp\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAADwAAAAAAAAAAABQPUgAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-20T16:46:38.158Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 71,
               "Title": "Infrastructure.csproj",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\gsrpos\\Infrastructure\\Infrastructure.csproj",
               "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
@@ -1572,7 +1698,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 65,
               "Title": "Tables.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\table\\Tables.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\table\\Tables.razor",
@@ -1584,7 +1710,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 67,
               "Title": "DiningAreas.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\table\\DiningAreas.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\table\\DiningAreas.razor",
@@ -1596,7 +1722,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 69,
               "Title": "NavMenu.razor.css",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\NavMenu.razor.css",
               "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\NavMenu.razor.css",
@@ -1608,7 +1734,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 70,
               "Title": "Home.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\Home.razor",
@@ -1620,7 +1746,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 72,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\MainLayout.razor",
@@ -1632,7 +1758,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 75,
               "Title": "_Imports.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\_Imports.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\_Imports.razor",
@@ -1644,7 +1770,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 73,
               "Title": "MainLayout.razor.css",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\MainLayout.razor.css",
               "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\MainLayout.razor.css",
@@ -1656,7 +1782,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 74,
               "Title": "index.html",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\wwwroot\\index.html",
               "RelativeDocumentMoniker": "MainApp\\wwwroot\\index.html",
@@ -1668,7 +1794,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 78,
               "Title": "CustomerAddressViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\CustomerModule\\CustomerAddressViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\CustomerModule\\CustomerAddressViewModel.cs",
@@ -1680,7 +1806,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 77,
               "Title": "CustomerMappings.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\CustomerMap\\CustomerMappings.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\CustomerMap\\CustomerMappings.cs",
@@ -1692,7 +1818,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 76,
               "Title": "CustomerAddressMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\CustomerMap\\CustomerAddressMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\CustomerMap\\CustomerAddressMapping.cs",
@@ -1704,7 +1830,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 79,
               "Title": "CustomerViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\CustomerModule\\CustomerViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\CustomerModule\\CustomerViewModel.cs",
@@ -1716,7 +1842,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 82,
               "Title": "Customer.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\CustomerMod\\Customer.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\Customer.cs",
@@ -1728,7 +1854,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 81,
               "Title": "CustomerAddress.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\CustomerMod\\CustomerAddress.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\CustomerAddress.cs",
@@ -1740,7 +1866,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 80,
               "Title": "ICustomerAddressService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\CustomerInterfaces\\ICustomerAddressService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\CustomerInterfaces\\ICustomerAddressService.cs",
@@ -1752,7 +1878,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 83,
               "Title": "CustomerAddressService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\CustomerImplementations\\CustomerAddressService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\CustomerImplementations\\CustomerAddressService.cs",
@@ -1764,7 +1890,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 84,
               "Title": "Membership.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\CustomerMod\\Membership.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\Membership.cs",
@@ -1776,7 +1902,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 86,
               "Title": "ICreditHistoryService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\CustomerInterfaces\\ICreditHistoryService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\CustomerInterfaces\\ICreditHistoryService.cs",
@@ -1788,7 +1914,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 85,
               "Title": "CreditHistory.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\CustomerMod\\CreditHistory.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\CreditHistory.cs",
@@ -1800,7 +1926,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 87,
               "Title": "RewardEarning.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\CustomerMod\\RewardEarning.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\RewardEarning.cs",
@@ -1812,7 +1938,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 88,
               "Title": "RewardTransaction.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\CustomerMod\\RewardTransaction.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\RewardTransaction.cs",
@@ -1824,7 +1950,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 94,
               "Title": "IAreaWaiterService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\TableInterfaces\\IAreaWaiterService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\TableInterfaces\\IAreaWaiterService.cs",
@@ -1836,7 +1962,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 92,
               "Title": "IDiningAreaService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\TableInterfaces\\IDiningAreaService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\TableInterfaces\\IDiningAreaService.cs",
@@ -1848,7 +1974,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 91,
               "Title": "MainApp.csproj",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\gsrpos\\MainApp\\MainApp.csproj",
               "RelativeDocumentMoniker": "MainApp\\MainApp.csproj",
@@ -1860,7 +1986,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 90,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\Common\\BaseEntity.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Common\\BaseEntity.cs",
@@ -1872,7 +1998,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 89,
               "Title": "User.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\User.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\User.cs",
@@ -1884,7 +2010,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 93,
               "Title": "DiningArea.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\TableMod\\DiningArea.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\TableMod\\DiningArea.cs",
@@ -1896,7 +2022,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 95,
               "Title": "DiningAreaMappings.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\TableMap\\DiningAreaMappings.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\TableMap\\DiningAreaMappings.cs",
@@ -1908,7 +2034,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 97,
               "Title": "Users.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\user\\Users.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\user\\Users.razor",
@@ -1920,7 +2046,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 98,
               "Title": "UserService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\UserImplementations\\UserService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\UserImplementations\\UserService.cs",
@@ -1932,7 +2058,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 101,
               "Title": "IPermissionService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\UserInterfaces\\IPermissionService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\UserInterfaces\\IPermissionService.cs",
@@ -1944,7 +2070,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 102,
               "Title": "ISeatService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\TableInterfaces\\ISeatService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\TableInterfaces\\ISeatService.cs",
@@ -1956,7 +2082,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 96,
               "Title": "DiningAreaViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\TableModule\\DiningAreaViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\TableModule\\DiningAreaViewModel.cs",
@@ -1968,7 +2094,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 100,
               "Title": "IRolePermissionService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\UserInterfaces\\IRolePermissionService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\UserInterfaces\\IRolePermissionService.cs",
@@ -1980,7 +2106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 99,
               "Title": "IUserService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\UserInterfaces\\IUserService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\UserInterfaces\\IUserService.cs",
@@ -1992,7 +2118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 103,
               "Title": "IRoleService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\UserInterfaces\\IRoleService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\UserInterfaces\\IRoleService.cs",
@@ -2004,7 +2130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 104,
               "Title": "UserRole.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\UserRole.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\UserRole.cs",
@@ -2016,7 +2142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 105,
               "Title": "AreaWaiterViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\TableModule\\AreaWaiterViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\TableModule\\AreaWaiterViewModel.cs",
@@ -2028,7 +2154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
+              "DocumentIndex": 106,
               "Title": "Pricelists.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\Pricelists.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\Pricelists.razor",
@@ -2040,31 +2166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
-              "Title": "ItemsEditor.razor",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
-              "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
-              "RelativeToolTip": "MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
-              "ViewState": "AgIAACQBAAAAwszMzMwQwB8AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-11T19:45:40.215Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 98,
-              "Title": "MenuItems.razor",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\MenuItems.razor",
-              "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\MenuItems.razor",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\MenuItems.razor",
-              "RelativeToolTip": "MainApp\\Components\\Pages\\menu\\MenuItems.razor",
-              "ViewState": "AgIAANwAAAAAAAAAAAAWwOYAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-10T20:58:13.195Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 100,
+              "DocumentIndex": 107,
               "Title": "PricelistMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\PricelistMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\PricelistMapping.cs",
@@ -2076,7 +2178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 101,
+              "DocumentIndex": 108,
               "Title": "TableMappings.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\TableMap\\TableMappings.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\TableMap\\TableMappings.cs",
@@ -2088,7 +2190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 102,
+              "DocumentIndex": 109,
               "Title": "TablePriceViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\TableModule\\TablePriceViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\TableModule\\TablePriceViewModel.cs",
@@ -2100,7 +2202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 103,
+              "DocumentIndex": 110,
               "Title": "SeatViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\TableModule\\SeatViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\TableModule\\SeatViewModel.cs",
@@ -2112,7 +2214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 205,
+              "DocumentIndex": 208,
               "Title": "20250820195031_TableInitial.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250820195031_TableInitial.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250820195031_TableInitial.cs",
@@ -2124,7 +2226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 106,
+              "DocumentIndex": 113,
               "Title": "Routes.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Routes.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Routes.razor",
@@ -2136,7 +2238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 104,
+              "DocumentIndex": 111,
               "Title": "DiningTable.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\TableMod\\DiningTable.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\TableMod\\DiningTable.cs",
@@ -2148,7 +2250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 105,
+              "DocumentIndex": 112,
               "Title": "IDiningTableService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\TableInterfaces\\IDiningTableService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\TableInterfaces\\IDiningTableService.cs",
@@ -2160,7 +2262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 108,
+              "DocumentIndex": 115,
               "Title": "AreaWaitersEntry.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\TableMod\\AreaWaitersEntry.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\TableMod\\AreaWaitersEntry.cs",
@@ -2172,7 +2274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 107,
+              "DocumentIndex": 114,
               "Title": "ITablePriceService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\TableInterfaces\\ITablePriceService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\TableInterfaces\\ITablePriceService.cs",
@@ -2184,7 +2286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 109,
+              "DocumentIndex": 116,
               "Title": "TablePrice.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\TableMod\\TablePrice.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\TableMod\\TablePrice.cs",
@@ -2196,7 +2298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 110,
+              "DocumentIndex": 117,
               "Title": "Seat.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\TableMod\\Seat.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\TableMod\\Seat.cs",
@@ -2208,7 +2310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 111,
+              "DocumentIndex": 118,
               "Title": "DiningAreaService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\TableImplementations\\DiningAreaService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\TableImplementations\\DiningAreaService.cs",
@@ -2220,7 +2322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 112,
+              "DocumentIndex": 119,
               "Title": "TablePriceService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\TableImplementations\\TablePriceService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\TableImplementations\\TablePriceService.cs",
@@ -2232,7 +2334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 113,
+              "DocumentIndex": 120,
               "Title": "AreaWaiterService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\TableImplementations\\AreaWaiterService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\TableImplementations\\AreaWaiterService.cs",
@@ -2244,7 +2346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 114,
+              "DocumentIndex": 121,
               "Title": "SeatService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\TableImplementations\\SeatService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\TableImplementations\\SeatService.cs",
@@ -2256,7 +2358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 115,
+              "DocumentIndex": 122,
               "Title": "TableService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\TableImplementations\\TableService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\TableImplementations\\TableService.cs",
@@ -2268,7 +2370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 117,
+              "DocumentIndex": 124,
               "Title": "PricelistService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\PricelistService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\PricelistService.cs",
@@ -2280,7 +2382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 116,
+              "DocumentIndex": 123,
               "Title": "IPricelistService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IPricelistService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IPricelistService.cs",
@@ -2292,7 +2394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 119,
+              "DocumentIndex": 126,
               "Title": "MenuItemPriceListMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\MenuItemPriceListMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\MenuItemPriceListMapping.cs",
@@ -2304,7 +2406,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 118,
+              "DocumentIndex": 125,
               "Title": "MenuItemTypeViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\MenuItemTypeViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\MenuItemTypeViewModel.cs",
@@ -2316,7 +2418,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 120,
+              "DocumentIndex": 127,
               "Title": "MenuItemPricelistViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\MenuItemPricelistViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\MenuItemPricelistViewModel.cs",
@@ -2328,7 +2430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 121,
+              "DocumentIndex": 128,
               "Title": "IMenuCategoryService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuCategoryService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IMenuCategoryService.cs",
@@ -2340,19 +2442,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 122,
-              "Title": "IPreparationAreaService.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IPreparationAreaService.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IPreparationAreaService.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IPreparationAreaService.cs",
-              "RelativeToolTip": "Application\\Interfaces\\MenuInterfaces\\IPreparationAreaService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T13:52:29.203Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 123,
+              "DocumentIndex": 129,
               "Title": "IMenuItemTypeService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuItemTypeService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IMenuItemTypeService.cs",
@@ -2364,7 +2454,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 124,
+              "DocumentIndex": 130,
               "Title": "IMenuItemPricingService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuItemPricingService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IMenuItemPricingService.cs",
@@ -2376,7 +2466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 125,
+              "DocumentIndex": 131,
               "Title": "MenuItemPricingService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuItemPricingService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuItemPricingService.cs",
@@ -2388,7 +2478,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 126,
+              "DocumentIndex": 132,
               "Title": "MenuItemTypeService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuItemTypeService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuItemTypeService.cs",
@@ -2400,7 +2490,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 127,
+              "DocumentIndex": 133,
               "Title": "PreparationAreaService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\PreparationAreaService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\PreparationAreaService.cs",
@@ -2412,19 +2502,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 128,
-              "Title": "MenuCategoryService.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
-              "RelativeToolTip": "Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
-              "ViewState": "AgIAAA0AAAAANDMzMzMLwHcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T18:06:18.174Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 129,
+              "DocumentIndex": 134,
               "Title": "MenuItemMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\MenuItemMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\MenuItemMapping.cs",
@@ -2436,7 +2514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 130,
+              "DocumentIndex": 135,
               "Title": "MenuItemTypeMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\MenuItemTypeMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\MenuItemTypeMapping.cs",
@@ -2448,7 +2526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 131,
+              "DocumentIndex": 136,
               "Title": "RuntimeSeeder.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Seed\\RuntimeSeeder.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Seed\\RuntimeSeeder.cs",
@@ -2460,7 +2538,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 132,
+              "DocumentIndex": 137,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\App.xaml.cs",
               "RelativeDocumentMoniker": "MainApp\\App.xaml.cs",
@@ -2472,7 +2550,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 133,
+              "DocumentIndex": 138,
               "Title": "PricelistTypes.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\PricelistTypes.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\PricelistTypes.cs",
@@ -2484,7 +2562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 134,
+              "DocumentIndex": 139,
               "Title": "ItemPricelistDTO.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\DTOs\\ItemPricelistDTO.cs",
               "RelativeDocumentMoniker": "Domain\\DTOs\\ItemPricelistDTO.cs",
@@ -2496,7 +2574,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 204,
+              "DocumentIndex": 207,
               "Title": "20250816170242_MenuSecondsChange1.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250816170242_MenuSecondsChange1.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250816170242_MenuSecondsChange1.cs",
@@ -2508,7 +2586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 135,
+              "DocumentIndex": 140,
               "Title": "Setting.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\Common\\Setting.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Common\\Setting.cs",
@@ -2520,7 +2598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 139,
+              "DocumentIndex": 144,
               "Title": "SettingsViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\CommonModule\\SettingsViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\CommonModule\\SettingsViewModel.cs",
@@ -2532,7 +2610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 136,
+              "DocumentIndex": 141,
               "Title": "SettingsService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\Common\\SettingsService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\Common\\SettingsService.cs",
@@ -2544,7 +2622,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 138,
+              "DocumentIndex": 143,
               "Title": "Settings.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\common\\Settings.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\common\\Settings.razor",
@@ -2556,7 +2634,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 137,
+              "DocumentIndex": 142,
               "Title": "ISettingsService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\Common\\ISettingsService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\Common\\ISettingsService.cs",
@@ -2568,7 +2646,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 140,
+              "DocumentIndex": 145,
               "Title": "FileLogger.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\ServiceClass\\FileLogger.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceClass\\FileLogger.cs",
@@ -2580,7 +2658,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 141,
+              "DocumentIndex": 146,
               "Title": "IdGeneratorService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\ServiceClass\\IdGeneratorService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceClass\\IdGeneratorService.cs",
@@ -2592,7 +2670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 142,
+              "DocumentIndex": 147,
               "Title": "AppDbContextModelSnapshot.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
@@ -2604,7 +2682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 143,
+              "DocumentIndex": 148,
               "Title": "20250810215226_MenuSeconds.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250810215226_MenuSeconds.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250810215226_MenuSeconds.cs",
@@ -2616,7 +2694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 144,
+              "DocumentIndex": 149,
               "Title": "20250815025552_MenuSecondsChange.cs",
               "DocumentMoniker": "E:\\Gamliot\\GSuite\\GSRPOS\\Infrastructure\\Migrations\\20250815025552_MenuSecondsChange.cs",
               "RelativeDocumentMoniker": "..\\..\\GSuite\\GSRPOS\\Infrastructure\\Migrations\\20250815025552_MenuSecondsChange.cs",
@@ -2628,7 +2706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 145,
+              "DocumentIndex": 150,
               "Title": "SettingMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\CommonMap\\SettingMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\CommonMap\\SettingMapping.cs",
@@ -2640,7 +2718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 146,
+              "DocumentIndex": 151,
               "Title": "PreparationAreas.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\PreparationAreas.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\PreparationAreas.razor",
@@ -2652,7 +2730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 147,
+              "DocumentIndex": 152,
               "Title": "MenuCategories.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\menu\\MenuCategories.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\MenuCategories.razor",
@@ -2664,7 +2742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 148,
+              "DocumentIndex": 153,
               "Title": "PricelistViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\PricelistViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\PricelistViewModel.cs",
@@ -2676,7 +2754,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 150,
+              "DocumentIndex": 155,
               "Title": "PdfExportService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Helpers\\PdfExportService.cs",
               "RelativeDocumentMoniker": "MainApp\\Helpers\\PdfExportService.cs",
@@ -2688,7 +2766,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 149,
+              "DocumentIndex": 154,
               "Title": "Migrator.csproj",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\gsrpos\\Migrator\\Migrator.csproj",
               "RelativeDocumentMoniker": "Migrator\\Migrator.csproj",
@@ -2700,7 +2778,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 151,
+              "DocumentIndex": 156,
               "Title": "PreparationArea.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\PreparationArea.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\PreparationArea.cs",
@@ -2712,7 +2790,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 152,
+              "DocumentIndex": 157,
               "Title": "MenuCategoryMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\MenuCategoryMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\MenuCategoryMapping.cs",
@@ -2724,7 +2802,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 153,
+              "DocumentIndex": 158,
               "Title": "PreparationAreaMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\MenuMap\\PreparationAreaMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\PreparationAreaMapping.cs",
@@ -2736,7 +2814,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 154,
+              "DocumentIndex": 159,
               "Title": "Domain.csproj",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\gsrpos\\Domain\\Domain.csproj",
               "RelativeDocumentMoniker": "Domain\\Domain.csproj",
@@ -2748,7 +2826,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 155,
+              "DocumentIndex": 160,
               "Title": "MenuCategoryViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\MenuCategoryViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\MenuCategoryViewModel.cs",
@@ -2760,7 +2838,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 156,
+              "DocumentIndex": 161,
               "Title": "DbPathHelper.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Helper\\DbPathHelper.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Helper\\DbPathHelper.cs",
@@ -2772,7 +2850,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 157,
+              "DocumentIndex": 162,
               "Title": "IPermissionGroupService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Application\\Interfaces\\UserInterfaces\\IPermissionGroupService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\UserInterfaces\\IPermissionGroupService.cs",
@@ -2784,7 +2862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 158,
+              "DocumentIndex": 163,
               "Title": "RoleService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\UserImplementations\\RoleService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\UserImplementations\\RoleService.cs",
@@ -2796,7 +2874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 159,
+              "DocumentIndex": 164,
               "Title": "NotificationService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\ServiceClass\\NotificationService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceClass\\NotificationService.cs",
@@ -2808,7 +2886,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 160,
+              "DocumentIndex": 165,
               "Title": "Toast.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\Toast.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\Toast.razor",
@@ -2820,7 +2898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 161,
+              "DocumentIndex": 166,
               "Title": "PermissionGroups.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\user\\PermissionGroups.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\user\\PermissionGroups.razor",
@@ -2832,7 +2910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 162,
+              "DocumentIndex": 167,
               "Title": "RoleViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\UserModule\\RoleViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\UserModule\\RoleViewModel.cs",
@@ -2844,7 +2922,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 163,
+              "DocumentIndex": 168,
               "Title": "PermissionViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\UserModule\\PermissionViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\UserModule\\PermissionViewModel.cs",
@@ -2856,7 +2934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 164,
+              "DocumentIndex": 169,
               "Title": "PermissionMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\UserMap\\PermissionMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\UserMap\\PermissionMapping.cs",
@@ -2868,7 +2946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 165,
+              "DocumentIndex": 170,
               "Title": "PermissionService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\UserImplementations\\PermissionService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\UserImplementations\\PermissionService.cs",
@@ -2880,7 +2958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 166,
+              "DocumentIndex": 171,
               "Title": "PreparationAreaViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\PreparationAreaViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\PreparationAreaViewModel.cs",
@@ -2892,7 +2970,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 203,
+              "DocumentIndex": 206,
               "Title": "20250804194637_MenuInitial.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250804194637_MenuInitial.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250804194637_MenuInitial.cs",
@@ -2904,7 +2982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 167,
+              "DocumentIndex": 172,
               "Title": "LogViewers.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Pages\\user\\LogViewers.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\user\\LogViewers.razor",
@@ -2916,7 +2994,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 168,
+              "DocumentIndex": 173,
               "Title": "RoleMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\UserMap\\RoleMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\UserMap\\RoleMapping.cs",
@@ -2928,7 +3006,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 169,
+              "DocumentIndex": 174,
               "Title": "app.css",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\wwwroot\\css\\app.css",
               "RelativeDocumentMoniker": "MainApp\\wwwroot\\css\\app.css",
@@ -2940,7 +3018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 170,
+              "DocumentIndex": 175,
               "Title": "MainPage.xaml",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\MainPage.xaml",
               "RelativeDocumentMoniker": "MainApp\\MainPage.xaml",
@@ -2952,7 +3030,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 171,
+              "DocumentIndex": 176,
               "Title": "App.xaml",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\App.xaml",
               "RelativeDocumentMoniker": "MainApp\\App.xaml",
@@ -2964,19 +3042,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 173,
-              "Title": "Modifier.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\Modifier.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\Modifier.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\Modifier.cs",
-              "RelativeToolTip": "Domain\\Entities\\MenuMod\\Modifier.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T11:15:10.03Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 172,
+              "DocumentIndex": 177,
               "Title": "RolePermissionService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\UserImplementations\\RolePermissionService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\UserImplementations\\RolePermissionService.cs",
@@ -2988,19 +3054,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 175,
-              "Title": "ModifierGroup.cs",
-              "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\ModifierGroup.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\ModifierGroup.cs",
-              "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\ModifierGroup.cs",
-              "RelativeToolTip": "Domain\\Entities\\MenuMod\\ModifierGroup.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T11:13:10.248Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 174,
+              "DocumentIndex": 178,
               "Title": "UserPass.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\UserPass.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\UserPass.cs",
@@ -3012,7 +3066,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 176,
+              "DocumentIndex": 179,
               "Title": "ComboItemDetail.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\ComboItemDetail.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\ComboItemDetail.cs",
@@ -3024,7 +3078,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 177,
+              "DocumentIndex": 180,
               "Title": "DeliveryPlatform.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\MenuMod\\DeliveryPlatform.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\DeliveryPlatform.cs",
@@ -3036,7 +3090,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 178,
+              "DocumentIndex": 181,
               "Title": "PermissionGroupService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Implementations\\UserImplementations\\PermissionGroupService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\UserImplementations\\PermissionGroupService.cs",
@@ -3048,7 +3102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 179,
+              "DocumentIndex": 182,
               "Title": "UserViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\UserModule\\UserViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\UserModule\\UserViewModel.cs",
@@ -3060,7 +3114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 180,
+              "DocumentIndex": 183,
               "Title": "UserMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\UserMap\\UserMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\UserMap\\UserMapping.cs",
@@ -3072,7 +3126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 181,
+              "DocumentIndex": 184,
               "Title": "PasswordHasherService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\ServiceClass\\PasswordHasherService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceClass\\PasswordHasherService.cs",
@@ -3084,7 +3138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 182,
+              "DocumentIndex": 185,
               "Title": "Role.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\Role.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\Role.cs",
@@ -3096,7 +3150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 183,
+              "DocumentIndex": 186,
               "Title": "20250720194953_UserInitial.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250720194953_UserInitial.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250720194953_UserInitial.cs",
@@ -3108,7 +3162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 184,
+              "DocumentIndex": 187,
               "Title": "20250801102135_UserPermissionAdd.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250801102135_UserPermissionAdd.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250801102135_UserPermissionAdd.cs",
@@ -3120,7 +3174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 185,
+              "DocumentIndex": 188,
               "Title": "DateService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\ServiceClass\\DateService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceClass\\DateService.cs",
@@ -3132,7 +3186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 186,
+              "DocumentIndex": 189,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Migrator\\Program.cs",
               "RelativeDocumentMoniker": "Migrator\\Program.cs",
@@ -3144,7 +3198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 187,
+              "DocumentIndex": 190,
               "Title": "ConfirmationModal.razor",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Components\\Layout\\ConfirmationModal.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\ConfirmationModal.razor",
@@ -3156,7 +3210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 188,
+              "DocumentIndex": 191,
               "Title": "UserPermission.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\UserPermission.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\UserPermission.cs",
@@ -3168,7 +3222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 189,
+              "DocumentIndex": 192,
               "Title": "RolePermission.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\UserMod\\RolePermission.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserMod\\RolePermission.cs",
@@ -3180,7 +3234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 190,
+              "DocumentIndex": 193,
               "Title": "RolePermissionAssignmentDTO.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\DTOs\\RolePermissionAssignmentDTO.cs",
               "RelativeDocumentMoniker": "Domain\\DTOs\\RolePermissionAssignmentDTO.cs",
@@ -3192,7 +3246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 192,
+              "DocumentIndex": 195,
               "Title": "RolePermissionAssignmentViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\UserModule\\RolePermissionAssignmentViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\UserModule\\RolePermissionAssignmentViewModel.cs",
@@ -3204,7 +3258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 193,
+              "DocumentIndex": 196,
               "Title": "RolePermissionMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\UserMap\\RolePermissionMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\UserMap\\RolePermissionMapping.cs",
@@ -3216,7 +3270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 194,
+              "DocumentIndex": 197,
               "Title": "RolePermissionViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\UserModule\\RolePermissionViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\UserModule\\RolePermissionViewModel.cs",
@@ -3228,7 +3282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 191,
+              "DocumentIndex": 194,
               "Title": "PermissionDTO.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\DTOs\\PermissionDTO.cs",
               "RelativeDocumentMoniker": "Domain\\DTOs\\PermissionDTO.cs",
@@ -3240,7 +3294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 195,
+              "DocumentIndex": 198,
               "Title": "PermissionGroupViewModel.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\ViewModels\\UserModule\\PermissionGroupViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\UserModule\\PermissionGroupViewModel.cs",
@@ -3252,7 +3306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 196,
+              "DocumentIndex": 199,
               "Title": "PermissionGroupMapping.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\Mappings\\UserMap\\PermissionGroupMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\UserMap\\PermissionGroupMapping.cs",
@@ -3264,7 +3318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 197,
+              "DocumentIndex": 200,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\MainApp\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "MainApp\\MainPage.xaml.cs",
@@ -3276,7 +3330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 198,
+              "DocumentIndex": 201,
               "Title": "IIdGeneratorService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Services\\IIdGeneratorService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\IIdGeneratorService.cs",
@@ -3288,7 +3342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 199,
+              "DocumentIndex": 202,
               "Title": "AuditLog.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Entities\\Common\\AuditLog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Common\\AuditLog.cs",
@@ -3300,7 +3354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 200,
+              "DocumentIndex": 203,
               "Title": "Applications.csproj",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\gsrpos\\Application\\Applications.csproj",
               "RelativeDocumentMoniker": "Application\\Applications.csproj",
@@ -3312,7 +3366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 202,
+              "DocumentIndex": 205,
               "Title": "IDateService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Services\\IDateService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\IDateService.cs",
@@ -3324,7 +3378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 201,
+              "DocumentIndex": 204,
               "Title": "IPasswordHasherService.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Domain\\Services\\IPasswordHasherService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\IPasswordHasherService.cs",

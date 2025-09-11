@@ -9,6 +9,8 @@
 @inject IPreparationAreaService PrepAreaService
 @inject IPricelistService PricelistService
 @inject ISettingsService SettingsService
+@inject IKitchenDeviceService DeviceService
+@inject IKitchenOrderRoutingService RoutingService
 @inject NotificationService Notifier
 @inject FileLogger Logger
 @inject NavigationManager Nav
@@ -60,6 +62,16 @@
                 Delivery (soon)
             </button>
         </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(ActiveTab == Tab.Routing ? "active" : "")"
+                    type="button" role="tab"
+                    aria-selected="@(ActiveTab == Tab.Routing)"
+                    @onclick="@(() => SetTab(Tab.Routing))">
+                Kitchen Routing
+            </button>
+        </li>
+
     </ul>
 
     @* Tab content *@
@@ -282,6 +294,59 @@
             </div>
         </div>
 
+        @* -------- Devices Tab -------- *@
+        <div class="tab-pane fade @(ActiveTab == Tab.Routing ? "show active" : "")" role="tabpanel">
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Route to Kitchen Devices</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-secondary btn-sm" type="button" @onclick="GoToDevices">
+                            <i class="bi bi-gear me-1"></i> Manage Devices
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" type="button" @onclick="AddRoute">
+                            <i class="bi bi-plus-circle me-1"></i> Add Device
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-sm table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width:50%">Device</th>
+                                <th style="width:20%">Copies</th>
+                                <th style="width:80px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var r in Model.KitchenRoutes)
+                            {
+                                <tr>
+                                    <td>
+                                        <select class="form-select form-select-sm" @bind="r.KitchenDeviceId" @oninput="@(_ => OnDeviceChanged(r))">
+                                            <option value="0">-- Select --</option>
+                                            @foreach (var d in Devices)
+                                            {
+                                                <option value="@d.Id">@d.Name (@d.Name)</option>
+                                            }
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <InputNumber class="form-control form-control-sm text-end" @bind-Value="r.Copies" />
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-danger" type="button" @onclick="@(() => RemoveRoute(r))">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <small class="text-muted">Each Menu Item can be routed to multiple printers/devices.</small>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="mt-3 d-flex gap-2">
@@ -292,7 +357,7 @@
 </EditForm>
 
 @code {
-    enum Tab { Details, Types, Pricing, Delivery }
+    enum Tab { Details, Types, Pricing, Delivery, Routing }
     Tab ActiveTab = Tab.Details;
 
     void SetTab(Tab t) => ActiveTab = t;
@@ -334,6 +399,7 @@
         public bool IsAvailableToday { get; set; } = true;
 
         public List<ItemTypeRow> Types { get; set; } = new();
+        public List<KitchenRoutingRow> KitchenRoutes { get; set; } = new();
         public List<MenuItemPricelistViewModel> PricelistRows { get; set; } = new(); // used only when multiple enabled
     }
 
@@ -356,6 +422,14 @@
     List<MenuCategory> Categories = new();
     List<PreparationArea> PrepAreas = new();
     List<PriceList> Pricelists = new();
+    List<KitchenDevice> Devices = new();
+
+    public class KitchenRoutingRow
+    {
+        public long KitchenDeviceId { get; set; }
+        public string KitchenDeviceName { get; set; } = "";
+        public int Copies { get; set; } = 1;
+    }
 
     // Settings
     Setting? Settings;
@@ -370,6 +444,7 @@
         PrepAreas  = await PrepAreaService.GetAllPreparationAreaAsync();
         Pricelists = await PricelistService.GetAllPricelistsAsync();
         Settings   = await SettingsService.GetSettingAsync(1); // your settings row
+        Devices = await DeviceService.GetAllAsync();
 
         // capture default pricelist name if present
         DefaultPricelistName = Pricelists.FirstOrDefault(p => p.Id == DefaultPricelistId)?.Name ?? "Default";
@@ -444,6 +519,14 @@
                 var defaultRow = priceRows.FirstOrDefault(x => x.PriceListId == DefaultPricelistId);
                 DefaultPriceEdit = defaultRow?.Price ?? 0m;
             }
+
+            var routes = await RoutingService.GetByMenuItemAsync(item.Id);
+            Model.KitchenRoutes = routes.Select(r => new KitchenRoutingRow
+            {
+                KitchenDeviceId = r.KitchenDeviceId,
+                KitchenDeviceName = Devices.FirstOrDefault(d => d.Id == r.KitchenDeviceId)?.Name ?? "",
+                Copies = r.Copies
+            }).ToList();
         }
         else
         {
@@ -502,6 +585,15 @@
         row.PricelistName = Pricelists.FirstOrDefault(p => p.Id == row.PricelistId)?.Name ?? "";
     }
 
+    void AddRoute() => Model.KitchenRoutes.Add(new KitchenRoutingRow());
+    void RemoveRoute(KitchenRoutingRow r) => Model.KitchenRoutes.Remove(r);
+    void GoToDevices() => Nav.NavigateTo("/kitchen/devices");
+
+    void OnDeviceChanged(KitchenRoutingRow row)
+    {
+        if (row.KitchenDeviceId > 0)
+            row.KitchenDeviceName = Devices.FirstOrDefault(d => d.Id == row.KitchenDeviceId)?.Name ?? "";
+    }
 
     // ===== Save =====
     async Task SaveAsync()
@@ -726,6 +818,44 @@
                     await PricingService.DeleteAsync(other.Id);
                 }
             }
+
+            // --- Routing ---
+            var existingRoutes = await RoutingService.GetByMenuItemAsync(itemId);
+            var keepRouteIds = new HashSet<long>();
+
+            foreach (var r in Model.KitchenRoutes.Where(x => x.KitchenDeviceId > 0))
+            {
+                var exists = await RoutingService.ExistsAsync(itemId, r.KitchenDeviceId, null);
+                if (exists)
+                {
+                    // Update copies
+                    var existing = await RoutingService.GetRouteAsync(itemId, r.KitchenDeviceId);
+                    if (existing != null)
+                    {
+                        existing.Copies = r.Copies;
+                        await RoutingService.UpdateAsync(existing);
+                        keepRouteIds.Add(existing.Id);
+                    }
+                }
+                else
+                {
+                    var newId = await RoutingService.AddAsync(new KitchenOrderRouting
+                    {
+                        MenuItemId = itemId,
+                        KitchenDeviceId = r.KitchenDeviceId,
+                        Copies = r.Copies
+                    });
+                    keepRouteIds.Add(newId);
+                }
+            }
+
+            // Remove deleted routes
+            foreach (var old in existingRoutes)
+            {
+                if (!keepRouteIds.Contains(old.Id))
+                    await RoutingService.DeleteAsync(old.Id);
+            }
+
 
             BackToList();
         }
