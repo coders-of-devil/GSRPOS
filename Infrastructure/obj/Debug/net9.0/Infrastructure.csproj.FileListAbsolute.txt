@@ -94,3 +94,4 @@ E:\Gamliot\GGit\GSRPOS\Infrastructure\obj\Debug\net9.0\refint\Infrastructure.dll
 E:\Gamliot\GGit\GSRPOS\Infrastructure\obj\Debug\net9.0\Infrastructure.pdb
 E:\Gamliot\GGit\GSRPOS\Infrastructure\obj\Debug\net9.0\Infrastructure.genruntimeconfig.cache
 E:\Gamliot\GGit\GSRPOS\Infrastructure\obj\Debug\net9.0\ref\Infrastructure.dll
+C:\MyFiles\Works\Git-Fallel\gsrpos\Infrastructure\obj\Debug\net9.0\Infrastructure.sourcelink.json

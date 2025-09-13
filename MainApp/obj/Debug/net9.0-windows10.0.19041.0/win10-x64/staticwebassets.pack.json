@@ -1,27 +1,27 @@
 {
   "Files": [
     {
-      "Id": "E:\\Gamliot\\GGit\\gsrpos\\MainApp\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\MainApp.styles.css",
+      "Id": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\MainApp\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\MainApp.styles.css",
       "PackagePath": "staticwebassets\\MainApp.styles.css"
     },
     {
-      "Id": "E:\\Gamliot\\GGit\\gsrpos\\MainApp\\wwwroot\\css\\app.css",
+      "Id": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\MainApp\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "E:\\Gamliot\\GGit\\gsrpos\\MainApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\MainApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "E:\\Gamliot\\GGit\\gsrpos\\MainApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\MainApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "E:\\Gamliot\\GGit\\gsrpos\\MainApp\\wwwroot\\images\\user-avatar.png",
+      "Id": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\MainApp\\wwwroot\\images\\user-avatar.png",
       "PackagePath": "staticwebassets\\images\\user-avatar.png"
     },
     {
-      "Id": "E:\\Gamliot\\GGit\\gsrpos\\MainApp\\wwwroot\\index.html",
+      "Id": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\MainApp\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {

@@ -1,7 +1,7 @@
-E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\index.html
-E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\css\bootstrap\bootstrap.min.css.map
-E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\css\bootstrap\bootstrap.min.css
-E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\css\app.css
+C:\MyFiles\Works\Git-Fallel\gsrpos\MainApp\wwwroot\index.html
+C:\MyFiles\Works\Git-Fallel\gsrpos\MainApp\wwwroot\css\bootstrap\bootstrap.min.css.map
+C:\MyFiles\Works\Git-Fallel\gsrpos\MainApp\wwwroot\css\bootstrap\bootstrap.min.css
+C:\MyFiles\Works\Git-Fallel\gsrpos\MainApp\wwwroot\css\app.css
 wwwroot\css\app.css
 wwwroot\css\bootstrap\bootstrap.min.css
 wwwroot\css\bootstrap\bootstrap.min.css.map

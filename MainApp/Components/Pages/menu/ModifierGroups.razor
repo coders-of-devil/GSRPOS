@@ -1,0 +1,256 @@
+﻿@page "/menu/modifier-groups"
+@inject IModifierGroupService GroupService
+@inject NotificationService Notifier
+@inject IJSRuntime JS
+@inject FileLogger Logger
+
+<h4 class="mb-1">Modifier Groups</h4>
+<small class="text-muted">Manage groups of modifiers (e.g., Pizza Sizes, Extra Toppings)</small>
+<hr />
+
+<div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <div class="input-group" style="max-width: 280px;">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input class="form-control" @bind="searchTerm" @bind:event="oninput" placeholder="Search groups..." />
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-outline-success btn-sm" @onclick="ExportToExcel">
+            <i class="bi bi-file-earmark-excel me-1"></i> Excel
+        </button>
+        @if (groups.Any(g => g.IsSelected))
+        {
+            <button class="btn btn-danger btn-sm" @onclick="ConfirmBulkDelete">
+                <i class="bi bi-trash me-1"></i> Delete Selected
+            </button>
+        }
+        <button class="btn btn-primary btn-sm" @onclick="ShowAddModal">
+            <i class="bi bi-plus-circle me-1"></i> Add Group
+        </button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body table-responsive">
+        @if (PaginatedGroups.Any())
+        {
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width:40px"><input type="checkbox" @onchange="ToggleAll" /></th>
+                        <th>Name</th>
+                        <th>Required</th>
+                        <th>Max Selectable</th>
+                        <th>Display Order</th>
+                        <th>Description</th>
+                        <th style="width:120px">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var g in PaginatedGroups)
+                    {
+                        <tr>
+                            <td><input type="checkbox" @bind="g.IsSelected" /></td>
+                            <td>@g.Name</td>
+                            <td>@(g.IsRequired ? "✔" : "✘")</td>
+                            <td>@g.MaxSelectable</td>
+                            <td>@g.DisplayOrder</td>
+                            <td>@g.Description</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1" @onclick="() => Edit(g)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" @onclick="() => ConfirmDelete(g.Id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">No modifier groups found.</div>
+        }
+
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <div>
+                Showing @((currentPage - 1) * pageSize + 1)
+                to @((currentPage - 1) * pageSize + PaginatedGroups.Count)
+                of @FilteredGroups.Count groups
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label>Rows per page:</label>
+                <select class="form-select form-select-sm" style="width: 80px;" @bind="pageSize">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>25</option>
+                </select>
+                <button class="btn btn-outline-secondary btn-sm" @onclick="PrevPage">Previous</button>
+                <button class="btn btn-outline-secondary btn-sm" @onclick="NextPage">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (showForm)
+{
+    <div class="modal fade show d-block" style="background:rgba(0,0,0,0.5)">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <EditForm Model="formModel" OnValidSubmit="Save">
+                    <div class="modal-header">
+                        <h5 class="modal-title">@((formModel.Id == 0) ? "Create Group" : "Edit Group")</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <InputText class="form-control" @bind-Value="formModel.Name" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <InputText class="form-control" @bind-Value="formModel.Description" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Max Selectable</label>
+                            <InputNumber class="form-control" @bind-Value="formModel.MaxSelectable" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Display Order</label>
+                            <InputNumber class="form-control" @bind-Value="formModel.DisplayOrder" />
+                        </div>
+                        <div class="form-check">
+                            <InputCheckbox class="form-check-input" @bind-Value="formModel.IsRequired" />
+                            <label class="form-check-label">Required</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" @onclick="CloseModal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+<ConfirmationModal Show="@showBulkDeleteConfirm"
+                   Title="Delete Selected Groups"
+                   Message="Are you sure you want to delete the selected groups?"
+                   OnConfirm="ConfirmBulkDelete"
+                   OnCancel="() => showBulkDeleteConfirm = false" />
+
+<ConfirmationModal Show="@showSingleDeleteConfirm"
+                   Title="Delete Group"
+                   Message="Are you sure you want to delete this group?"
+                   OnConfirm="ConfirmSingleDelete"
+                   OnCancel="() => showSingleDeleteConfirm = false" />
+
+@code {
+    List<ModifierGroupViewModel> groups = new();
+    ModifierGroupViewModel formModel = new();
+
+    string searchTerm = "";
+    bool showForm = false;
+    bool showBulkDeleteConfirm = false;
+    bool showSingleDeleteConfirm = false;
+    long selectedGroupId = 0;
+
+    int currentPage = 1;
+    int pageSize = 10;
+
+    protected override async Task OnInitializedAsync() => await LoadGroups();
+
+    async Task LoadGroups()
+    {
+        var all = await GroupService.GetAllAsync();
+        groups = all.Select(g => g.ToViewModel()).ToList();
+    }
+
+    void ShowAddModal() { formModel = new(); showForm = true; }
+    void Edit(ModifierGroupViewModel g) { formModel = g; showForm = true; }
+    void CloseModal() => showForm = false;
+
+    async Task Save()
+    {
+        var entity = formModel.ToEntity();
+        if (formModel.Id == 0)
+        {
+            await GroupService.AddAsync(entity);
+            Notifier.Notify("✅ Group created", "success");
+        }
+        else
+        {
+            await GroupService.UpdateAsync(entity);
+            Notifier.Notify("✏️ Group updated", "info");
+        }
+        showForm = false;
+        await LoadGroups();
+    }
+
+    void ConfirmDelete(long id) { selectedGroupId = id; showSingleDeleteConfirm = true; }
+    async Task ConfirmSingleDelete()
+    {
+        await GroupService.DeleteAsync(selectedGroupId);
+        Notifier.Notify("🗑 Group deleted", "warning");
+        await LoadGroups();
+        showSingleDeleteConfirm = false;
+    }
+
+    void ConfirmBulkDelete() => showBulkDeleteConfirm = true;
+    async Task ConfirmBulkDelete()
+    {
+        foreach (var id in groups.Where(g => g.IsSelected).Select(g => g.Id).ToList())
+            await GroupService.DeleteAsync(id);
+
+        Notifier.Notify("🗑 Selected groups deleted", "warning");
+        await LoadGroups();
+        showBulkDeleteConfirm = false;
+    }
+
+    void ToggleAll(ChangeEventArgs e)
+    {
+        bool value = (bool)e.Value;
+        foreach (var g in groups) g.IsSelected = value;
+    }
+
+    List<ModifierGroupViewModel> FilteredGroups =>
+        groups.Where(g => string.IsNullOrWhiteSpace(searchTerm) ||
+                          g.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+              .ToList();
+
+    List<ModifierGroupViewModel> PaginatedGroups =>
+        FilteredGroups.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+
+    void PrevPage() { if (currentPage > 1) currentPage--; }
+    void NextPage() { if (currentPage < Math.Ceiling((double)FilteredGroups.Count / pageSize)) currentPage++; }
+
+    async Task ExportToExcel()
+    {
+        using var workbook = new ClosedXML.Excel.XLWorkbook();
+        var ws = workbook.Worksheets.Add("ModifierGroups");
+        ws.Cell(1, 1).Value = "Name";
+        ws.Cell(1, 2).Value = "Required";
+        ws.Cell(1, 3).Value = "MaxSelectable";
+        ws.Cell(1, 4).Value = "DisplayOrder";
+        ws.Cell(1, 5).Value = "Description";
+
+        for (int i = 0; i < FilteredGroups.Count; i++)
+        {
+            var g = FilteredGroups[i];
+            ws.Cell(i + 2, 1).Value = g.Name;
+            ws.Cell(i + 2, 2).Value = g.IsRequired ? "Yes" : "No";
+            ws.Cell(i + 2, 3).Value = g.MaxSelectable;
+            ws.Cell(i + 2, 4).Value = g.DisplayOrder;
+            ws.Cell(i + 2, 5).Value = g.Description;
+        }
+
+        using var stream = new MemoryStream();
+        workbook.SaveAs(stream);
+        stream.Seek(0, SeekOrigin.Begin);
+        var fileName = $"ModifierGroups_{DateTime.UtcNow:yyyyMMdd_HHmmss}.xlsx";
+        using var streamRef = new DotNetStreamReference(stream);
+        await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+    }
+}

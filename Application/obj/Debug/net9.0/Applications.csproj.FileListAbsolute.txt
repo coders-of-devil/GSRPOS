@@ -74,3 +74,4 @@ E:\Gamliot\GGit\GSRPOS\Application\obj\Debug\net9.0\Applications.dll
 E:\Gamliot\GGit\GSRPOS\Application\obj\Debug\net9.0\refint\Applications.dll
 E:\Gamliot\GGit\GSRPOS\Application\obj\Debug\net9.0\Applications.pdb
 E:\Gamliot\GGit\GSRPOS\Application\obj\Debug\net9.0\ref\Applications.dll
+C:\MyFiles\Works\Git-Fallel\gsrpos\Application\obj\Debug\net9.0\Applications.sourcelink.json
