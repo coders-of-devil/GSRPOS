@@ -11,6 +11,8 @@
 @inject ISettingsService SettingsService
 @inject IKitchenDeviceService DeviceService
 @inject IKitchenOrderRoutingService RoutingService
+@inject IModifierGroupService GroupService
+@inject IMenuItemModifierGroupService ItemGroupService
 @inject NotificationService Notifier
 @inject FileLogger Logger
 @inject NavigationManager Nav
@@ -69,6 +71,15 @@
                     aria-selected="@(ActiveTab == Tab.Routing)"
                     @onclick="@(() => SetTab(Tab.Routing))">
                 Kitchen Routing
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(ActiveTab == Tab.Modifiers ? "active" : "")"
+                    type="button" role="tab"
+                    aria-selected="@(ActiveTab == Tab.Modifiers)"
+                    @onclick="@(() => SetTab(Tab.Modifiers))">
+                Modifiers
             </button>
         </li>
 
@@ -347,6 +358,55 @@
             </div>
         </div>
 
+        @* -------- Modifiers Tab -------- *@
+        <div class="tab-pane fade @(ActiveTab == Tab.Modifiers ? "show active" : "")" role="tabpanel">
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Assigned Modifier Groups</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-secondary btn-sm" type="button" @onclick="GoToGroups">
+                            <i class="bi bi-gear me-1"></i> Manage Groups
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" type="button" @onclick="AddModifierGroup">
+                            <i class="bi bi-plus-circle me-1"></i> Add Group
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-sm table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width:70%">Modifier Group</th>
+                                <th style="width:80px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var g in Model.ModifierGroups)
+                            {
+                                <tr>
+                                    <td>
+                                        <select class="form-select form-select-sm" @bind="g.ModifierGroupId" @oninput="@(_ => OnGroupChanged(g))">
+                                            <option value="0">-- Select --</option>
+                                            @foreach (var group in Groups)
+                                            {
+                                                <option value="@group.Id">@group.Name</option>
+                                            }
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-danger" type="button" @onclick="@(() => RemoveModifierGroup(g))">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <small class="text-muted">Each Menu Item can have multiple modifier groups.</small>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="mt-3 d-flex gap-2">
@@ -357,7 +417,7 @@
 </EditForm>
 
 @code {
-    enum Tab { Details, Types, Pricing, Delivery, Routing }
+    enum Tab { Details, Types, Pricing, Delivery, Routing, Modifiers }
     Tab ActiveTab = Tab.Details;
 
     void SetTab(Tab t) => ActiveTab = t;
@@ -401,6 +461,8 @@
         public List<ItemTypeRow> Types { get; set; } = new();
         public List<KitchenRoutingRow> KitchenRoutes { get; set; } = new();
         public List<MenuItemPricelistViewModel> PricelistRows { get; set; } = new(); // used only when multiple enabled
+
+        public List<ModifierGroupRow> ModifierGroups { get; set; } = new();
     }
 
     public class ItemTypeRow
@@ -423,6 +485,13 @@
     List<PreparationArea> PrepAreas = new();
     List<PriceList> Pricelists = new();
     List<KitchenDevice> Devices = new();
+    List<ModifierGroup> Groups = new();
+
+    public class ModifierGroupRow
+    {
+        public long ModifierGroupId { get; set; }
+        public string ModifierGroupName { get; set; } = "";
+    }
 
     public class KitchenRoutingRow
     {
@@ -537,6 +606,19 @@
                 TaxRate = 5
             };
         }
+
+        Groups = await GroupService.GetAllAsync();
+
+        if (!IsNew)
+        {
+            // Load assigned groups
+            var assigned = await ItemGroupService.GetByMenuItemAsync(Model.Id);
+            Model.ModifierGroups = assigned.Select(x => new ModifierGroupRow
+            {
+                ModifierGroupId = x.ModifierGroupId,
+                ModifierGroupName = Groups.FirstOrDefault(g => g.Id == x.ModifierGroupId)?.Name ?? ""
+            }).ToList();
+        }
     }
 
     // ===== UI helpers =====
@@ -594,6 +676,16 @@
         if (row.KitchenDeviceId > 0)
             row.KitchenDeviceName = Devices.FirstOrDefault(d => d.Id == row.KitchenDeviceId)?.Name ?? "";
     }
+
+    void AddModifierGroup() => Model.ModifierGroups.Add(new ModifierGroupRow());
+    void RemoveModifierGroup(ModifierGroupRow row) => Model.ModifierGroups.Remove(row);
+    void OnGroupChanged(ModifierGroupRow row)
+    {
+        if (row.ModifierGroupId > 0)
+            row.ModifierGroupName = Groups.FirstOrDefault(g => g.Id == row.ModifierGroupId)?.Name ?? "";
+    }
+    void GoToGroups() => Nav.NavigateTo("/menu/modifier-groups");
+
 
     // ===== Save =====
     async Task SaveAsync()

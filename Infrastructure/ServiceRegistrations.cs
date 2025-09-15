@@ -42,6 +42,9 @@ namespace Infrastructure
             services.AddScoped<ICustomerAddressService, CustomerAddressService>();
             services.AddScoped<IKitchenDeviceService, KitchenDeviceService>();
             services.AddScoped<IKitchenOrderRoutingService, KitchenOrderRoutingService>();
+            services.AddScoped<IModifierGroupService, ModifierGroupService>();
+            services.AddScoped<IModifierService, ModifierService>();
+            services.AddScoped<IMenuItemModifierGroupService, MenuItemModifierGroupService>();
 
             return services;
         }

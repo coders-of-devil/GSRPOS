@@ -32,9 +32,9 @@ namespace MainApp
             //}
             builder.Services.AddDbContext<AppDbContext>(options => 
                 options.UseSqlite($"Data Source={dbPath}"));
-            builder.Services.AddSingleton<IIdGeneratorService, IdGeneratorService>();
-            builder.Services.AddSingleton<IPasswordHasherService, PasswordHasherService>();
-            builder.Services.AddSingleton<IDateService, DateService>();
+            builder.Services.AddScoped<IIdGeneratorService, IdGeneratorService>();
+            builder.Services.AddScoped<IPasswordHasherService, PasswordHasherService>();
+            builder.Services.AddScoped<IDateService, DateService>();
             builder.Services.AddScoped<NotificationService>();
             builder.Services.AddTransient<RuntimeSeeder>();
             builder.Services.AddApplicationServices();

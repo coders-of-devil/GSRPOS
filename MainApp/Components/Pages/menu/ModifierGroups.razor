@@ -3,6 +3,7 @@
 @inject NotificationService Notifier
 @inject IJSRuntime JS
 @inject FileLogger Logger
+@inject NavigationManager Nav
 
 <h4 class="mb-1">Modifier Groups</h4>
 <small class="text-muted">Manage groups of modifiers (e.g., Pizza Sizes, Extra Toppings)</small>
@@ -14,16 +15,22 @@
         <input class="form-control" @bind="searchTerm" @bind:event="oninput" placeholder="Search groups..." />
     </div>
     <div class="d-flex gap-2">
-        <button class="btn btn-outline-success btn-sm" @onclick="ExportToExcel">
+        @* <button class="btn btn-outline-success" @onclick="ExportToExcel">
             <i class="bi bi-file-earmark-excel me-1"></i> Excel
-        </button>
+        </button> *@
         @if (groups.Any(g => g.IsSelected))
         {
-            <button class="btn btn-danger btn-sm" @onclick="ConfirmBulkDelete">
+            <button class="btn btn-danger" @onclick="ShowConfirmBulkDelete">
                 <i class="bi bi-trash me-1"></i> Delete Selected
             </button>
         }
-        <button class="btn btn-primary btn-sm" @onclick="ShowAddModal">
+        <button class="btn btn-secondary" @onclick="GoBackToModifiers">
+            <i class="bi bi-arrow-left-short me-1"></i> Back to Modifiers
+        </button>
+        <button class="btn btn-secondary" @onclick="GoBackToItems">
+            <i class="bi bi-arrow-left-short me-1"></i> Back to Items
+        </button>
+        <button class="btn btn-primary" @onclick="ShowAddModal">
             <i class="bi bi-plus-circle me-1"></i> Add Group
         </button>
     </div>
@@ -165,7 +172,7 @@
     async Task LoadGroups()
     {
         var all = await GroupService.GetAllAsync();
-        groups = all.Select(g => g.ToViewModel()).ToList();
+        groups = all.Select(g => g.ToGroupViewModel()).ToList();
     }
 
     void ShowAddModal() { formModel = new(); showForm = true; }
@@ -174,7 +181,7 @@
 
     async Task Save()
     {
-        var entity = formModel.ToEntity();
+        var entity = formModel.ToGroupEntity();
         if (formModel.Id == 0)
         {
             await GroupService.AddAsync(entity);
@@ -198,7 +205,7 @@
         showSingleDeleteConfirm = false;
     }
 
-    void ConfirmBulkDelete() => showBulkDeleteConfirm = true;
+    void ShowConfirmBulkDelete() => showBulkDeleteConfirm = true;
     async Task ConfirmBulkDelete()
     {
         foreach (var id in groups.Where(g => g.IsSelected).Select(g => g.Id).ToList())
@@ -214,6 +221,9 @@
         bool value = (bool)e.Value;
         foreach (var g in groups) g.IsSelected = value;
     }
+
+    void GoBackToItems() => Nav.NavigateTo("/menu/items");
+    void GoBackToModifiers() => Nav.NavigateTo("/menu/modifiers");
 
     List<ModifierGroupViewModel> FilteredGroups =>
         groups.Where(g => string.IsNullOrWhiteSpace(searchTerm) ||
