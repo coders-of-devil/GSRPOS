@@ -5420,11 +5420,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Gamliot\\GGit\\gsrpos\\Migrator\\Migrator.csproj",
+      "projectUniqueName": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\Migrator\\Migrator.csproj",
       "projectName": "Migrator",
-      "projectPath": "E:\\Gamliot\\GGit\\gsrpos\\Migrator\\Migrator.csproj",
+      "projectPath": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\Migrator\\Migrator.csproj",
       "packagesPath": "C:\\Users\\suhai\\.nuget\\packages\\",
-      "outputPath": "E:\\Gamliot\\GGit\\gsrpos\\Migrator\\obj\\",
+      "outputPath": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\Migrator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5446,8 +5446,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "E:\\Gamliot\\GGit\\gsrpos\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "E:\\Gamliot\\GGit\\gsrpos\\Infrastructure\\Infrastructure.csproj"
+            "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -5501,7 +5501,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

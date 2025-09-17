@@ -1,0 +1,4 @@
+E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\index.html
+E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\css\bootstrap\bootstrap.min.css.map
+E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\css\bootstrap\bootstrap.min.css
+E:\Gamliot\GGit\gsrpos\MainApp\wwwroot\css\app.css
