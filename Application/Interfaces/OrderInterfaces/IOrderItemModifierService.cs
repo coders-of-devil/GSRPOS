@@ -18,7 +18,5 @@ namespace Applications.Interfaces.OrderInterfaces
         Task UpdateAsync(OrderItemModifier modifier);
         Task DeleteAsync(long id);
 
-        // Bulk
-        Task UpsertForOrderItemAsync(long orderItemId, IEnumerable<OrderItemModifier> modifiers);
     }
 }

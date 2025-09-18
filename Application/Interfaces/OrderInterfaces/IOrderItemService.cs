@@ -23,8 +23,8 @@ namespace Applications.Interfaces.OrderInterfaces
 
         // Status
         Task SetStatusAsync(long id, ItemStatusEnum status);
-        Task MarkAsKOTSentAsync(long id, bool sent = true);
-        Task VoidAsync(long id, string reason, long userId, long? managerId = null);
+        Task MarkAsKOTSentAsync(long id, long deviceId, bool sent = true);
+        Task VoidAsync(long id, string reason, long userId);
 
         // Helpers
         Task SetFOCAsync(long id, string reason);

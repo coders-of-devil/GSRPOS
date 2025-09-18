@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "49+w2JkNWU4=",
+  "dgSpecHash": "JRS7/NtrHIs=",
   "success": true,
-  "projectFilePath": "C:\\MyFiles\\Works\\Git-Fallel\\gsrpos\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "E:\\Gamliot\\GGit\\gsrpos\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\suhai\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\suhai\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",

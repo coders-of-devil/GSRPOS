@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\infrastructure\\implementations\\orderimplementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82BA7B01-047E-42F7-A3A5-7CFFAFBA187A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\implementations\\orderimplementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\domain\\enums\\orderstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\orderstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6660EB98-18CF-4849-9AAF-1F1AADF058E1}|MainApp\\MainApp.csproj|solutionrelative:mainapp\\components\\pages\\menu\\itemseditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{26B0B06F-9698-483C-A08E-74B4C948E345}|Application\\Applications.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\application\\interfaces\\orderinterfaces\\ikotlogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -275,10 +279,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\domain\\enums\\ordersourceenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\ordersourceenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\domain\\enums\\orderstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\orderstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{098BB7E9-02F9-4608-B50B-E45843D582CC}|Domain\\Domain.csproj|c:\\myfiles\\works\\git-fallel\\gsrpos\\domain\\entities\\menumod\\menuitemtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -899,7 +899,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -923,46 +923,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "OrderService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\OrderImplementations\\OrderService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\OrderImplementations\\OrderService.cs",
               "ToolTip": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\OrderImplementations\\OrderService.cs",
               "RelativeToolTip": "Infrastructure\\Implementations\\OrderImplementations\\OrderService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T06:26:33.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IKOTLogService.cs",
-              "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
-              "ToolTip": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
-              "RelativeToolTip": "Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAkwBkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T06:17:18.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IOrderItemModifierService.cs",
-              "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
-              "ToolTip": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
-              "RelativeToolTip": "Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T06:16:53.93Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IOrderItemService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IOrderItemService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\OrderInterfaces\\IOrderItemService.cs",
@@ -970,12 +944,11 @@
               "RelativeToolTip": "Application\\Interfaces\\OrderInterfaces\\IOrderItemService.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAIwB4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T06:16:19.666Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-15T06:16:19.666Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IOrderService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IOrderService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\OrderInterfaces\\IOrderService.cs",
@@ -983,12 +956,11 @@
               "RelativeToolTip": "Application\\Interfaces\\OrderInterfaces\\IOrderService.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAiwCIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T06:15:42.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-15T06:15:42.158Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "MenuCategoryService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
@@ -996,12 +968,11 @@
               "RelativeToolTip": "Infrastructure\\Implementations\\MenuImplementations\\MenuCategoryService.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAAgwEoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T18:06:18.174Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-05T18:06:18.174Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ItemsEditor.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\ItemsEditor.razor",
@@ -1014,7 +985,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 1,
+              "Title": "OrderStatusEnum.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Enums\\OrderStatusEnum.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\OrderStatusEnum.cs",
+              "ToolTip": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Enums\\OrderStatusEnum.cs",
+              "RelativeToolTip": "Domain\\Enums\\OrderStatusEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T17:13:49.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IOrderItemModifierService.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
+              "ToolTip": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\OrderInterfaces\\IOrderItemModifierService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T06:16:53.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IKOTLogService.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
+              "ToolTip": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\OrderInterfaces\\IKOTLogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwBkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T06:17:18.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "ModifierGroups.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\ModifierGroups.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\ModifierGroups.razor",
@@ -1026,7 +1034,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\Order.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\Order.cs",
@@ -1034,12 +1042,11 @@
               "RelativeToolTip": "Domain\\Entities\\OrderMod\\Order.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAAAEMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T17:22:46.33Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-06T17:22:46.33Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\OrderItem.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\OrderItem.cs",
@@ -1047,12 +1054,11 @@
               "RelativeToolTip": "Domain\\Entities\\OrderMod\\OrderItem.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAAACkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T17:41:05.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-06T17:41:05.273Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "KOTLog.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\KOTLog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\KOTLog.cs",
@@ -1060,12 +1066,11 @@
               "RelativeToolTip": "Domain\\Entities\\OrderMod\\KOTLog.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:28:35.817Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-06T18:28:35.817Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "OrderItemModifier.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\OrderItemModifier.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\OrderItemModifier.cs",
@@ -1073,12 +1078,11 @@
               "RelativeToolTip": "Domain\\Entities\\OrderMod\\OrderItemModifier.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAcwBsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T18:44:44.186Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-06T18:44:44.186Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DeliveryOrderTrack.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\DeliveryOrderTrack.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\DeliveryOrderTrack.cs",
@@ -1086,12 +1090,11 @@
               "RelativeToolTip": "Domain\\Entities\\OrderMod\\DeliveryOrderTrack.cs",
               "ViewState": "AgIAABAAAACgmZmZmZk6wBsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T19:02:29.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-06T19:02:29.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\MauiProgram.cs",
               "RelativeDocumentMoniker": "MainApp\\MauiProgram.cs",
@@ -1103,7 +1106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "MenuCategories.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\MenuCategories.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\MenuCategories.razor",
@@ -1115,7 +1118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "IdGeneratorService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\ServiceClass\\IdGeneratorService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceClass\\IdGeneratorService.cs",
@@ -1127,7 +1130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Modifiers.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\Modifiers.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\Modifiers.razor",
@@ -1139,7 +1142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "KitchenDevices.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\KitchenDevices.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\KitchenDevices.razor",
@@ -1151,7 +1154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Modifier.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\Modifier.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\Modifier.cs",
@@ -1163,7 +1166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "PricelistType.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\PricelistType.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\PricelistType.razor",
@@ -1175,7 +1178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Pricelists.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\Pricelists.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\Pricelists.razor",
@@ -1187,7 +1190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "MenuItems.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\menu\\MenuItems.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\menu\\MenuItems.razor",
@@ -1199,7 +1202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "ModifierGroup.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\ModifierGroup.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\ModifierGroup.cs",
@@ -1211,7 +1214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "MenuItemModifierGroup.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemModifierGroup.cs",
@@ -1223,7 +1226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "IMenuItemModifierGroupService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuItemModifierGroupService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IMenuItemModifierGroupService.cs",
@@ -1235,7 +1238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "IKitchenOrderRoutingService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IKitchenOrderRoutingService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IKitchenOrderRoutingService.cs",
@@ -1247,7 +1250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Customers.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\customer\\Customers.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\customer\\Customers.razor",
@@ -1259,7 +1262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "TableEdit.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\table\\TableEdit.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\table\\TableEdit.razor",
@@ -1271,7 +1274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "DiningAreas.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Pages\\table\\DiningAreas.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Pages\\table\\DiningAreas.razor",
@@ -1283,7 +1286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "ModifierServic.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\ModifierServic.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\ModifierServic.cs",
@@ -1295,7 +1298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "ServiceRegistrations.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\ServiceRegistrations.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ServiceRegistrations.cs",
@@ -1307,7 +1310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Components\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "MainApp\\Components\\Layout\\NavMenu.razor",
@@ -1319,7 +1322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "ModifierGroupViewModel.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\ModifierGroupViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\ModifierGroupViewModel.cs",
@@ -1331,7 +1334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "ModifierViewModel.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\ModifierViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\ModifierViewModel.cs",
@@ -1343,7 +1346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "ModifierMappings.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Mappings\\MenuMap\\ModifierMappings.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\ModifierMappings.cs",
@@ -1355,7 +1358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "MenuItemModifierGroupService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuItemModifierGroupService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuItemModifierGroupService.cs",
@@ -1367,7 +1370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "IModifierService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IModifierService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IModifierService.cs",
@@ -1379,7 +1382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "IModifierGroupService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IModifierGroupService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IModifierGroupService.cs",
@@ -1391,7 +1394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "KitchenDeviceService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\KitchenDeviceService.cs",
@@ -1403,7 +1406,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "ModifierGroupService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\ModifierGroupService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\ModifierGroupService.cs",
@@ -1415,7 +1418,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "KitchenOrderRoutingService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\KitchenOrderRoutingService.cs",
@@ -1427,7 +1430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "KitchenDeviceViewModel.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\KitchenDeviceViewModel.cs",
@@ -1439,7 +1442,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "KitchenMapping.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Mappings\\MenuMap\\KitchenMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\KitchenMapping.cs",
@@ -1451,7 +1454,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "KitchenOrderRoutingViewModel.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\KitchenOrderRoutingViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\KitchenOrderRoutingViewModel.cs",
@@ -1463,7 +1466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "KitchenOrderRoutingMapping.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
               "RelativeDocumentMoniker": "MainApp\\Mappings\\MenuMap\\KitchenOrderRoutingMapping.cs",
@@ -1475,7 +1478,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "KitchenOrderRouting.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\KitchenOrderRouting.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\KitchenOrderRouting.cs",
@@ -1487,7 +1490,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "MenuItemViewModel.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\MainApp\\ViewModels\\MenuModule\\MenuItemViewModel.cs",
               "RelativeDocumentMoniker": "MainApp\\ViewModels\\MenuModule\\MenuItemViewModel.cs",
@@ -1499,7 +1502,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "KitchenDevice.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\KitchenDevice.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\KitchenDevice.cs",
@@ -1511,7 +1514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "IKitchenDeviceService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IKitchenDeviceService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IKitchenDeviceService.cs",
@@ -1523,7 +1526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "MenuItemPriceListEntry.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemPriceListEntry.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemPriceListEntry.cs",
@@ -1535,7 +1538,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "GSRPOSDbContext.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Data\\GSRPOSDbContext.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\GSRPOSDbContext.cs",
@@ -1547,7 +1550,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "MenuItemService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\MenuImplementations\\MenuItemService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\MenuImplementations\\MenuItemService.cs",
@@ -1559,7 +1562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "IMenuItemService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\MenuInterfaces\\IMenuItemService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\MenuInterfaces\\IMenuItemService.cs",
@@ -1571,7 +1574,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "MenuItemNutrition.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItemNutrition.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItemNutrition.cs",
@@ -1583,7 +1586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "ICustomerService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Application\\Interfaces\\CustomerInterfaces\\ICustomerService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\CustomerInterfaces\\ICustomerService.cs",
@@ -1607,7 +1610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "20250907085512_OrderSet.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250907085512_OrderSet.cs",
               "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250907085512_OrderSet.cs",
@@ -1617,7 +1620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "CustomerService.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Infrastructure\\Implementations\\CustomerImplementations\\CustomerService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Implementations\\CustomerImplementations\\CustomerService.cs",
@@ -1629,7 +1632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "PriceList.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\PriceList.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\PriceList.cs",
@@ -1641,7 +1644,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "20250907075336_CustomerandOrder.cs",
               "DocumentMoniker": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250907075336_CustomerandOrder.cs",
               "ToolTip": "E:\\Gamliot\\GGit\\GSRPOS\\Infrastructure\\Migrations\\20250907075336_CustomerandOrder.cs",
@@ -1651,7 +1654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "MenuItem.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuItem.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuItem.cs",
@@ -1663,7 +1666,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "MenuDeliveryPrice.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuDeliveryPrice.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuDeliveryPrice.cs",
@@ -1675,7 +1678,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "MenuCategory.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\MenuMod\\MenuCategory.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\MenuMod\\MenuCategory.cs",
@@ -1687,7 +1690,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "RewardUsage.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\CustomerMod\\RewardUsage.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CustomerMod\\RewardUsage.cs",
@@ -1699,7 +1702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 64,
               "Title": "DiscountsLog.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\DiscountsLog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\DiscountsLog.cs",
@@ -1711,7 +1714,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "ComboOrderItem.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\ComboOrderItem.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\ComboOrderItem.cs",
@@ -1723,7 +1726,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 66,
               "Title": "VoidOrderItemLog.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\VoidOrderItemLog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\VoidOrderItemLog.cs",
@@ -1735,7 +1738,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 67,
               "Title": "OrderPrepStatus.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Entities\\OrderMod\\OrderPrepStatus.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\OrderMod\\OrderPrepStatus.cs",
@@ -1747,7 +1750,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 68,
               "Title": "KOTStatusEnum.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Enums\\KOTStatusEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\KOTStatusEnum.cs",
@@ -1760,18 +1763,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 69,
-              "Title": "OrderStatusEnum.cs",
-              "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Enums\\OrderStatusEnum.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\OrderStatusEnum.cs",
-              "ToolTip": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Enums\\OrderStatusEnum.cs",
-              "RelativeToolTip": "Domain\\Enums\\OrderStatusEnum.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-06T17:13:49.759Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 68,
               "Title": "OrderSourceEnum.cs",
               "DocumentMoniker": "C:\\MyFiles\\Works\\Git-Fallel\\GSRPOS\\Domain\\Enums\\OrderSourceEnum.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\OrderSourceEnum.cs",

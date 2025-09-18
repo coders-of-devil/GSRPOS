@@ -29,8 +29,8 @@ namespace Applications.Interfaces.OrderInterfaces
 
         // Status / lifecycle
         Task SetStatusAsync(long id, OrderStatusEnum status);
-        Task MarkAsPaidAsync(long id, PaymentTypeEnum paymentType, decimal amountReceived, decimal changeGiven);
+        //Task MarkAsPaidAsync(long id, PaymentTypeEnum paymentType, decimal amountReceived, decimal changeGiven);
         Task MarkAsInvoicedAsync(long id, bool invoiced = true);
-        Task VoidAsync(long id, string reason, long userId, long? managerId = null);
+        Task VoidAsync(long id, string reason, long userId);
     }
 }
