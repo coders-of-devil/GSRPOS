@@ -166,5 +166,37 @@ namespace Infrastructure.Implementations.OrderImplementations
                 if (!tblOk) throw new ApplicationException("Table not found.");
             }
         }
+
+        //Discounts
+        public async Task SetDiscountAsync(long orderId, decimal discountAmount, string discountCode = "", bool isCoupon = false, long? appliedBy = null)
+        {
+            if (discountAmount < 0) throw new ApplicationException("Discount amount cannot be negative.");
+
+            var order = await GetByIdAsync(orderId);
+
+            // Add discount log
+            var log = new DiscountsLog
+            {
+                Id = await _id.GenerateNextId<DiscountsLog>(),
+                OrderId = orderId,
+                IsOrderDiscount = true,
+                DiscountAmount = discountAmount,
+                IsCouponBased = isCoupon,
+                DiscountCoupon = discountCode ?? "",
+                AppliedBy = appliedBy,
+                AppliedAt = _date.Now,
+                CreatedAt = _date.Now
+            };
+            _ctx.DiscountsLogs.Add(log);
+
+            // Update order
+            order.DiscountAmount = discountAmount;
+            order.NetTotal = Math.Max(order.GrossTotal - discountAmount, 0);
+            order.DueAmount = Math.Max(order.NetTotal - order.PaidAmount, 0);
+            order.ModifiedAt = _date.Now;
+            _ctx.Orders.Update(order);
+
+            await _ctx.SaveChangesAsync();
+        }
     }
 }

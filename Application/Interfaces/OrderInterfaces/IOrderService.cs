@@ -32,5 +32,8 @@ namespace Applications.Interfaces.OrderInterfaces
         //Task MarkAsPaidAsync(long id, PaymentTypeEnum paymentType, decimal amountReceived, decimal changeGiven);
         Task MarkAsInvoicedAsync(long id, bool invoiced = true);
         Task VoidAsync(long id, string reason, long userId);
+
+        // Discounts
+        Task SetDiscountAsync(long orderId, decimal discountAmount, string discountCode = "", bool isCoupon = false, long? appliedBy = null);
     }
 }
